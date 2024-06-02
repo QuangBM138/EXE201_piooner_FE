@@ -1,7 +1,9 @@
 import HomePage from "./pages/Homepage";
-import AboutUs from "./pages/aboutus";
-import Contact from "./pages/contact";
+import AboutUsPage from "./pages/aboutus";
+import ContactPage from "./pages/contact";
+import CommunityPage from "./pages/Community";
 import { Routes, Route } from "react-router-dom";
+import { RouteMap } from "./utils/links";
 import Header from "./components/header";
 import Footer from "./components/footer";
 
@@ -13,8 +15,9 @@ function App() {
       <Header></Header>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/AboutUs" element={<AboutUs />} />
-        <Route path="/Contact" element={<Contact />} />
+        <Route path="/AboutUs" element={<AboutUsPage />} />
+        <Route path="/Contact" element={<ContactPage />} />
+        <Route path="/Community" element={<CommunityPage />} />
         {/* <Route path="/Create" element={<Create />} /> */}
         {/* <Route path="/Product" element={<Product />} /> */}
         {/* <Route path="/Login" element={<Login />} /> */}

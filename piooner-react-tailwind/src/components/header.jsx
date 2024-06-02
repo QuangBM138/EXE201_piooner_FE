@@ -9,8 +9,11 @@ const NavigationMenu = () => (
     <li>
       <a href="#section2">Sáng tạo</a>
     </li>
+    <li>
+      <a href="#section2">Mua hàng</a>
+    </li>
     <li className="flex-auto">
-      <a href="#section3">Cộng đồng</a>
+      <a href="/Community">Cộng đồng</a>
     </li>
     <li>
       <a href="/Contact">Liên hệ</a>

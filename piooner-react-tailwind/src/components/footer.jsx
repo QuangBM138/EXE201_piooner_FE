@@ -57,18 +57,18 @@ const Footer = () => (
           <span className="flex-auto">EMAIL: support@piorneercraft.com</span>
         </div>
         <div className="flex gap-3.5 self-start mt-3">
-          <img
-            loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/c2d52a0df2d0288a95cdc4e4b3732c1f52b9444d6adea7719b424edd692268fd?apiKey=101cc284a7074779856ab37fb68fa7a5&"
-            className="shrink-0 aspect-[0.55] w-[11px]"
-            alt=""
-          />
-          <img
-            loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/16f95c8be7dad46b7594fb2f4e0168945363d8ade838b0068f591d8cdb8639b5?apiKey=101cc284a7074779856ab37fb68fa7a5&"
-            className="shrink-0 w-5 aspect-square"
-            alt=""
-          />
+          {/* icon facebook */}
+          <a
+            href="https://www.facebook.com/pioneercrafts?mibextid=LQQJ4d"
+            target="_blank"
+          >
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/c2d52a0df2d0288a95cdc4e4b3732c1f52b9444d6adea7719b424edd692268fd?apiKey=101cc284a7074779856ab37fb68fa7a5&"
+              className="shrink-0 aspect-[0.55] w-[11px]"
+              alt=""
+            />
+          </a>
         </div>
       </section>
 
