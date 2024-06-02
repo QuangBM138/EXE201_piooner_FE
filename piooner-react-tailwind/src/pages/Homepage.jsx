@@ -7,15 +7,18 @@ function HomePage() {
         <section className="flex gap-5 max-md:flex-col max-md:gap-0">
           <aside className="flex flex-col w-[22%] max-md:ml-0 max-md:w-full">
             <div className="flex flex-col mt-96 max-md:mt-10">
-              <h3 className="text-xl font-medium text-black font-NVNMotherlandSignature">
+              <h3 className="text-7xl font-medium text-black font-NVNMotherlandSignature text-center">
                 Sáng tạo
               </h3>
-              <h4 className="text-xl font-medium text-black font-NVNMotherlandSignature">
+              <h4 className="text-7xl font-medium text-black font-NVNMotherlandSignature text-center">
                 Đồ Gốm
               </h4>
-              <h2 className="mt-2 text-2xl text-black">Theo cách của bạn</h2>
+              <h2 className="mt-2 text-4xl text-black">Theo cách của bạn</h2>
               <button className="justify-center px-11 py-4 mt-4 text-xl text-center rounded-3xl border border-solid border-stone-600 text-stone-600 max-md:px-5 max-md:mt-10">
                 Sáng tạo ngay
+              </button>
+              <button className="justify-center px-11 py-4 mt-4 text-xl text-center rounded-3xl border border-solid border-stone-600 text-stone-600 max-md:px-5 max-md:mt-10">
+                Mua Hàng
               </button>
             </div>
           </aside>
