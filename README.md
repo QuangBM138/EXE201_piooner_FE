@@ -4,13 +4,13 @@
 
 # create react project with vitejs with yarn
 
-    yarn create vite
-
 # run app
 
-    cd piooner-react-tailwind-crash
-    yarn
-    yarn dev
+    cd .\piooner-react-tailwind\
+
+    npm install
+
+    npm start
 
 # install tailwind css
 
