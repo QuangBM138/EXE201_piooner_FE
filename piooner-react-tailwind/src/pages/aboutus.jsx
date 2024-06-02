@@ -3,8 +3,8 @@ function AboutUs() {
     <main className="mt-14 max-md:mt-10 max-md:max-w-full">
       <div className="flex gap-5 max-md:flex-col max-md:gap-0">
         <section className="flex flex-col w-[78%] max-md:ml-0 max-md:w-full">
-          <header className="flex flex-col grow max-md:max-w-full">
-            <h1 className="self-end mr-14 text-6xl font-extrabold text-center leading-[60px] text-stone-600 max-md:mr-2.5 max-md:max-w-full max-md:text-4xl max-md:leading-10">
+          <header className="flex flex-col grow max-md:max-w-full ">
+            <h1 className=" self-end mr-14 text-6xl font-extrabold text-center leading-[60px] text-stone-600 max-md:mr-2.5 max-md:max-w-full max-md:text-4xl max-md:leading-10">
               Pioneer Craft <br />
               <span className="text-4xl font-light">
                 Khám Phá Sứ Mệnh và Nguồn Cảm Hứng
@@ -22,7 +22,7 @@ function AboutUs() {
                 />
               </div>
               <div className="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full">
-                <p className="flex flex-col text-base text-stone-600 max-md:max-w-full">
+                <p className="flex flex-col text-base max-md:max-w-full">
                   Pioneer Craft là sự kết hợp đầy sáng tạo của một nhóm bạn trẻ
                   yêu thích nghệ thuật và sáng tạo. Chúng tôi tin rằng mỗi sản
                   phẩm gốm mang trong mình một câu chuyện độc đáo và tinh thần

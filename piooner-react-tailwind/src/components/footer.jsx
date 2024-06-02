@@ -123,25 +123,3 @@ const Footer = () => (
 );
 
 export default Footer;
-
-// const Layout = ({ children }) => (
-//     <div className="flex flex-col">{children}</div>
-//   );
-
-//   const Footer = () => (
-//     <footer className="flex justify-center items-center px-16 py-20 mt-28 w-full bg-[#547B80] max-md:px-5 max-md:mt-10 max-md:max-w-full">
-//       <div className="flex gap-5 mb-3 w-full max-w-[1117px] max-md:flex-wrap max-md:max-w-full">
-//         <section className="flex flex-col">
-//           {/*... */}
-//         </section>
-
-//         <Layout>
-//           <nav className="flex gap-5 max-md:flex-col max-md:gap-0">
-//             {/*... */}
-//           </nav>
-//         </Layout>
-//       </div>
-//     </footer>
-//   );
-
-//   export default Footer;

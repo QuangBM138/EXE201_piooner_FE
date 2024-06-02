@@ -13,7 +13,7 @@ const NavigationMenu = () => (
       <a href="#section3">Cộng đồng</a>
     </li>
     <li>
-      <a href="#section4">Liên hệ</a>
+      <a href="/Contact">Liên hệ</a>
     </li>
   </ul>
 );

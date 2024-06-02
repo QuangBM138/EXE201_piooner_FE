@@ -1,0 +1,58 @@
+function ContactInfo({ iconSrc, contactText, altText }) {
+  return (
+    <div className="flex gap-5 mt-8 whitespace-nowrap">
+      <img
+        loading="lazy"
+        src={iconSrc}
+        alt={altText}
+        className="shrink-0 aspect-square w-[30px]"
+      />
+      <div>{contactText}</div>
+    </div>
+  );
+}
+
+function ContactUs() {
+  return (
+    <section className="flex flex-col items-center pt-20 bg-white">
+      <div className="mt-28 w-full max-w-[1160px] max-md:mt-10 max-md:max-w-full">
+        <div className="flex gap-5 max-md:flex-col max-md:gap-0">
+          <div className="flex flex-col w-[31%] max-md:ml-0 max-md:w-full">
+            <div className="flex flex-col self-stretch px-5 my-auto text-stone-600 max-md:mt-10">
+              <h2 className="text-6xl font-extrabold text-center max-md:text-4xl">
+                Liên hệ
+              </h2>
+              <div className="flex flex-col mt-11 text-2xl max-md:mt-10">
+                <ContactInfo
+                  iconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/3d343bfc72bfe4824d4ebb4f29c4914ec1438ae7055aedee52b94322953eea43?apiKey=101cc284a7074779856ab37fb68fa7a5&"
+                  contactText="08687989353"
+                  altText="Phone"
+                />
+                <ContactInfo
+                  iconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/325e26ef3c852a605d3aec02918cb398be9af1f093ba9c729551999236a434fa?apiKey=101cc284a7074779856ab37fb68fa7a5&"
+                  contactText="piorneercrafts@gmail.com"
+                  altText="Email"
+                />
+                <ContactInfo
+                  iconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/3a5e50dea64fc8e682955e15c7d3f641fdcf4177d029d957af16fd9a0ebb50d4?apiKey=101cc284a7074779856ab37fb68fa7a5&"
+                  contactText="FPT University"
+                  altText="Location"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col ml-5 w-[69%] max-md:ml-0 max-md:w-full">
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/42575215f3e26a67aff04170515e031945ead17878ecb177a81a1b81034be932?apiKey=101cc284a7074779856ab37fb68fa7a5&"
+              alt=""
+              className="grow w-full aspect-[1.67] max-md:mt-10 max-md:max-w-full"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default ContactUs;
