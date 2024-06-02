@@ -15,5 +15,3 @@ Currently, two official plugins are available:
 # run app
 
     cd piooner-react-tailwind-crash
-    yarn
-    yarn dev

@@ -3,3 +3,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "NVN-Motherland-Signature";
+  src: url("../public/font/NVN-Motherland-Signature.ttf");
+}

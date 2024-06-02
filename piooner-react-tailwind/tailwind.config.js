@@ -5,9 +5,12 @@ export default {
     extend: {
       fontFamily: {
         inter: ["Inter", "sans-serif"],
+        NVNMotherlandSignature: ["NVN-Motherland-Signature"],
       },
       colors: {},
     },
   },
   plugins: [],
 };
+4756;
+47563;
