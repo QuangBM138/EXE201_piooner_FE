@@ -1,3 +1,5 @@
+import { Links, img } from "../utils/assets";
+
 function CommunityPage() {
   return (
     <div className="flex flex-col items-center pt-20 bg-white">
@@ -23,7 +25,7 @@ function CommunityPage() {
                   </div>
                   <div className="flex flex-col mt-6 text-xl max-md:max-w-full">
                     <a
-                      href="https://gombinhduong.com/gom-lai-thieu-net-dep-con-mai-voi-thoi-gian/"
+                      href={Links.gomlathieu}
                       className="mx-auto px-16 py-6 rounded-3xl border border-solid border-stone-600 max-md:px-5 max-md:max-w-full"
                       target="_blank"
                     >
@@ -36,7 +38,7 @@ function CommunityPage() {
                 <div className="flex flex-col grow justify-center shadow-sm max-md:mt-10">
                   <img
                     loading="lazy"
-                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/4401047da0518b7307168213e9a24fb9f07513d202fba7e9920246d6bff77c4d?apiKey=101cc284a7074779856ab37fb68fa7a5&"
+                    src={img.community}
                     alt="Lái Thiêu Pottery"
                     className="w-full aspect-[0.95]"
                   />

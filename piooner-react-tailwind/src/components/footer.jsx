@@ -1,3 +1,6 @@
+import { img, Links } from "../utils/assets";
+
+// eslint-disable-next-line react/prop-types
 const Layout = ({ children }) => (
   <div className="flex flex-col ">{children}</div>
 );
@@ -7,28 +10,30 @@ const Footer = () => (
     <div className="justify-between flex gap-5 mb-3 w-full max-md:flex-wrap max-md:max-w-full">
       <section className="flex flex-col">
         <div className="flex gap-3">
-          <img
-            loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/183dfff3eefdf36636928fe6f8f5b3dd0eb853af367de2a2849f6b4f83ed903e?apiKey=101cc284a7074779856ab37fb68fa7a5&"
-            className="ml-4 aspect-[0.7] fill-orange-100 w-[7px] max-md:ml-2.5"
-            alt=""
-          />
-          <img
-            loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/b3fc6a36bcb4172b0630d6339b31e423a98e89a30b7857c5117caa05325b592e?apiKey=101cc284a7074779856ab37fb68fa7a5&"
-            className="self-center aspect-[2] fill-orange-100 w-[100px] h-[100px]"
-            alt=""
-          />
           <div className="justify-center my-auto">
             <img
               loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/54a88111b633886dcdd02d0abfd92cfaab1f3ebb4e39b68339436acdee2de79c?apiKey=101cc284a7074779856ab37fb68fa7a5"
+              src={img.foot01}
+              className="ml-4 aspect-[0.7] fill-orange-100 w-[7px] max-md:ml-2.5"
+              alt=""
+            />
+            <img
+              loading="lazy"
+              src={img.foot02}
+              className="self-center aspect-[2] fill-orange-100 w-[100px] h-[100px]"
+              alt=""
+            />
+          </div>
+          <div className="justify-center my-auto">
+            <img
+              loading="lazy"
+              src={img.foot03}
               className="aspect-[10] w-auto"
               alt=""
             />
             <img
               loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/1dc9c5836c44b638df7e655d086229b5604bf047d2f032c86d009a8265c6e5be?apiKey=101cc284a7074779856ab37fb68fa7a5"
+              src={img.foot04}
               className="aspect-[3.33] w-[63px]"
               alt=""
             />
@@ -58,13 +63,10 @@ const Footer = () => (
         </div>
         <div className="flex gap-3.5 self-start mt-3">
           {/* icon facebook */}
-          <a
-            href="https://www.facebook.com/pioneercrafts?mibextid=LQQJ4d"
-            target="_blank"
-          >
+          <a href={Links.facebook} target="_blank">
             <img
               loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/c2d52a0df2d0288a95cdc4e4b3732c1f52b9444d6adea7719b424edd692268fd?apiKey=101cc284a7074779856ab37fb68fa7a5&"
+              src={img.facebookIcon}
               className="shrink-0 aspect-[0.55] w-[11px]"
               alt=""
             />

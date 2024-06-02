@@ -1,3 +1,5 @@
+import { img } from "../utils/assets";
+
 function AboutUs() {
   return (
     <main className="mt-14 max-md:mt-10 max-md:max-w-full">
@@ -16,7 +18,7 @@ function AboutUs() {
               <div className="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
                 <img
                   loading="lazy"
-                  src="src/assets/image/aboutus.png"
+                  src={img.arbutus01}
                   alt="Pioneer Craft example"
                   className="grow w-full aspect-[0.88] rounded-[250px_250px_0px_0px] max-md:max-w-full"
                 />
@@ -55,7 +57,7 @@ function AboutUs() {
         <aside className="flex flex-col ml-5 w-[22%] max-md:ml-0 max-md:w-full">
           <img
             loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/8634be835d13d7b714baa67ee9c7efdf27c633a816c165bd2264bde3ec618209?apiKey=101cc284a7074779856ab37fb68fa7a5&"
+            src={img.arbutus02}
             alt="Decorative Image"
             className="shrink-0 mt-28 max-w-full aspect-[0.71] w-[304px] max-md:mt-10"
           />

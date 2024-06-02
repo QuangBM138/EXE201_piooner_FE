@@ -1,3 +1,6 @@
+import { img } from "../utils/assets";
+
+// eslint-disable-next-line react/prop-types
 function ContactInfo({ iconSrc, contactText, altText }) {
   return (
     <div className="flex gap-5 mt-8 whitespace-nowrap">
@@ -24,17 +27,17 @@ function ContactUs() {
               </h2>
               <div className="flex flex-col mt-11 text-2xl max-md:mt-10">
                 <ContactInfo
-                  iconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/3d343bfc72bfe4824d4ebb4f29c4914ec1438ae7055aedee52b94322953eea43?apiKey=101cc284a7074779856ab37fb68fa7a5&"
+                  iconSrc={img.phoneIcon}
                   contactText="08687989353"
                   altText="Phone"
                 />
                 <ContactInfo
-                  iconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/325e26ef3c852a605d3aec02918cb398be9af1f093ba9c729551999236a434fa?apiKey=101cc284a7074779856ab37fb68fa7a5&"
+                  iconSrc={img.emailIcon}
                   contactText="piorneercrafts@gmail.com"
                   altText="Email"
                 />
                 <ContactInfo
-                  iconSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/3a5e50dea64fc8e682955e15c7d3f641fdcf4177d029d957af16fd9a0ebb50d4?apiKey=101cc284a7074779856ab37fb68fa7a5&"
+                  iconSrc={img.locationIcon}
                   contactText="FPT University"
                   altText="Location"
                 />
@@ -44,7 +47,7 @@ function ContactUs() {
           <div className="flex flex-col ml-5 w-[69%] max-md:ml-0 max-md:w-full">
             <img
               loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/42575215f3e26a67aff04170515e031945ead17878ecb177a81a1b81034be932?apiKey=101cc284a7074779856ab37fb68fa7a5&"
+              src={img.contactImg}
               alt=""
               className="grow w-full aspect-[1.67] max-md:mt-10 max-md:max-w-full"
             />

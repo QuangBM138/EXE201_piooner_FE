@@ -5,7 +5,11 @@ export default {
     extend: {
       fontFamily: {
         inter: ["Inter", "sans-serif"],
-        NVNMotherlandSignature: ["NVN-Motherland-Signature"],
+        NVNMotherlandSignature: [
+          "NVN-Motherland-Signature",
+          "Inter",
+          "sans-serif",
+        ],
       },
       colors: {},
     },

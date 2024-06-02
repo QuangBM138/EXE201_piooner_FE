@@ -1,3 +1,5 @@
+import { img } from "../utils/assets";
+
 function HomePage() {
   return (
     <div>
@@ -20,7 +22,7 @@ function HomePage() {
           <figure className="flex flex-col ml-5 w-[78%] max-md:ml-0 max-md:w-full">
             <img
               loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/3de14e10fbd69d714c2495317088eca9f2686d932d39f557d8beb8bcdc8cabf1?apiKey=101cc284a7074779856ab37fb68fa7a5&"
+              src={img.homeImg}
               className="w-full aspect-[1.59] max-md:max-w-full"
               alt="Main Image"
             />

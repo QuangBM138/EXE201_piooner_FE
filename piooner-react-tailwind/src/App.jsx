@@ -3,7 +3,7 @@ import AboutUsPage from "./pages/aboutus";
 import ContactPage from "./pages/contact";
 import CommunityPage from "./pages/Community";
 import { Routes, Route } from "react-router-dom";
-import { RouteMap as RM } from "./utils/links";
+import { RouteMap as RM } from "./utils/assets";
 import Header from "./components/header";
 import Footer from "./components/footer";
 
