@@ -2,7 +2,7 @@
 // import SocialIcons from "./SocialIcons";
 
 const NavigationMenu = () => (
-  <ul className="flex gap-5 items-center justify-center mt-2.5 text-xl font-medium text-black max-md:flex-wrap">
+  <ul className="flex gap-5 items-center mt-2.5 text-xl font-medium text-black max-md:flex-wrap">
     <li className="grow">
       <a href="#section1">Về Piorneer</a>
     </li>
@@ -37,19 +37,16 @@ const SocialIcons = () => (
 
 const Header = () => (
   <header className="flex flex-col pl-20 mt-2.5 w-full max-md:pl-5 max-md:max-w-full">
-    <div className="flex gap-5 justify-between ml-4 w-full max-md:flex-wrap max-md:pr-5 max-md:max-w-full">
+    <div className="flex gap-5 justify-between w-full max-md:flex-wrap max-md:pr-5 max-md:max-w-full">
       <img
         loading="lazy"
         src="https://cdn.builder.io/api/v1/image/assets/TEMP/97c94cef7de905c8b61a8ffc66a46a82ce3bda296e148a8cb37094e5c445b5c0?apiKey=101cc284a7074779856ab37fb68fa7a5"
         className="shrink-0 max-w-full aspect-[1.47] w-[166px]"
         alt="Logo"
       />
-      <nav className="flex items-center">
-        {" "}
-        {/* Center navigation items */}
-        <NavigationMenu />
-        <SocialIcons />
-      </nav>
+
+      <NavigationMenu />
+      <SocialIcons />
     </div>
   </header>
 );

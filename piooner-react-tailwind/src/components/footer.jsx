@@ -1,10 +1,10 @@
 const Layout = ({ children }) => (
-  <div className="flex flex-col">{children}</div>
+  <div className="flex flex-col ">{children}</div>
 );
 
 const Footer = () => (
-  <footer className="flex justify-center items-center px-16 py-20 mt-28 w-full bg-[#547B80] max-md:px-5 max-md:mt-10 max-md:max-w-full">
-    <div className="flex gap-5 mb-3 w-full max-w-[1117px] max-md:flex-wrap max-md:max-w-full">
+  <footer className="flex items-center px-16 py-20 mt-28 w-full bg-[#547B80] max-md:px-5 max-md:mt-10 max-md:max-w-full">
+    <div className="justify-between flex gap-5 mb-3 w-full max-md:flex-wrap max-md:max-w-full">
       <section className="flex flex-col">
         <div className="flex gap-3">
           <img
@@ -77,25 +77,43 @@ const Footer = () => (
           <aside className="flex flex-col w-2/5 max-md:ml-0 max-md:w-full">
             <h4 className="flex flex-col grow text-sm font-light text-amber-50 max-md:mt-10">
               <span className="text-xl font-medium">Trợ giúp</span>
-              <span className="mt-5">Dịch vụ Khách hàng</span>
-              <span className="mt-3.5">Tài khoản của tôi</span>
-              <span className="mt-4">Các điều khoản và điều kiện</span>
-              <span className="mt-3.5">Pháp lý & Bảo mật</span>
-              <span className="mt-3.5">Liên hệ</span>
+              <a href="#" className="mt-5">
+                Dịch vụ Khách hàng
+              </a>
+              <a href="#" className="mt-3.5">
+                Tài khoản của tôi
+              </a>
+              <a href="#" className="mt-4">
+                Các điều khoản và điều kiện
+              </a>
+              <a href="#" className="mt-3.5">
+                Pháp lý & Bảo mật
+              </a>
+              <a href="#" className="mt-3.5">
+                Liên hệ
+              </a>
             </h4>
           </aside>
           <aside className="flex flex-col ml-5 w-[27%] max-md:ml-0 max-md:w-full">
             <h4 className="flex flex-col text-sm font-light text-amber-50 max-md:mt-10">
               <span className="text-xl font-medium">Mua sắm</span>
-              <span className="mt-6">Giao hàng</span>
-              <span className="mt-3.5">Thanh toán</span>
-              <span className="mt-4">Trả hàng</span>
+              <a href="#" className="mt-6">
+                Giao hàng
+              </a>
+              <a href="#" className="mt-3.5">
+                Thanh toán
+              </a>
+              <a href="#" className="mt-4">
+                Trả hàng
+              </a>
             </h4>
           </aside>
           <section className="flex flex-col ml-5 w-[34%] max-md:ml-0 max-md:w-full">
             <h4 className="flex flex-col text-amber-50 max-md:mt-10">
               <span className="text-xl font-medium">Về chúng tôi</span>
-              <span className="mt-5 text-sm font-light">Giới thiệu</span>
+              <a href="#" className="mt-5 text-sm font-light">
+                Giới thiệu
+              </a>
             </h4>
           </section>
         </nav>
@@ -105,3 +123,25 @@ const Footer = () => (
 );
 
 export default Footer;
+
+// const Layout = ({ children }) => (
+//     <div className="flex flex-col">{children}</div>
+//   );
+
+//   const Footer = () => (
+//     <footer className="flex justify-center items-center px-16 py-20 mt-28 w-full bg-[#547B80] max-md:px-5 max-md:mt-10 max-md:max-w-full">
+//       <div className="flex gap-5 mb-3 w-full max-w-[1117px] max-md:flex-wrap max-md:max-w-full">
+//         <section className="flex flex-col">
+//           {/*... */}
+//         </section>
+
+//         <Layout>
+//           <nav className="flex gap-5 max-md:flex-col max-md:gap-0">
+//             {/*... */}
+//           </nav>
+//         </Layout>
+//       </div>
+//     </footer>
+//   );
+
+//   export default Footer;
