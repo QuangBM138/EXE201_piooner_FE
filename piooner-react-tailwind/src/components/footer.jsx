@@ -111,7 +111,7 @@ const Footer = () => (
           <section className="flex flex-col ml-5 w-[34%] max-md:ml-0 max-md:w-full">
             <h4 className="flex flex-col text-amber-50 max-md:mt-10">
               <span className="text-xl font-medium">Về chúng tôi</span>
-              <a href="#" className="mt-5 text-sm font-light">
+              <a href="/AboutUs" className="mt-5 text-sm font-light">
                 Giới thiệu
               </a>
             </h4>
