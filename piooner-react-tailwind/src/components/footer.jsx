@@ -6,7 +6,7 @@ const Layout = ({ children }) => (
 );
 
 const Footer = () => (
-  <footer className="flex items-center px-16 py-20 mt-28 w-full bg-[#547B80] max-md:px-5 max-md:mt-10 max-md:max-w-full">
+  <footer className="flex items-center px-16 py-20 mt-28 w-full bg-pioonerCraft max-md:px-5 max-md:mt-10 max-md:max-w-full">
     <div className="justify-between flex gap-5 mb-3 w-full max-md:flex-wrap max-md:max-w-full">
       <section className="flex flex-col">
         <div className="flex gap-3">

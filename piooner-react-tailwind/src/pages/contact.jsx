@@ -1,4 +1,4 @@
-import { img } from "../utils/assets";
+import { img, Links } from "../utils/assets";
 
 // eslint-disable-next-line react/prop-types
 function ContactInfo({ iconSrc, contactText, altText }) {
@@ -41,6 +41,13 @@ function ContactUs() {
                   contactText="FPT University"
                   altText="Location"
                 />
+                <a href={Links.facebook} target="_blank">
+                  <ContactInfo
+                    iconSrc={img.faceContact}
+                    contactText="Pioneer Crafts"
+                    altText="Facebook"
+                  />
+                </a>
               </div>
             </div>
           </div>

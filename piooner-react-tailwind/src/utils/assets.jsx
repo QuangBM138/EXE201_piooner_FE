@@ -3,6 +3,8 @@ export const RouteMap = {
   aboutUsRoute: "/AboutUs",
   contactRoute: "/Contact",
   communityRoute: "/Community",
+  payNoLoginRoute: "/PayNLogin",
+  profileRoute: "/Profile",
 };
 
 export const Links = {
@@ -28,4 +30,7 @@ export const img = {
   locationIcon: "src/assets/image/icon_locat.svg",
   emailIcon: "src/assets/image/icon_mail.svg",
   contactImg: "src/assets/image/contact_img.png",
+  faceContact: "src/assets/image/icon_face_contact.svg",
+  liney: "src/assets/image/liney.svg",
+  backbutton: "src/assets/image/returnBut.svg",
 };

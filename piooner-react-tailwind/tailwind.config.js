@@ -11,7 +11,9 @@ export default {
           "sans-serif",
         ],
       },
-      colors: {},
+      colors: {
+        pioonerCraft: "#547B80",
+      },
     },
   },
   plugins: [],
