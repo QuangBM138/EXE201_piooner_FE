@@ -1,24 +1,5 @@
+import ProgressSteps from "../components/processStep";
 import { img } from "../utils/assets";
-
-// eslint-disable-next-line react-refresh/only-export-components, react/prop-types
-const ProgressStep = ({ step, isActive, text }) => (
-  <div className="flex flex-col">
-    <div
-      className={`justify-center items-center self-center py-3 px-5 text-base text-white ${
-        isActive ? "bg-orange-300" : "bg-stone-800"
-      } rounded-full h-[52px] w-[52px] max-md:px-5`}
-    >
-      {step}
-    </div>
-    <div
-      className={`mt-8 text-sm text-center ${
-        isActive ? "text-black" : "text-zinc-400"
-      }`}
-    >
-      {text}
-    </div>
-  </div>
-);
 
 const PayNoLogin = () => {
   const steps = [
@@ -41,11 +22,8 @@ const PayNoLogin = () => {
           <span className="text-amber-700">Đăng nhập</span>
         </div>
       </nav>
-      <section className="flex gap-5 justify-between mt-24 max-w-full font-bold w-[725px] max-md:flex-wrap max-md:mt-10">
-        {steps.map((step, index) => (
-          <ProgressStep key={index} {...step} />
-        ))}
-      </section>
+      {/* hien thi các bước */}
+      <ProgressSteps steps={steps}></ProgressSteps>
       <div className="shrink-0 mt-16 max-w-full h-px bg-black border border-black border-solid w-[1156px] max-md:mt-10"></div>
 
       <main className="mt-20 justify-between flex gap-5-between items-center w-full text-center max-w-[1007px] max-md:flex-wrap max-md:max-w-full">
