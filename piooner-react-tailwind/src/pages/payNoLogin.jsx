@@ -1,4 +1,4 @@
-import ProgressSteps from "../components/processStep";
+import Stepper from "../components/steeper";
 import { img } from "../utils/assets";
 
 const PayNoLogin = () => {
@@ -23,7 +23,8 @@ const PayNoLogin = () => {
         </div>
       </nav>
       {/* hien thi các bước */}
-      <ProgressSteps steps={steps}></ProgressSteps>
+      <Stepper steps={steps} />
+      {/* <ProgressSteps steps={steps}></ProgressSteps> */}
       <div className="shrink-0 mt-16 max-w-full h-px bg-black border border-black border-solid w-[1156px] max-md:mt-10"></div>
 
       <main className="mt-20 justify-between flex gap-5-between items-center w-full text-center max-w-[1007px] max-md:flex-wrap max-md:max-w-full">
