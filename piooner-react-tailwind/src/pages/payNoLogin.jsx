@@ -2,11 +2,7 @@ import Stepper from "../components/steeper";
 import { img } from "../utils/assets";
 
 const PayNoLogin = () => {
-  const steps = [
-    { step: 1, isActive: true, text: "Đăng nhập" },
-    { step: 2, isActive: false, text: "Xác nhận đơn hàng" },
-    { step: 3, isActive: false, text: "Thanh toán" },
-  ];
+  const isActive = [true, false, false];
 
   return (
     <div className="flex flex-col items-center px-20 mt-2.5 w-full max-md:px-5 max-md:max-w-full">
@@ -23,7 +19,7 @@ const PayNoLogin = () => {
         </div>
       </nav>
       {/* hien thi các bước */}
-      <Stepper steps={steps} />
+      <Stepper isActive={isActive} />
       {/* <ProgressSteps steps={steps}></ProgressSteps> */}
       <div className="shrink-0 mt-16 max-w-full h-px bg-black border border-black border-solid w-[1156px] max-md:mt-10"></div>
 
