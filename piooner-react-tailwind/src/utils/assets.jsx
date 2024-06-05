@@ -5,6 +5,8 @@ export const RouteMap = {
   communityRoute: "/Community",
   payNoLoginRoute: "/PayNLogin",
   profileRoute: "/Profile",
+  followOrderRoute: "/FollowOrder",
+  confirmOrderRoute: "/ConfirmOrder",
 };
 
 export const Links = {

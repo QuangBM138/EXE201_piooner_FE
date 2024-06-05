@@ -8,20 +8,26 @@ import { Routes, Route } from "react-router-dom";
 import { RouteMap as RM } from "./utils/assets";
 import Header from "./components/header";
 import Footer from "./components/footer";
-
 import "./App.css";
+import FollowOrder from "./pages/followOrder";
+import ConfirmOrderPage from "./pages/ConfirmOrder";
 
 function App() {
   return (
     <div className="app flex flex-col pt-20 bg-white">
       <Header></Header>
       <Routes>
-        <Route path={RM.homeRoute} element={<HomePage />} />
-        <Route path={RM.aboutUsRoute} element={<AboutUsPage />} />
-        <Route path={RM.contactRoute} element={<ContactPage />} />
+        <Route path={RM.homeRoute} element={<HomePage />} />{" "}
+        {/* fix text and image*/}
+        <Route path={RM.aboutUsRoute} element={<AboutUsPage />} /> {/* done*/}
+        <Route path={RM.contactRoute} element={<ContactPage />} /> {/* done*/}
         <Route path={RM.communityRoute} element={<CommunityPage />} />
+        {/* done*/}
         <Route path={RM.payNoLoginRoute} element={<PayNoLogin />} />
+        {/* not yet map api*/}
         <Route path={RM.profileRoute} element={<ProfilePage />} />
+        <Route path={RM.followOrderRoute} element={<FollowOrder />} />
+        <Route path={RM.confirmOrderRoute} element={<ConfirmOrderPage />} />
       </Routes>
       <Footer></Footer>
     </div>
