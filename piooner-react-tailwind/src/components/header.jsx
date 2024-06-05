@@ -1,7 +1,7 @@
 import { RouteMap as RM, img } from "../utils/assets";
 
 const NavigationMenu = () => (
-  <ul className="flex gap-5 items-center mt-2.5 text-xl font-medium text-black max-md:flex-wrap">
+  <ul className="flex gap-20 items-center mt-2.5 text-xl font-medium text-black max-md:flex-wrap">
     <li className="grow">
       <a href={RM.aboutUsRoute}>Về Piorneer</a>
     </li>
@@ -25,13 +25,13 @@ const SocialIcons = () => (
     <img
       loading="lazy"
       src={img.cartIcon}
-      className="shrink-0 my-auto aspect-square w-[21px]"
+      className="shrink-0 my-auto aspect-square w-[40px]"
       alt="cart icon"
     />
     <img
       loading="lazy"
       src={img.personIcon}
-      className="shrink-0 aspect-square w-[33px]"
+      className="shrink-0 aspect-square w-[40px]"
       alt="person icon"
     />
   </div>
