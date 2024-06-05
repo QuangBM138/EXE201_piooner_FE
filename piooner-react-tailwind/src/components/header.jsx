@@ -1,7 +1,7 @@
 import { RouteMap as RM, img } from "../utils/assets";
 
 const NavigationMenu = () => (
-  <ul className="flex gap-20 items-center mb-20 text-xl font-medium text-black max-md:flex-wrap">
+  <ul className="flex gap-20 items-center mb-5 text-xl font-medium text-black max-md:flex-wrap ">
     <li className="grow">
       <a href={RM.aboutUsRoute}>Về Piorneer</a>
     </li>
@@ -38,7 +38,7 @@ const SocialIcons = () => (
 );
 
 const Header = () => (
-  <header className="flex flex-col pl-20 mt-2.5 w-full max-md:pl-5 max-md:max-w-full">
+  <header className="flex flex-col pl-20 mb-0.5 w-full max-md:pl-5 max-md:max-w-full fixed top-0 z-50 ">
     <div className="flex gap-5 justify-between w-full max-md:flex-wrap max-md:pr-5 max-md:max-w-full">
       <a href={RM.homeRoute}>
         <img
