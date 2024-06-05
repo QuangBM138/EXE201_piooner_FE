@@ -7,6 +7,8 @@ export const RouteMap = {
   profileRoute: "/Profile",
   followOrderRoute: "/FollowOrder",
   confirmOrderRoute: "/ConfirmOrder",
+  payPage: "/PayPage",
+  cartPage: "/CartPage",
 };
 
 export const Links = {

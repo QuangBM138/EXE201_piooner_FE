@@ -11,6 +11,8 @@ import Footer from "./components/footer";
 import "./App.css";
 import FollowOrder from "./pages/followOrder";
 import ConfirmOrderPage from "./pages/ConfirmOrder";
+import { PayPage } from "./pages/PayPage";
+import CartPage from "./pages/cart";
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
         <Route path={RM.profileRoute} element={<ProfilePage />} />
         <Route path={RM.followOrderRoute} element={<FollowOrder />} />
         <Route path={RM.confirmOrderRoute} element={<ConfirmOrderPage />} />
+        <Route path={RM.payPage} element={<PayPage />} />
+        <Route path={RM.cartPage} element={<CartPage />} />
       </Routes>
       <Footer></Footer>
     </div>
