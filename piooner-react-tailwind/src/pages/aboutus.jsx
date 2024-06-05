@@ -23,8 +23,8 @@ function AboutUs() {
                   className="grow w-full aspect-[0.88] rounded-[250px_250px_0px_0px] max-md:max-w-full"
                 />
               </div>
-              <div className="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full">
-                <p className="flex flex-col text-base max-md:max-w-full">
+              <div className="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full ">
+                <p className="flex flex-col text-base max-md:max-w-full border border-gray-300 p-5 rounded-lg shadow-md ">
                   Pioneer Craft là sự kết hợp đầy sáng tạo của một nhóm bạn trẻ
                   yêu thích nghệ thuật và sáng tạo. Chúng tôi tin rằng mỗi sản
                   phẩm gốm mang trong mình một câu chuyện độc đáo và tinh thần
@@ -33,14 +33,14 @@ function AboutUs() {
                   và trải nghiệm mua sắm đáng nhớ.
                 </p>
                 <section className="flex flex-col pl-20 mt-16 max-md:pl-5 max-md:mt-10 max-md:max-w-full">
-                  <p className="ml-3.5 w-[401px] max-md:max-w-full">
+                  <p className="ml-3.5 w-[401px] max-md:max-w-full border border-gray-300 p-5 rounded-lg shadow-md">
                     Tại Pioneer Craft, chúng tôi không chỉ bán các sản phẩm gốm
                     chất lượng cao mà còn mang lại trải nghiệm mua sắm trực
                     tuyến đáng nhớ. Với một sự kết hợp tinh tế giữa truyền thống
                     và hiện đại, chúng tôi tạo ra những sản phẩmốm độc đáo với
                     sự kết hợp giữa nghệ thuật thủ công và công nghệ hiện đại.
                   </p>
-                  <p className="self-end mt-16 w-[393px] max-md:mt-10">
+                  <p className="self-end mt-16 w-[393px] max-md:mt-10 border border-gray-300 p-5 rounded-lg shadow-md">
                     Bằng cách kết hợp website tương tác tiện lợi và một đội ngũ
                     phục vụ chuyên nghiệp, Pioneer Craft cam kết mang lại trải
                     nghiệm mua sắm trực tuyến tuyệt vời nhất cho khách hàng.
