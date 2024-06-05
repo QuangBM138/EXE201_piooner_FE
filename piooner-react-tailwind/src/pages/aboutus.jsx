@@ -59,7 +59,7 @@ function AboutUs() {
             loading="lazy"
             src={img.arbutus02}
             alt="Decorative Image"
-            className="shrink-0 mt-28 max-w-full aspect-[0.71] w-[304px] max-md:mt-10"
+            className="shrink-0 mt-28 max-w-full aspect-[0.71] w-[900px] max-md:mt-10"
           />
         </aside>
       </div>

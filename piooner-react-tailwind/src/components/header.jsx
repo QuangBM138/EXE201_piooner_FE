@@ -1,7 +1,7 @@
 import { RouteMap as RM, img } from "../utils/assets";
 
 const NavigationMenu = () => (
-  <ul className="flex gap-20 items-center mt-2.5 text-xl font-medium text-black max-md:flex-wrap">
+  <ul className="flex gap-20 items-center mb-20 text-xl font-medium text-black max-md:flex-wrap">
     <li className="grow">
       <a href={RM.aboutUsRoute}>Về Piorneer</a>
     </li>
