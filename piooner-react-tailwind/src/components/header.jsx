@@ -21,7 +21,7 @@ const NavigationMenu = () => (
 );
 
 const SocialIcons = () => (
-  <div className="flex gap-5 justify-end">
+  <div className="flex gap-20 justify-end mr-20">
     <img
       loading="lazy"
       src={img.cartIcon}
