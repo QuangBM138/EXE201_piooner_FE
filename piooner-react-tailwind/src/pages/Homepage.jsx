@@ -14,11 +14,13 @@ function HomePage() {
                 Đồ Gốm
               </h4>
               <h2 className="mt-10 text-4xl text-black">Theo cách của bạn</h2>
-              <button className="justify-center px-11 py-4 mt-4 text-xl text-center rounded-3xl border border-solid border-stone-600 text-stone-600 max-md:px-5 max-md:mt-10">
+              {/* <button className="justify-center px-11 py-4 mt-4 text-xl text-center rounded-3xl border border-solid border-stone-600 text-stone-600 max-md:px-5 max-md:mt-10">
                 Sáng tạo ngay
-              </button>
-              <button className="justify-center px-11 py-4 mt-6 text-xl text-center rounded-3xl border border-solid border-stone-600 text-stone-600 max-md:px-5 max-md:mt-10">
+              </button> */}
+              <button className="justify-center px-11 py-4 mt-6 text-xl text-center rounded-3xl border border-solid border-stone-600 text-stone-600 max-md:px-5 max-md:mt-10"
+              >
                 Mua Hàng
+                
               </button>
             </div>
           </aside>

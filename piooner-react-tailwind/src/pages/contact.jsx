@@ -25,24 +25,28 @@ function ContactUs() {
               <h2 className="text-6xl font-extrabold text-center max-md:text-4xl">
                 Liên hệ
               </h2>
-              <div className="flex flex-col mt-11 text-2xl max-md:mt-10">
+              <div className="flex flex-col mt-11 text-2xl max-md:mt-10 ">
                 <ContactInfo
+                className="bg-blue-200 p-4 rounded-lg mb-4"
                   iconSrc={img.phoneIcon}
                   contactText="08687989353"
                   altText="Phone"
                 />
                 <ContactInfo
+                className="bg-blue-200 p-4 rounded-lg mb-4"
                   iconSrc={img.emailIcon}
                   contactText="piorneercrafts@gmail.com"
                   altText="Email"
                 />
                 <ContactInfo
+                className="bg-blue-200 p-4 rounded-lg mb-4"
                   iconSrc={img.locationIcon}
                   contactText="FPT University"
                   altText="Location"
                 />
-                <a href={Links.facebook} target="_blank">
+                <a href={Links.facebook} target="_blank" >
                   <ContactInfo
+                  
                     iconSrc={img.faceContact}
                     contactText="Pioneer Crafts"
                     altText="Facebook"
