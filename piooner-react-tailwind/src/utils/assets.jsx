@@ -1,5 +1,4 @@
 export const RouteMap = {
-  homeRoute: "/",
   aboutUsRoute: "/AboutUs",
   contactRoute: "/Contact",
   communityRoute: "/Community",
@@ -18,7 +17,7 @@ export const Links = {
 };
 
 export const img = {
-  homeImg: "../assets/image/homepage_img.png",
+  homeImg: "public/image/homepage_img.png",
   logoImg: "src/assets/image/logo.svg",
   cartIcon: "src/assets/image/icon_cart.svg",
   personIcon: "src/assets/image/icon_person.svg",

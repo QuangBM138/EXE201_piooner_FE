@@ -19,7 +19,6 @@ function App() {
     <div className="app flex flex-col pt-20 bg-white">
       <Header></Header>
       <Routes>
-        {/* <Route path={RM.homeRoute} element={<HomePage />} /> */}
         <Route path={`/`} element={<HomePage />} /> {/* fix text and image*/}
         <Route path={RM.aboutUsRoute} element={<AboutUsPage />} /> {/* done*/}
         <Route path={RM.contactRoute} element={<ContactPage />} /> {/* done*/}
