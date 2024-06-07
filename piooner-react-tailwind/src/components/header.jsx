@@ -5,9 +5,9 @@ const NavigationMenu = () => (
     <li className="grow">
       <a href={RM.aboutUsRoute}>Về Piorneer</a>
     </li>
-    <li>
+    {/* <li>
       <a href="#section2">Sáng tạo</a>
-    </li>
+    </li> */}
     <li>
       <a href="#section2">Mua hàng</a>
     </li>
