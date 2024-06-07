@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Stepper from "../components/steeper";
 import { img } from "../utils/assets";
 
@@ -50,9 +51,10 @@ const PayNoLogin = () => {
               placeholder="Mật khẩu"
               aria-label="Mật khẩu"
             />
-            <a className="self-end mt-3 italic" href="#">
+            <Link href="#" className="self-end mt-3 italic">
               Quên mật khẩu?
-            </a>
+            </Link>
+
             <button
               type="submit"
               className="justify-center items-center px-16 py-4 mt-2.5 text-base font-bold text-white bg-pioonerCraft max-md:px-5"

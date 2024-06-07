@@ -1,16 +1,17 @@
+import { Link } from "react-router-dom";
 import { RouteMap as RM, img } from "../utils/assets";
 
 const SocialIcons = () => {
   return (
     <div className="flex gap-20 justify-end mr-20">
-      <a href={RM.cartPage} className="my-auto">
+      <Link to={RM.cartPage} className="my-auto">
         <img
           loading="lazy"
           src={img.cartIcon}
           className="shrink-0 my-auto aspect-square w-[40px]"
           alt="cart icon"
         />
-      </a>
+      </Link>
 
       <img
         loading="lazy"

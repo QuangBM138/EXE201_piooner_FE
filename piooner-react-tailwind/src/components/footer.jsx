@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { img, Links } from "../utils/assets";
 
 // eslint-disable-next-line react/prop-types
@@ -63,14 +64,14 @@ const Footer = () => (
         </div>
         <div className="flex gap-3.5 self-start mt-3">
           {/* icon facebook */}
-          <a href={Links.facebook} target="_blank">
+          <Link to={Links.facebook} target="_blank">
             <img
               loading="lazy"
               src={img.facebookIcon}
               className="shrink-0 aspect-[0.55] w-[11px]"
               alt=""
             />
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -79,43 +80,43 @@ const Footer = () => (
           <aside className="flex flex-col w-2/5 max-md:ml-0 max-md:w-full">
             <h4 className="flex flex-col grow text-sm font-light text-amber-50 max-md:mt-10">
               <span className="text-xl font-medium">Trợ giúp</span>
-              <a href="#" className="mt-5">
+              <Link to="#" className="mt-5">
                 Dịch vụ Khách hàng
-              </a>
-              <a href="#" className="mt-3.5">
+              </Link>
+              <Link to="#" className="mt-3.5">
                 Tài khoản của tôi
-              </a>
-              <a href="#" className="mt-4">
+              </Link>
+              <Link to="#" className="mt-4">
                 Các điều khoản và điều kiện
-              </a>
-              <a href="#" className="mt-3.5">
+              </Link>
+              <Link to="#" className="mt-3.5">
                 Pháp lý & Bảo mật
-              </a>
-              <a href="#" className="mt-3.5">
+              </Link>
+              <Link to="#" className="mt-3.5">
                 Liên hệ
-              </a>
+              </Link>
             </h4>
           </aside>
           <aside className="flex flex-col ml-5 w-[27%] max-md:ml-0 max-md:w-full">
             <h4 className="flex flex-col text-sm font-light text-amber-50 max-md:mt-10">
               <span className="text-xl font-medium">Mua sắm</span>
-              <a href="#" className="mt-6">
+              <Link to="#" className="mt-6">
                 Giao hàng
-              </a>
-              <a href="#" className="mt-3.5">
+              </Link>
+              <Link to="#" className="mt-3.5">
                 Thanh toán
-              </a>
-              <a href="#" className="mt-4">
+              </Link>
+              <Link to="#" className="mt-4">
                 Trả hàng
-              </a>
+              </Link>
             </h4>
           </aside>
           <section className="flex flex-col ml-5 w-[34%] max-md:ml-0 max-md:w-full">
             <h4 className="flex flex-col text-amber-50 max-md:mt-10">
               <span className="text-xl font-medium">Về chúng tôi</span>
-              <a href="/AboutUs" className="mt-5 text-sm font-light">
+              <Link to="/AboutUs" className="mt-5 text-sm font-light">
                 Giới thiệu
-              </a>
+              </Link>
             </h4>
           </section>
         </nav>
