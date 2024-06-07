@@ -38,7 +38,7 @@ const SocialIcons = () => (
 );
 
 const Header = () => (
-  <header className="flex flex-col pl-20 mb-0.5 w-full max-md:pl-5 max-md:max-w-full fixed top-0 z-50 ">
+  <header className="flex flex-col pl-20 mb-0.5 w-full max-md:pl-5 max-md:max-w-full fixed top-0 z-50 bg-white">
     <div className="flex gap-5 justify-between w-full max-md:flex-wrap max-md:pr-5 max-md:max-w-full">
       <a href={RM.homeRoute}>
         <img
