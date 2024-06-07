@@ -49,6 +49,7 @@ export const img = {
     apiImg +
     "/TEMP/48cd14f3d11aa4d31117671c933dedeb451a90def8792c84a8e1ea690b2f55b2?apiKey=101cc284a7074779856ab37fb68fa7a5&",
   personIcon:
+    apiImg +
     "/TEMP/461f947539f04a0851e78fcdf04bbc4a6e8ae7db721c28c1116e194b8c2e201d?apiKey=101cc284a7074779856ab37fb68fa7a5&",
   foot01:
     apiImg +
