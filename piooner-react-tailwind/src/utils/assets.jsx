@@ -18,7 +18,7 @@ export const Links = {
 };
 
 export const img = {
-  homeImg: "src/assets/image/homepage_img.png",
+  homeImg: "../assets/image/homepage_img.png",
   logoImg: "src/assets/image/logo.svg",
   cartIcon: "src/assets/image/icon_cart.svg",
   personIcon: "src/assets/image/icon_person.svg",
