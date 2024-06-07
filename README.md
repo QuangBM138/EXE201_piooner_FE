@@ -37,5 +37,5 @@
     @tailwind components;
     @tailwind utilities;
 
-#web
+# web
 https://exe-201-piooner-fe.vercel.app/
