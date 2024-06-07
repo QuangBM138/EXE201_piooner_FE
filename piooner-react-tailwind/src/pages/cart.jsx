@@ -2,24 +2,44 @@ import { useEffect, useState } from "react";
 import { img } from "../utils/assets";
 
 // eslint-disable-next-line react/prop-types
-function QuantityControl({ quantity }) {
+function QuantityControl({ quantity, onQuantityChange }) {
+  const handleDecrement = () => {
+    if (quantity > 1) {
+      onQuantityChange(quantity - 1); // Call the passed onQuantityChange function
+    }
+  };
+
+  const handleIncrement = () => {
+    onQuantityChange(quantity + 1); // Call the passed onQuantityChange function
+  };
+
   return (
     <div className="flex gap-5 justify-between px-3.5 py-px text-base leading-4 text-black whitespace-nowrap border border-solid border-neutral-900">
       <div className="flex gap-5 justify-between items-center">
-        <div className="self-stretch my-auto">-</div>
+        <button
+          className="flex gap-5 justify-between items-center self-stretch my-auto focus:outline-none"
+          onClick={handleDecrement}
+        >
+          -
+        </button>
         <div className="shrink-0 self-stretch w-px h-10 border border-solid bg-neutral-300 border-neutral-300"></div>
         <div className="self-stretch my-auto">{quantity}</div>
       </div>
       <div className="flex gap-3">
         <div className="shrink-0 w-px h-10 border border-solid bg-neutral-300 border-neutral-300"></div>
-        <div className="my-auto">+</div>
+        <button
+          className="flex gap-3 self-stretch my-auto focus:outline-none"
+          onClick={handleIncrement}
+        >
+          +
+        </button>
       </div>
     </div>
   );
 }
 
 // eslint-disable-next-line react/prop-types
-function CartItem({ price, imgUrl, quantity }) {
+function CartItem({ price, imgUrl, quantity, onQuantityChange, onRemove }) {
   return (
     <div className="flex grid md:grid-cols-12  items-start mt-16 max-md:mt-10 w-6/12">
       <div className="col-span-8">
@@ -31,7 +51,11 @@ function CartItem({ price, imgUrl, quantity }) {
         />
       </div>
       <div className="flex w-5/12">
-        <QuantityControl className="col-span-2" quantity={quantity} />
+        <QuantityControl
+          className="col-span-2"
+          quantity={quantity}
+          onQuantityChange={onQuantityChange}
+        />
         <div className="col-span-2 text-sm font-medium text-neutral-900 justify-center">
           {price.toLocaleString()} VND
         </div>
@@ -39,7 +63,8 @@ function CartItem({ price, imgUrl, quantity }) {
           loading="lazy"
           src={img.deleteIcon}
           alt="delete icon"
-          className="shrink-0 aspect-[0.94] w-[17px] col-span-2"
+          className="shrink-0 aspect-[0.94] w-[17px] col-span-2  cursor-pointer"
+          onClick={onRemove}
         />
       </div>
     </div>
@@ -70,22 +95,44 @@ function CartPage() {
     setTotalPrice(priceSum);
   };
 
-  const handleAddProduct = (product) => {
-    const updatedCartItems = [...cartItems, { ...product }];
+  const handleAddProduct = (products) => {
+    const updatedCartItems = products.flatMap((product) =>
+      cartItems.some((cartItem) => cartItem.id === product.id)
+        ? cartItems.map((cartItem) =>
+            cartItem.id === product.id
+              ? { ...cartItem, quantity: cartItem.quantity + product.quantity }
+              : cartItem
+          )
+        : [...cartItems, product]
+    );
+
+    setCartItems(updatedCartItems);
+  };
+
+  const handleRemoveProduct = (productId) => {
+    const updatedCartItems = cartItems.filter((item) => item.id !== productId);
     setCartItems(updatedCartItems);
   };
 
   // Mock product
-  const mockProduct = {
-    id: 1,
-    price: 100000,
-    imgUrl: "https://example.com/image.jpg",
-    quantity: 2,
-  };
+  const mockProducts = [
+    {
+      id: 1,
+      price: 100000,
+      imgUrl: "https://example.com/image.jpg",
+      quantity: 2,
+    },
+    {
+      id: 2,
+      price: 200000,
+      imgUrl: "https://example.com/image.jpg",
+      quantity: 1,
+    },
+  ];
 
   // Add mock product to cartItems
   useEffect(() => {
-    handleAddProduct(mockProduct);
+    handleAddProduct(mockProducts);
   }, []);
 
   return (
@@ -108,8 +155,8 @@ function CartPage() {
             key={item.id}
             price={item.price}
             imgUrl={item.imgUrl}
-            altText={item.altText}
             quantity={item.quantity}
+            // Pass the onQuantityChange function as a prop
             onQuantityChange={(newQuantity) => {
               const updatedCartItems = cartItems.map((cartItem) =>
                 cartItem.id === item.id
@@ -117,7 +164,9 @@ function CartPage() {
                   : cartItem
               );
               setCartItems(updatedCartItems);
+              calculateTotalPrice();
             }}
+            onRemove={() => handleRemoveProduct(item.id)}
           />
         ))}
 
