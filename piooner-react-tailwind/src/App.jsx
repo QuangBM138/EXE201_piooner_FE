@@ -22,7 +22,7 @@ function App() {
       <Header></Header>
       <Routes>
         <Route path={RM.homeRoute} element={<HomePage />} />{" "}
-        {/* fix text and image*/}
+        <Route path={`/`} element={<HomePage />} /> {/* fix text and image*/}
         <Route path={RM.aboutUsRoute} element={<AboutUsPage />} /> {/* done*/}
         <Route path={RM.contactRoute} element={<ContactPage />} /> {/* done*/}
         <Route path={RM.communityRoute} element={<CommunityPage />} />
