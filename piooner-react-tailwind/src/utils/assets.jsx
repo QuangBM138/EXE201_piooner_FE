@@ -26,7 +26,8 @@ export const img = {
   foot03: "src/assets/image/logo_foot_3.svg",
   foot04: "src/assets/image/logo_foot_4.svg",
   facebookIcon: "src/assets/image/icon_face.svg",
-  arbutus01: "src/assets/image/aboutus.png",
+  arbutus01:
+    "https://cdn.builder.io/api/v1/image/assets%2F101cc284a7074779856ab37fb68fa7a5%2F9d7953e72f4241deb1882e9ddba45c6f",
   arbutus02: "src/assets/image/aboutus02.png",
   community: "src/assets/image/community.png",
   phoneIcon: "src/assets/image/icon_phone.svg",
