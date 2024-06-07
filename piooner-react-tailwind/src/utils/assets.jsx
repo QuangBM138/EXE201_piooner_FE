@@ -96,4 +96,7 @@ export const img = {
   backbutton:
     apiImg +
     "/TEMP/d9b4fb7feb8dc961e797b0a3a63565dd5ca33619326682bdb3afa613638348ce?apiKey=101cc284a7074779856ab37fb68fa7a5&",
+  deleteIcon:
+    apiImg +
+    "/TEMP/5304d41ebeb39e4b0394846dab3cb20f0264690dc5045b60e97f81efe339ae39?apiKey=101cc284a7074779856ab37fb68fa7a5&",
 };

@@ -98,7 +98,7 @@ export function PayPage() {
             <InputField id="address" label="Địa chỉ" placeholder="Địa chỉ" />
             <button
               type="submit"
-              className="justify-center items-center self-center px-16 py-4 mt-12 max-w-full text-xl font-bold text-center text-white bg-slate-500 w-[387px] max-md:px-5 max-md:mt-10"
+              className="justify-center items-center self-center px-16 py-4 mt-12 max-w-full text-xl font-bold text-center text-white bg-pioonerCraft w-[387px] max-md:px-5 max-md:mt-10"
             >
               Xác nhận
             </button>
@@ -134,7 +134,7 @@ export function PayPage() {
           <h2 className="self-center mt-10 text-xl font-bold text-center text-black">
             TỔNG TIỀN
           </h2>
-          <div className="px-14 py-9 mt-7 bg-slate-500 max-md:px-5 max-md:max-w-full">
+          <div className="px-14 py-9 mt-7 bg-pioonerCraft max-md:px-5 max-md:max-w-full">
             <div className="flex gap-5 max-md:flex-col max-md:gap-0">
               <div className="flex flex-col w-[69%] max-md:ml-0 max-md:w-full">
                 <p className="text-sm font-bold leading-6 text-stone-50 max-md:mt-10">

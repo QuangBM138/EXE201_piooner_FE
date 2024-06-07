@@ -1,4 +1,5 @@
 import { RouteMap as RM, img } from "../utils/assets";
+import SocialIcons from "./iconHeader";
 
 const NavigationMenu = () => (
   <ul className="flex gap-20 items-center mb-5 text-xl font-medium text-black max-md:flex-wrap ">
@@ -20,22 +21,22 @@ const NavigationMenu = () => (
   </ul>
 );
 
-const SocialIcons = () => (
-  <div className="flex gap-20 justify-end mr-20">
-    <img
-      loading="lazy"
-      src={img.cartIcon}
-      className="shrink-0 my-auto aspect-square w-[40px]"
-      alt="cart icon"
-    />
-    <img
-      loading="lazy"
-      src={img.personIcon}
-      className="shrink-0 aspect-square w-[40px]"
-      alt="person icon"
-    />
-  </div>
-);
+// const SocialIcons = () => (
+//   <div className="flex gap-20 justify-end mr-20">
+//     <img
+//       loading="lazy"
+//       src={img.cartIcon}
+//       className="shrink-0 my-auto aspect-square w-[40px]"
+//       alt="cart icon"
+//     />
+//     <img
+//       loading="lazy"
+//       src={img.personIcon}
+//       className="shrink-0 aspect-square w-[40px]"
+//       alt="person icon"
+//     />
+//   </div>
+// );
 
 const Header = () => (
   <header className="flex flex-col pl-20 mb-0.5 w-full max-md:pl-5 max-md:max-w-full fixed top-0 z-50 bg-white">
