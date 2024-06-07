@@ -69,13 +69,31 @@ export const img = {
   arbutus01:
     apiImg +
     "%2F101cc284a7074779856ab37fb68fa7a5%2F9d7953e72f4241deb1882e9ddba45c6f",
-  arbutus02: apiImg + "",
-  community: apiImg + "",
-  phoneIcon: apiImg + "",
-  locationIcon: apiImg + "",
-  emailIcon: apiImg + "",
-  contactImg: apiImg + "",
-  faceContact: apiImg + "",
-  liney: apiImg + "",
-  backbutton: apiImg + "",
+  arbutus02:
+    apiImg +
+    "/TEMP/8634be835d13d7b714baa67ee9c7efdf27c633a816c165bd2264bde3ec618209?apiKey=101cc284a7074779856ab37fb68fa7a5&",
+  community:
+    apiImg +
+    "/TEMP/4401047da0518b7307168213e9a24fb9f07513d202fba7e9920246d6bff77c4d?apiKey=101cc284a7074779856ab37fb68fa7a5&",
+  phoneIcon:
+    apiImg +
+    "/TEMP/3d343bfc72bfe4824d4ebb4f29c4914ec1438ae7055aedee52b94322953eea43?apiKey=101cc284a7074779856ab37fb68fa7a5&",
+  emailIcon:
+    apiImg +
+    "/TEMP/325e26ef3c852a605d3aec02918cb398be9af1f093ba9c729551999236a434fa?apiKey=101cc284a7074779856ab37fb68fa7a5&",
+  locationIcon:
+    apiImg +
+    "/TEMP/3a5e50dea64fc8e682955e15c7d3f641fdcf4177d029d957af16fd9a0ebb50d4?apiKey=101cc284a7074779856ab37fb68fa7a5&",
+  contactImg:
+    apiImg +
+    "/TEMP/42575215f3e26a67aff04170515e031945ead17878ecb177a81a1b81034be932?apiKey=101cc284a7074779856ab37fb68fa7a5&",
+  faceContact:
+    apiImg +
+    "/TEMP/202886f4a7aa381d111c42e1872a80eedd12f26c6a5725b4b8bcee6653a590d9?apiKey=101cc284a7074779856ab37fb68fa7a5&",
+  liney:
+    apiImg +
+    "/TEMP/b2501828aea1560fcdf711332b804fbb72c828cfd597b8c4f20a91f62cc8a787?apiKey=101cc284a7074779856ab37fb68fa7a5&",
+  backbutton:
+    apiImg +
+    "/TEMP/d9b4fb7feb8dc961e797b0a3a63565dd5ca33619326682bdb3afa613638348ce?apiKey=101cc284a7074779856ab37fb68fa7a5&",
 };
