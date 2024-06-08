@@ -1,10 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Stepper from "../components/steeper";
-import { img } from "../utils/assets";
+import { img, RouteMap as RM } from "../utils/assets";
 
 const PayNoLogin = () => {
   const isActive = [true, false, false];
+  const navigate = useNavigate();
 
+  const handleConfirmOrderNoLogin = () => {
+    navigate(RM.confirmOrderRoute); // Navigate to payNoLogin page
+  };
   return (
     <div className="flex flex-col items-center px-20 mt-2.5 w-full max-md:px-5 max-md:max-w-full">
       <nav className="flex gap-4 self-start mt-14 ml-8 text-xl text-amber-700 max-md:mt-10 max-md:ml-2.5">
@@ -68,7 +72,10 @@ const PayNoLogin = () => {
           src={img.liney}
           className="shrink-0 self-stretch w-px border border-black border-solid aspect-[0] stroke-[1px] stroke-black"
         />
-        <button className="justify-center items-center self-stretch px-16 py-4 my-auto text-base font-bold text-white bg-pioonerCraft max-md:px-5">
+        <button
+          className="justify-center items-center self-stretch px-16 py-4 my-auto text-base font-bold text-white bg-pioonerCraft max-md:px-5"
+          onClick={handleConfirmOrderNoLogin}
+        >
           Mua hàng không đăng nhập
         </button>
       </main>

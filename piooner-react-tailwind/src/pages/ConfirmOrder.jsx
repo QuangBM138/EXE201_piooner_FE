@@ -1,41 +1,35 @@
+import { useEffect, useState } from "react";
 import Stepper from "../components/steeper";
+import { img } from "../utils/assets";
 
 // eslint-disable-next-line react/prop-types
-function ProductItem({ color, size, quantity }) {
+function ProductItem({ imgUrl, price, quantity, name }) {
   return (
     <div className="mt-7 max-md:max-w-full">
       <div className="flex gap-5 max-md:flex-col max-md:gap-0">
         <div className="flex flex-col w-[34%] max-md:ml-0 max-md:w-full">
-          <div className="shrink-0 mx-auto w-36 h-36 rounded-xl bg-stone-300 max-md:mt-8" />
+          <div className="shrink-0 mx-auto w-36 h-36 rounded-xl bg-stone-300 max-md:mt-8">
+            <img
+              loading="lazy"
+              src={imgUrl}
+              alt="product"
+              className="shrink-0 aspect-[0.94] w-[200px]"
+            />
+          </div>
         </div>
         <div className="flex flex-col ml-5 w-[66%] max-md:ml-0 max-md:w-full">
           <div className="flex flex-col self-stretch my-auto text-sm text-neutral-900 max-md:mt-10">
-            <p>Bình cắm hoa</p>
             <div className="flex gap-3 mt-4 whitespace-nowrap">
-              <p className="text-center">Màu</p>
-              <p className="flex-auto font-medium">{color}</p>
+              <p className="text-center">Name:</p>
+              <p className="flex-auto font-medium">{name}</p>
             </div>
             <div className="flex gap-3 mt-4 whitespace-nowrap">
-              <p className="text-center">Size</p>
-              <p className="flex-auto font-medium">{size}</p>
+              <p className="text-center">Price:</p>
+              <p className="flex-auto font-medium">{price}</p>
             </div>
-            <div className="flex gap-5 py-px pr-20 pl-7 mt-3.5 text-base leading-4 text-black whitespace-nowrap border border-solid border-stone-800 max-md:px-5">
-              <div className="flex gap-5 justify-between items-center">
-                <button
-                  className="self-stretch my-auto"
-                  aria-label="Decrease quantity"
-                >
-                  -
-                </button>
-                <div className="shrink-0 self-stretch w-px h-7 border border-solid bg-neutral-900 border-neutral-900" />
-                <p className="self-stretch my-auto">{quantity}</p>
-              </div>
-              <div className="flex gap-3">
-                <div className="shrink-0 w-px h-7 border border-solid bg-neutral-900 border-neutral-900" />
-                <button className="my-auto" aria-label="Increase quantity">
-                  +
-                </button>
-              </div>
+            <div className="flex gap-3 mt-4 whitespace-nowrap">
+              <p className="text-center">Quantity:</p>
+              <p className="flex-auto font-medium">{quantity}</p>
             </div>
           </div>
         </div>
@@ -45,11 +39,20 @@ function ProductItem({ color, size, quantity }) {
 }
 
 function ConfirmOrderPage() {
-  const products = [
-    { color: "Đen", size: "Medium", quantity: 1 },
-    { color: "Đen", size: "Medium", quantity: 1 },
-    { color: "Đen", size: "Medium", quantity: 1 },
-  ];
+  const [products, setProducts] = useState([]); // State to store cart items
+
+  useEffect(() => {
+    const storedProducts = localStorage.getItem("cartItems"); // Get cart items from localStorage
+
+    if (storedProducts) {
+      try {
+        const parsedProducts = JSON.parse(storedProducts); // Parse JSON string
+        setProducts(parsedProducts); // Update state with parsed products
+      } catch (error) {
+        console.error("Error parsing cart items:", error); // Handle parsing error
+      }
+    }
+  }, []); // Run useEffect only once on component mount
   const isActive = [false, true, false];
 
   return (
@@ -58,7 +61,7 @@ function ConfirmOrderPage() {
         <div className="flex gap-3.5 self-start mt-14 ml-8 text-xl text-amber-700 max-md:mt-10 max-md:ml-2.5">
           <img
             loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/11d7f458c7df24594ed236d20b93c7acc783644090b2abc569f9263496ba8f8f?apiKey=101cc284a7074779856ab37fb68fa7a5&"
+            src={img.backbutton}
             className="shrink-0 aspect-square w-[35px]"
             alt=""
           />
@@ -91,8 +94,8 @@ function ConfirmOrderPage() {
               {products.map((product, index) => (
                 <ProductItem
                   key={index}
-                  color={product.color}
-                  size={product.size}
+                  image={product.imgUrl}
+                  price={product.price}
                   quantity={product.quantity}
                 />
               ))}
@@ -133,7 +136,6 @@ function ConfirmOrderPage() {
           </div>
         </section>
       </main>
-
       <div className="flex flex-col justify-center mt-28 w-full max-md:mt-10 max-md:max-w-full" />
     </div>
   );

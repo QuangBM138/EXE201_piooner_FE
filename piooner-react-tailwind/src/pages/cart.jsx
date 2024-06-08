@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { img } from "../utils/assets";
+import { img, RouteMap as RM } from "../utils/assets";
+import { useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 function QuantityControl({ quantity, onQuantityChange }) {
@@ -75,6 +76,11 @@ function CartPage() {
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
+  const navigate = useNavigate();
+
+  const handlePayNoLogin = () => {
+    navigate(RM.payNoLoginRoute); // Navigate to payNoLogin page
+  };
   useEffect(() => {
     const storedCartItems = localStorage.getItem("cartItems");
     if (storedCartItems) {
@@ -84,7 +90,7 @@ function CartPage() {
 
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
-    calculateTotalPrice();
+    console.log("localStorage cartitems", localStorage.getItem("cartItems"));
   }, [cartItems]);
 
   const calculateTotalPrice = () => {
@@ -179,7 +185,10 @@ function CartPage() {
         </div>
         <div className="flex gap-5 justify-between mt-8 w-full text-base font-medium text-center max-w-[1154px] text-stone-50 max-md:flex-wrap max-md:max-w-full">
           <div className="shrink-0 max-w-full bg-neutral-900 bg-opacity-30 h-[58px] w-[791px]"></div>
-          <button className="justify-center items-center self-start px-16 py-4 bg-pioonerCraft max-md:px-5">
+          <button
+            className="justify-center items-center self-start px-16 py-4 bg-pioonerCraft max-md:px-5"
+            onClick={handlePayNoLogin}
+          >
             Thanh toán
           </button>
         </div>
