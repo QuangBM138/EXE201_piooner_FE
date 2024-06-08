@@ -9,6 +9,7 @@ export const RouteMap = {
   confirmOrderRoute: "/ConfirmOrder",
   payPage: "/PayPage",
   cartPage: "/CartPage",
+  productPage: "/ProductPage",
 };
 
 export const Links = {

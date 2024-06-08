@@ -13,6 +13,7 @@ import FollowOrder from "./pages/followOrder";
 import ConfirmOrderPage from "./pages/ConfirmOrder";
 import { PayPage } from "./pages/PayPage";
 import CartPage from "./pages/cart";
+import ProductPage from "./pages/product";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path={RM.confirmOrderRoute} element={<ConfirmOrderPage />} />
         <Route path={RM.payPage} element={<PayPage />} />
         <Route path={RM.cartPage} element={<CartPage />} />
+        <Route path={RM.productPage} element={<ProductPage />} />
       </Routes>
       <Footer></Footer>
     </div>

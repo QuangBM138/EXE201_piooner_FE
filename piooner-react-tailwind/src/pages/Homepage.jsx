@@ -1,6 +1,12 @@
-import { img } from "../utils/assets";
+import { useNavigate } from "react-router-dom";
+import { img, RouteMap as RM } from "../utils/assets";
 
 function HomePage() {
+  const navigate = useNavigate();
+
+  const handleOpenSaleProduct = () => {
+    navigate(RM.productPage); // Navigate to payNoLogin page
+  };
   return (
     <div>
       <main className="self-center mt-12 w-full max-md:mt-10 max-md:max-w-full">
@@ -19,7 +25,10 @@ function HomePage() {
               {/* <button className="justify-center px-11 py-4 mt-4 text-xl text-center rounded-3xl border border-solid border-stone-600 text-stone-600 max-md:px-5 max-md:mt-10">
                 Sáng tạo ngay
               </button> */}
-              <button className="justify-center px-11 py-4 mt-6 text-xl text-center rounded-3xl border border-solid border-stone-600 text-stone-600 max-md:px-5 max-md:mt-10">
+              <button
+                className="justify-center px-11 py-4 mt-6 text-xl text-center rounded-3xl border border-solid border-stone-600 text-stone-600 max-md:px-5 max-md:mt-10"
+                onClick={handleOpenSaleProduct}
+              >
                 Mua Hàng
               </button>
             </div>

@@ -11,7 +11,7 @@ const NavigationMenu = () => (
       <Link to="#section2">Sáng tạo</a>
     </li> */}
     <li>
-      <Link to="#section2">Mua hàng</Link>
+      <Link to={RM.productPage}>Mua hàng</Link>
     </li>
     <li className="flex-auto">
       <Link to={RM.communityRoute}>Cộng đồng</Link>
