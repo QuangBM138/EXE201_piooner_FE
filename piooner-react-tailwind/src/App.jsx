@@ -15,7 +15,14 @@ import { PayPage } from "./pages/PayPage";
 import CartPage from "./pages/cart";
 import ProductPage from "./pages/product";
 
+
+
 function App() {
+
+
+  
+
+
   return (
     <div className="app flex flex-col pt-20 bg-white">
       <Header></Header>
@@ -36,6 +43,9 @@ function App() {
       </Routes>
       <Footer></Footer>
     </div>
+
+    
+    
   );
 }
 

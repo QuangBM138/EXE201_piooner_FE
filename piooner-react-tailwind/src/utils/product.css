@@ -1,0 +1,58 @@
+.main-content {
+    padding: 20px;
+  }
+  
+  .community-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .images-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 80px; /* Khoảng cách giữa các phần tử */
+  }
+  
+  /* .images-list div {
+    text-align: center;
+  } */
+  .container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .main-content {
+    flex: 1;
+  }
+  
+  .footer {
+    background-color: #547B80;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+  }
+  
+  .images-list .image-item {
+    text-align: center;
+    border: 1px solid #ddd; /* Khung bao quanh từng ảnh */
+    padding: 10px; /* Khoảng đệm bên trong khung */
+    background-color: #fff; /* Màu nền của khung */
+  }
+  
+  .images-list img {
+    /* width: 400px; Định kích thước cho hình ảnh */
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Căn giữa hình ảnh */
+    width: 400px;
+    height: 525px;
+  }
+  
+  .images-list h3 {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+  }
+  
