@@ -125,13 +125,13 @@ function CartPage() {
     {
       id: 1,
       price: 100000,
-      imgUrl: "https://example.com/image.jpg",
+      imgUrl: img.product1,
       quantity: 2,
     },
     {
       id: 2,
       price: 200000,
-      imgUrl: "https://example.com/image.jpg",
+      imgUrl: img.product2,
       quantity: 1,
     },
   ];
