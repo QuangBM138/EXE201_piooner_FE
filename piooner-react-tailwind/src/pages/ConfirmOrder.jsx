@@ -94,7 +94,8 @@ function ConfirmOrderPage() {
               {products.map((product, index) => (
                 <ProductItem
                   key={index}
-                  image={product.imgUrl}
+                  name={product.name}
+                  imgUrl={product.imgUrl}
                   price={product.price}
                   quantity={product.quantity}
                 />
