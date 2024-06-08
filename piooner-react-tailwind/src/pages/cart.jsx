@@ -90,7 +90,7 @@ function CartPage() {
 
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
-    console.log("localStorage cartitems", localStorage.getItem("cartItems"));
+    calculateTotalPrice();
   }, [cartItems]);
 
   const calculateTotalPrice = () => {
