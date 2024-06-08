@@ -32,12 +32,13 @@ function InputField({ id, label, type = "text", placeholder }) {
   );
 }
 
-function RadioButton({ label, onChange, checked }) {
+function RadioButton({ label, value, checked, onChange }) {
   return (
     <div className="flex gap-3.5">
       <input
         type="radio"
         className="shrink-0 w-5 h-5 bg-orange-100 rounded-full"
+        value={value} // Set value explicitly
         onChange={onChange}
         checked={checked}
       />
@@ -49,10 +50,33 @@ function RadioButton({ label, onChange, checked }) {
 export function PayPage() {
   const isActive = [false, false, true];
   const [cartData, setcartData] = useState({});
-  const [selectedOption, setSelectedOption] = useState("");
+  const [sltedOpMove, setSltedOpMove] = useState("GHTK");
+  const [sltedOpPay, setSltedOpPay] = useState("delivery");
 
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
+  const shippingMethod = { GHTK: "GHTK", GHN: "GHN" };
+
+  const payMethod = {
+    delivery: "delivery",
+    transfer: "transfer",
+    momo: "momo",
+  };
+
+  const shippingFees = {
+    [shippingMethod.GHTK]: 15000, // Fee for GHTK
+    [shippingMethod.GHN]: 30000, // Fee for GHN
+  };
+
+  const handleOptionChangeShipping = (event) => {
+    setSltedOpMove(event.target.value);
+  };
+  const handleOptionChangePayment = (event) => {
+    setSltedOpPay(event.target.value);
+  };
+
+  const calculateTotal = () => {
+    let total = cartData.totalPrice || 0;
+    total += shippingFees[sltedOpMove] || 0; // Add shipping fee based on selected method
+    return total;
   };
 
   const navigate = useNavigate();
@@ -143,18 +167,38 @@ export function PayPage() {
           <div className="flex gap-5 justify-between mt-6 text-sm text-black max-md:flex-wrap">
             <RadioButton
               label="Giao Hàng Tiết Kiệm"
-              onChange={handleOptionChange}
+              value={shippingMethod.GHTK}
+              checked={sltedOpMove === shippingMethod.GHTK}
+              onChange={handleOptionChangeShipping}
             />
-            <RadioButton label="Giao Hàng Nhanh" />
+            <RadioButton
+              label="Giao Hàng Nhanh"
+              value={shippingMethod.GHN}
+              checked={sltedOpMove === shippingMethod.GHN}
+              onChange={handleOptionChangeShipping}
+            />
           </div>
           <h3 className="mt-7 text-sm font-bold text-black max-md:max-w-full">
             Phương thức thanh toán
           </h3>
-          <RadioButton label="Thanh toán khi nhận hàng" />
-          <RadioButton label="Thanh toán bằng thẻ ATM/Visa/Master/JCB/QRCode qua Payoo" />
-          <p className="self-start mt-2 ml-8 text-sm italic font-light text-black max-md:ml-2.5">
-            Bạn sẽ chuyển tới trang thanh toán của thẻ
-          </p>
+          <RadioButton
+            label="Thanh toán khi nhận hàng"
+            value={payMethod.delivery}
+            checked={sltedOpPay === payMethod.delivery}
+            onChange={handleOptionChangePayment}
+          />
+          <RadioButton
+            label="Thanh toán bằng chuyển khoản"
+            value={payMethod.transfer}
+            checked={sltedOpPay === payMethod.transfer}
+            onChange={handleOptionChangePayment}
+          />
+          <RadioButton
+            label="Thanh toán bằng QRCode MoMo"
+            value={payMethod.momo}
+            checked={sltedOpPay === payMethod.momo}
+            onChange={handleOptionChangePayment}
+          />
           <h3 className="mt-6 text-sm font-bold text-black max-md:max-w-full">
             Ghi chú đơn hàng
           </h3>
@@ -169,18 +213,25 @@ export function PayPage() {
             <div className="flex gap-5 max-md:flex-col max-md:gap-0">
               <div className="flex flex-col w-[69%] max-md:ml-0 max-md:w-full">
                 <p className="text-sm font-bold leading-6 text-stone-50 max-md:mt-10">
-                  Số lượng <br /> Tạm tính <br /> Ưu đãi mua chung <br /> Phí
-                  vận chuyển
+                  Số lượng <br /> Tạm tính <br /> Ưu đãi <br /> Phí vận chuyển
+                  <br /> Tổng tiền
                 </p>
               </div>
               <div className="flex flex-col ml-5 w-[31%] max-md:ml-0 max-md:w-full">
                 <p className="text-sm font-bold leading-6 text-right text-stone-50 max-md:mt-10">
                   {cartData.totalQuantity ? cartData.totalQuantity : 0}
-                  <br />{" "}
+                  <br />
                   {cartData.totalPrice
                     ? cartData.totalPrice.toLocaleString()
+                    : 0}
+                  <br />0 <br />
+                  {shippingFees[sltedOpMove]
+                    ? shippingFees[sltedOpMove].toLocaleString()
                     : 0}{" "}
-                  <br />0 <br />0
+                  <br />
+                  <span className="text-orange-500 font-bold">
+                    {calculateTotal().toLocaleString()}
+                  </span>
                 </p>
               </div>
             </div>
