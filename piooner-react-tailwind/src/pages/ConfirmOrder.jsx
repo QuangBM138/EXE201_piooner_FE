@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Stepper from "../components/steeper";
-import { img } from "../utils/assets";
+import { img, RouteMap as RM } from "../utils/assets";
+import { useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 function ProductItem({ imgUrl, price, quantity, name }) {
@@ -25,7 +26,7 @@ function ProductItem({ imgUrl, price, quantity, name }) {
             </div>
             <div className="flex gap-3 mt-4 whitespace-nowrap">
               <p className="text-center">Price:</p>
-              <p className="flex-auto font-medium">{price}</p>
+              <p className="flex-auto font-medium">{price.toLocaleString()}</p>
             </div>
             <div className="flex gap-3 mt-4 whitespace-nowrap">
               <p className="text-center">Quantity:</p>
@@ -43,7 +44,6 @@ function ConfirmOrderPage() {
 
   useEffect(() => {
     const storedProducts = localStorage.getItem("cartItems"); // Get cart items from localStorage
-
     if (storedProducts) {
       try {
         const parsedProducts = JSON.parse(storedProducts); // Parse JSON string
@@ -53,7 +53,13 @@ function ConfirmOrderPage() {
       }
     }
   }, []); // Run useEffect only once on component mount
+
   const isActive = [false, true, false];
+  const navigate = useNavigate();
+
+  const handleConfirmOrder = () => {
+    navigate(RM.payPage); // Navigate to payNoLogin page
+  };
 
   return (
     <div className="flex flex-col pt-20 bg-white">
@@ -100,7 +106,10 @@ function ConfirmOrderPage() {
                   quantity={product.quantity}
                 />
               ))}
-              <button className="justify-center items-center self-end px-16 py-4 mt-24 max-w-full text-base font-bold text-center text-white bg-pioonerCraft w-[387px] max-md:px-5 max-md:mt-10">
+              <button
+                className="justify-center items-center self-end px-16 py-4 mt-24 max-w-full text-base font-bold text-center text-white bg-pioonerCraft w-[387px] max-md:px-5 max-md:mt-10"
+                onClick={handleConfirmOrder}
+              >
                 Xác nhận đơn hàng
               </button>
             </section>

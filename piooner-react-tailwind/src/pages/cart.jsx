@@ -91,7 +91,12 @@ function CartPage() {
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
     calculateTotalPrice();
-  }, [cartItems]);
+    const cartData = {
+      totalPrice: totalPrice,
+      totalQuantity: cartItems.reduce((sum, item) => sum + item.quantity, 0),
+    };
+    localStorage.setItem("cartData", JSON.stringify(cartData));
+  }, [cartItems, totalPrice]);
 
   const calculateTotalPrice = () => {
     const priceSum = cartItems.reduce(

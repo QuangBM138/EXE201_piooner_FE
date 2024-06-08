@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
 import Stepper from "../components/steeper";
+import { useNavigate } from "react-router-dom";
+import { RouteMap as RM } from "../utils/assets";
 
 function ImageWithDescription({ src, alt, children }) {
   return (
@@ -29,10 +32,15 @@ function InputField({ id, label, type = "text", placeholder }) {
   );
 }
 
-function RadioButton({ label }) {
+function RadioButton({ label, onChange, checked }) {
   return (
     <div className="flex gap-3.5">
-      <div className="shrink-0 w-5 h-5 bg-orange-100 rounded-full" />
+      <input
+        type="radio"
+        className="shrink-0 w-5 h-5 bg-orange-100 rounded-full"
+        onChange={onChange}
+        checked={checked}
+      />
       <div className="flex-auto my-auto">{label}</div>
     </div>
   );
@@ -40,6 +48,26 @@ function RadioButton({ label }) {
 
 export function PayPage() {
   const isActive = [false, false, true];
+  const [cartData, setcartData] = useState({});
+  const [selectedOption, setSelectedOption] = useState("");
+
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+
+  const navigate = useNavigate();
+
+  const handlePayNoLogin = () => {
+    navigate(RM.payNoLoginRoute); // Navigate to payNoLogin page
+  };
+  useEffect(() => {
+    const storedCartItems = localStorage.getItem("cartData");
+    if (storedCartItems) {
+      setcartData(JSON.parse(storedCartItems));
+    }
+    console.log("localStorage", localStorage);
+  }, []);
+
   return (
     <section className="flex flex-col items-center px-20 mt-2.5 w-full max-md:px-5 max-md:max-w-full">
       <div className="flex flex-col grow items-start mr-auto text-xl text-amber-700 max-md:mt-10">
@@ -113,7 +141,10 @@ export function PayPage() {
             Phương thức vận chuyển
           </h3>
           <div className="flex gap-5 justify-between mt-6 text-sm text-black max-md:flex-wrap">
-            <RadioButton label="Giao Hàng Tiết Kiệm" />
+            <RadioButton
+              label="Giao Hàng Tiết Kiệm"
+              onChange={handleOptionChange}
+            />
             <RadioButton label="Giao Hàng Nhanh" />
           </div>
           <h3 className="mt-7 text-sm font-bold text-black max-md:max-w-full">
@@ -144,7 +175,12 @@ export function PayPage() {
               </div>
               <div className="flex flex-col ml-5 w-[31%] max-md:ml-0 max-md:w-full">
                 <p className="text-sm font-bold leading-6 text-right text-stone-50 max-md:mt-10">
-                  3<br /> 2.500.000 VND <br />- 500.000 VND <br />0
+                  {cartData.totalQuantity ? cartData.totalQuantity : 0}
+                  <br />{" "}
+                  {cartData.totalPrice
+                    ? cartData.totalPrice.toLocaleString()
+                    : 0}{" "}
+                  <br />0 <br />0
                 </p>
               </div>
             </div>
