@@ -100,4 +100,42 @@ export const img = {
   deleteIcon:
     apiImg +
     "/TEMP/5304d41ebeb39e4b0394846dab3cb20f0264690dc5045b60e97f81efe339ae39?apiKey=101cc284a7074779856ab37fb68fa7a5&",
+
+  //img product 12
+  product1:
+    apiImg +
+    "%2F101cc284a7074779856ab37fb68fa7a5%2Fe8e7103d79a54f1e80cc45deb1f36a90",
+  product2:
+    apiImg +
+    "%2F101cc284a7074779856ab37fb68fa7a5%2F5c90e819dfa444f8a3ab25a8e092daac",
+  product3:
+    apiImg +
+    "%2F101cc284a7074779856ab37fb68fa7a5%2Fc420f5af3c6d4068bd2ffc3132cfc0bb",
+  product4:
+    apiImg +
+    "%2F101cc284a7074779856ab37fb68fa7a5%2F581a0301886b4265ae887669b5d3b362",
+  product5:
+    apiImg +
+    "%2F101cc284a7074779856ab37fb68fa7a5%2Faf71e23c2464472e871ec4b659df3c0f",
+  product6:
+    apiImg +
+    "%2F101cc284a7074779856ab37fb68fa7a5%2F724e7d683a6d4b649b54cb22a9258da3",
+  product7:
+    apiImg +
+    "%2F101cc284a7074779856ab37fb68fa7a5%2F6f761567e5b34944ae7c73b06d9cebad",
+  product8:
+    apiImg +
+    "%2F101cc284a7074779856ab37fb68fa7a5%2F49d941e319a4464b8cdde7d69e15cd39",
+  product9:
+    apiImg +
+    "%2F101cc284a7074779856ab37fb68fa7a5%2F29ed0dc5e42748d39aa72940f0a8d830",
+  product10:
+    apiImg +
+    "%2F101cc284a7074779856ab37fb68fa7a5%2Ff3a9769f1e6049d2a4cbfed00c54eeec",
+  product11:
+    apiImg +
+    "%2F101cc284a7074779856ab37fb68fa7a5%2F565921ebcde64f0192f1e57d9d157695",
+  product12:
+    apiImg +
+    "%2F101cc284a7074779856ab37fb68fa7a5%2Ffafd86b39c954836a63f842e6d202bfc",
 };
