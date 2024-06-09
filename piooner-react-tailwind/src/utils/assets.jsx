@@ -10,6 +10,7 @@ export const RouteMap = {
   payPage: "/PayPage",
   cartPage: "/CartPage",
   productPage: "/ProductPage",
+  nearOrderPage: "/NOrderPage",
 };
 
 export const Links = {

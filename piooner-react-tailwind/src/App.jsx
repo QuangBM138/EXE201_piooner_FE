@@ -14,15 +14,9 @@ import ConfirmOrderPage from "./pages/ConfirmOrder";
 import { PayPage } from "./pages/PayPage";
 import CartPage from "./pages/cart";
 import ProductPage from "./pages/product";
-
-
+import NearOrderPage from "./pages/nOrder";
 
 function App() {
-
-
-  
-
-
   return (
     <div className="app flex flex-col pt-20 bg-white">
       <Header></Header>
@@ -40,12 +34,10 @@ function App() {
         <Route path={RM.payPage} element={<PayPage />} />
         <Route path={RM.cartPage} element={<CartPage />} />
         <Route path={RM.productPage} element={<ProductPage />} />
+        <Route path={RM.nearOrderPage} element={<NearOrderPage />} />
       </Routes>
       <Footer></Footer>
     </div>
-
-    
-    
   );
 }
 

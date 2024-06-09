@@ -60,11 +60,11 @@ export function PayPage() {
   const [sltedOpMove, setSltedOpMove] = useState("GHTK");
   const [sltedOpPay, setSltedOpPay] = useState("delivery");
   const navigate = useNavigate();
+
   const shippingMethod = { GHTK: "GHTK", GHN: "GHN" };
 
   const payMethod = {
     delivery: "delivery",
-    transfer: "transfer",
     momo: "momo",
   };
 
@@ -86,10 +86,6 @@ export function PayPage() {
     return total;
   };
 
-  const handlePayNoLogin = () => {
-    navigate(RM.payNoLoginRoute); // Navigate to payNoLogin page
-  };
-
   const handleBackClick = () => {
     navigate(-1); // Navigate back to the previous page
   };
@@ -102,6 +98,48 @@ export function PayPage() {
     console.log("localStorage", localStorage);
   }, []);
 
+  const handleFormSubmit = async (event) => {
+    event.preventDefault(); // Prevent default form submission behavior
+
+    // Prepare form data
+    const formData = {
+      // Extract data from form fields (lastName, firstName, etc.)
+      lastName: document.getElementById("lastName").value,
+      firstName: document.getElementById("firstName").value,
+      phoneNumber: document.getElementById("phoneNumber").value,
+      email: document.getElementById("email").value,
+      address: document.getElementById("address").value,
+      city: document.getElementById("city").value,
+      district: document.getElementById("district").value,
+      ward: document.getElementById("ward").value,
+      note: document.getElementById("note").value,
+      shippingMethod: sltedOpMove,
+      paymentMethod: sltedOpPay,
+      totalPrice: calculateTotal(),
+    };
+    console.log("formData", formData);
+
+    // Send form data to your API using fetch or Axios library
+    // const response = await fetch(
+    //   /* Your API endpoint */ {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify(formData),
+    //   }
+    // );
+
+    // if (response.ok) {
+    //   // Handle successful response
+    //   console.log("Order submitted successfully:", response);
+    //   navigate(RM.nOrderRoute); // Redirect to "nOrder" page
+    // } else {
+    //   // Handle failed response (e.g., display error message)
+    //   console.error("Error submitting order:", response);
+    //   // ... display error message logic
+    // }
+
+    navigate(RM.nearOrderPage); // Redirect to "nOrder" page
+  };
   return (
     <section className="flex flex-col items-center px-20 mt-2.5 w-full max-md:px-5 max-md:max-w-full">
       <div className="flex flex-col grow items-start mr-auto text-xl text-amber-700 max-md:mt-10">
@@ -113,17 +151,11 @@ export function PayPage() {
       </div>
       <Stepper isActive={isActive} />
       <hr className="shrink-0 mt-16 max-w-full h-px bg-black border border-black border-solid w-[1156px] max-md:mt-10" />
-      {/* <header className="flex gap-5 self-start mt-16 ml-24 text-3xl font-bold text-black max-md:mt-10 max-md:ml-2.5">
-        <img
-          loading="lazy"
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/b7dee9faadb548c272d75df0de8823751ca8bf83782b7237fe7edc5353f7c302?apiKey=101cc284a7074779856ab37fb68fa7a5&"
-          alt=""
-          className="shrink-0 aspect-[1.19] w-[58px]"
-        />
-        <div className="flex-auto my-auto">Thanh toán</div>
-      </header> */}
       <div className="flex gap-5 justify-between mt-5 w-full max-w-[1156px] max-md:flex-wrap max-md:max-w-full">
-        <form className="flex flex-col self-start mt-16 max-md:mt-10 max-md:max-w-full">
+        <form
+          className="flex flex-col self-start mt-16 max-md:mt-10 max-md:max-w-full"
+          onSubmit={handleFormSubmit}
+        >
           <h2 className="self-center text-xl font-bold text-black">
             Thông tin giao hàng
           </h2>
@@ -199,12 +231,6 @@ export function PayPage() {
             onChange={handleOptionChangePayment}
           />
           <RadioButton
-            label="Thanh toán bằng chuyển khoản"
-            value={payMethod.transfer}
-            checked={sltedOpPay === payMethod.transfer}
-            onChange={handleOptionChangePayment}
-          />
-          <RadioButton
             label="Thanh toán bằng QRCode MoMo"
             value={payMethod.momo}
             checked={sltedOpPay === payMethod.momo}
@@ -214,6 +240,7 @@ export function PayPage() {
             Ghi chú đơn hàng
           </h3>
           <textarea
+            id="note"
             className="shrink-0 mt-6 bg-orange-100 h-[153px] max-md:max-w-full"
             placeholder="Ghi chú đơn hàng"
           />
