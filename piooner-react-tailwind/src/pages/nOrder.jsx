@@ -1,5 +1,3 @@
-import * as React from "react";
-
 const OrderHeader = () => {
   return (
     <header className="flex flex-col items-center px-20 mt-2.5 w-full max-md:px-5 max-md:max-w-full">
@@ -50,12 +48,6 @@ const orders = [
     orderDate: "02/07/2023",
     totalPrice: "700.000 VND",
     status: "Đang xử lý",
-  },
-  {
-    orderId: "2304155661",
-    orderDate: "03/07/2023",
-    totalPrice: "800.000 VND",
-    status: "Hoàn tất",
   },
 ];
 
