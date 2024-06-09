@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { RouteMap as RM, img } from "../utils/assets";
 
 // eslint-disable-next-line react/prop-types
-function ImageWithDescription({ src, alt, children, onClick }) {
+function ImageWithDescription({ src, alt, onClick }) {
   return (
     <div className="flex gap-4 mt-14 ml-4 max-md:mt-10 max-md:ml-2.5">
       <img
@@ -32,7 +32,7 @@ function InputField({ id, label, type = "text", placeholder }) {
         type={type}
         placeholder={placeholder}
         aria-label={label}
-        className="shrink-0 mt-2.5 bg-orange-100 h-[49px]"
+        className="mt-2.5 bg-orange-100 h-[49px]"
       />
     </div>
   );
@@ -45,7 +45,7 @@ function RadioButton({ label, value, checked, onChange }) {
       <input
         type="radio"
         className="shrink-0 w-5 h-5 bg-orange-100 rounded-full"
-        value={value} // Set value explicitly
+        value={value}
         onChange={onChange}
         checked={checked}
       />
@@ -54,12 +54,76 @@ function RadioButton({ label, value, checked, onChange }) {
   );
 }
 
+// Modal component
+// eslint-disable-next-line react/prop-types
+// Modal component
+// eslint-disable-next-line react/prop-types
+const ErrorModal = ({ message, onClose }) => {
+  return (
+    <div className="fixed top-0 left-0 right-0 bottom-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+      <div className="relative w-[60%] max-w-[600px] p-10 bg-white rounded-lg shadow-lg">
+        <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <button
+            type="button"
+            className="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+            onClick={onClose}
+          >
+            <svg
+              className="w-3 h-3"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 14 14"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+              />
+            </svg>
+            <span className="sr-only">Close modal</span>
+          </button>
+          <div className="p-4 md:p-5 text-center">
+            <svg
+              className="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
+              aria-hidden="true"
+              fill="none"
+              viewBox="0 0 20 20"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+              />
+            </svg>
+            <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+              {message}
+            </h3>
+            <button
+              type="button"
+              className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center"
+              onClick={onClose}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 export function PayPage() {
   const isActive = [false, false, true];
   const [cartData, setcartData] = useState({});
   const [sltedOpMove, setSltedOpMove] = useState("GHTK");
   const [sltedOpPay, setSltedOpPay] = useState("delivery");
   const navigate = useNavigate();
+  const [errorModalOpen, setErrorModalOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const shippingMethod = { GHTK: "GHTK", GHN: "GHN" };
 
@@ -101,45 +165,81 @@ export function PayPage() {
   const handleFormSubmit = async (event) => {
     event.preventDefault(); // Prevent default form submission behavior
 
+    // Get form input values
+    const lastName = document.getElementById("lastName").value;
+    const firstName = document.getElementById("firstName").value;
+    const phoneNumber = document.getElementById("phoneNumber").value;
+    const email = document.getElementById("email").value;
+    const city = document.getElementById("city").value;
+    const district = document.getElementById("district").value;
+    const ward = document.getElementById("ward").value;
+    const address = document.getElementById("address").value;
+    const note = document.getElementById("note").value;
+
+    // Perform form validation
+    if (
+      !lastName ||
+      !firstName ||
+      !phoneNumber ||
+      !email ||
+      !city ||
+      !district ||
+      !ward ||
+      !address
+    ) {
+      setErrorMessage("Please fill in all required fields.");
+      setErrorModalOpen(true);
+      return;
+    }
+
+    // Validate email pattern
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      setErrorMessage("Please enter a valid email address.");
+      setErrorModalOpen(true);
+      return;
+    }
+
     // Prepare form data
     const formData = {
-      // Extract data from form fields (lastName, firstName, etc.)
-      lastName: document.getElementById("lastName").value,
-      firstName: document.getElementById("firstName").value,
-      phoneNumber: document.getElementById("phoneNumber").value,
-      email: document.getElementById("email").value,
-      address: document.getElementById("address").value,
-      city: document.getElementById("city").value,
-      district: document.getElementById("district").value,
-      ward: document.getElementById("ward").value,
-      note: document.getElementById("note").value,
+      lastName,
+      firstName,
+      phoneNumber,
+      email,
+      city,
+      district,
+      ward,
+      address,
+      note,
       shippingMethod: sltedOpMove,
       paymentMethod: sltedOpPay,
       totalPrice: calculateTotal(),
     };
-    console.log("formData", formData);
 
+    console.log("formData", formData);
+    navigate(RM.nearOrderPage);
     // Send form data to your API using fetch or Axios library
-    // const response = await fetch(
-    //   /* Your API endpoint */ {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify(formData),
-    //   }
-    // );
+    // const response = await fetch(/* Your API endpoint */, {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify(formData),
+    // });
 
     // if (response.ok) {
     //   // Handle successful response
     //   console.log("Order submitted successfully:", response);
-    //   navigate(RM.nOrderRoute); // Redirect to "nOrder" page
+    //   navigate(RM.nearOrderPage); // Redirect to "nOrder" page
     // } else {
     //   // Handle failed response (e.g., display error message)
     //   console.error("Error submitting order:", response);
-    //   // ... display error message logic
+    //   //... display error message logic
     // }
-
-    navigate(RM.nearOrderPage); // Redirect to "nOrder" page
   };
+
+  const handleCloseErrorModal = () => {
+    setErrorModalOpen(false);
+  };
+
   return (
     <section className="flex flex-col items-center px-20 mt-2.5 w-full max-md:px-5 max-md:max-w-full">
       <div className="flex flex-col grow items-start mr-auto text-xl text-amber-700 max-md:mt-10">
@@ -276,6 +376,9 @@ export function PayPage() {
           </div>
         </div>
       </div>
+      {errorModalOpen && (
+        <ErrorModal message={errorMessage} onClose={handleCloseErrorModal} />
+      )}
     </section>
   );
 }
