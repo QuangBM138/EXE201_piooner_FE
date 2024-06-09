@@ -9,6 +9,9 @@ const PayNoLogin = () => {
   const handleConfirmOrderNoLogin = () => {
     navigate(RM.confirmOrderRoute); // Navigate to payNoLogin page
   };
+  const handleBackClick = () => {
+    navigate(-1); // Navigate back to the previous page
+  };
   return (
     <div className="flex flex-col items-center px-20 mt-2.5 w-full max-md:px-5 max-md:max-w-full">
       <nav className="flex gap-4 self-start mt-14 ml-8 text-xl text-amber-700 max-md:mt-10 max-md:ml-2.5">
@@ -16,7 +19,8 @@ const PayNoLogin = () => {
           loading="lazy"
           src={img.backbutton}
           className="shrink-0 aspect-square w-[35px]"
-          alt=""
+          alt="back"
+          onClick={handleBackClick}
         />
         <div className="flex-auto my-auto">
           <span className="">Giỏ hàng/ </span>

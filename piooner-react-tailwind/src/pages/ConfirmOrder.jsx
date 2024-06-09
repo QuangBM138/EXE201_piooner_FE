@@ -61,6 +61,10 @@ function ConfirmOrderPage() {
     navigate(RM.payPage); // Navigate to payNoLogin page
   };
 
+  const handleBackClick = () => {
+    navigate(-1); // Navigate back to the previous page
+  };
+
   return (
     <div className="flex flex-col pt-20 bg-white">
       <nav className="flex flex-col items-center px-20 mt-2.5 w-full max-md:px-5 max-md:max-w-full">
@@ -68,8 +72,9 @@ function ConfirmOrderPage() {
           <img
             loading="lazy"
             src={img.backbutton}
-            className="shrink-0 aspect-square w-[35px]"
-            alt=""
+            className="shrink-0 aspect-square w-[35px] cursor-pointer"
+            alt="back"
+            onClick={handleBackClick}
           />
           <div className="flex-auto my-auto">
             <span>Giỏ hàng/ </span>
@@ -81,7 +86,7 @@ function ConfirmOrderPage() {
       </nav>
 
       <main className="flex flex-col items-center px-20 w-full max-md:px-5 max-md:max-w-full">
-        <header className="flex gap-3.5 self-start mt-14 ml-24 text-3xl font-bold text-stone-800 max-md:mt-10 max-md:ml-2.5">
+        {/* <header className="flex gap-3.5 self-start mt-14 ml-24 text-3xl font-bold text-stone-800 max-md:mt-10 max-md:ml-2.5">
           <img
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/d49ea129a4a79033101053d80ebb02760bc75a477e276ac06f3298c6520d2079?apiKey=101cc284a7074779856ab37fb68fa7a5&"
@@ -89,7 +94,7 @@ function ConfirmOrderPage() {
             alt=""
           />
           <div className="flex-auto my-auto">Xác nhận đơn hàng</div>
-        </header>
+        </header> */}
 
         <section className="mt-16 w-full max-w-[1155px] max-md:mt-10 max-md:max-w-full">
           <div className="flex gap-5 max-md:flex-col max-md:gap-0">

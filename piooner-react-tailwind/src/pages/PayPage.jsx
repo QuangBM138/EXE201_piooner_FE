@@ -1,22 +1,28 @@
 import { useEffect, useState } from "react";
 import Stepper from "../components/steeper";
 import { useNavigate } from "react-router-dom";
-import { RouteMap as RM } from "../utils/assets";
+import { RouteMap as RM, img } from "../utils/assets";
 
-function ImageWithDescription({ src, alt, children }) {
+// eslint-disable-next-line react/prop-types
+function ImageWithDescription({ src, alt, children, onClick }) {
   return (
     <div className="flex gap-4 mt-14 ml-4 max-md:mt-10 max-md:ml-2.5">
       <img
         loading="lazy"
         src={src}
         alt={alt}
-        className="shrink-0 aspect-square w-[35px]"
+        className="shrink-0 aspect-square w-[35px] cursor-pointer"
+        onClick={onClick}
       />
-      <div className="flex-auto my-auto">{children}</div>
+      <div className="flex-auto my-auto">
+        <span>Giỏ hàng/ </span>
+        <span className="text-amber-700">Thanh toán</span>
+      </div>
     </div>
   );
 }
 
+// eslint-disable-next-line react/prop-types
 function InputField({ id, label, type = "text", placeholder }) {
   return (
     <div className="flex flex-col grow text-sm text-black max-md:mt-10">
@@ -32,6 +38,7 @@ function InputField({ id, label, type = "text", placeholder }) {
   );
 }
 
+// eslint-disable-next-line react/prop-types
 function RadioButton({ label, value, checked, onChange }) {
   return (
     <div className="flex gap-3.5">
@@ -52,7 +59,7 @@ export function PayPage() {
   const [cartData, setcartData] = useState({});
   const [sltedOpMove, setSltedOpMove] = useState("GHTK");
   const [sltedOpPay, setSltedOpPay] = useState("delivery");
-
+  const navigate = useNavigate();
   const shippingMethod = { GHTK: "GHTK", GHN: "GHN" };
 
   const payMethod = {
@@ -79,11 +86,14 @@ export function PayPage() {
     return total;
   };
 
-  const navigate = useNavigate();
-
   const handlePayNoLogin = () => {
     navigate(RM.payNoLoginRoute); // Navigate to payNoLogin page
   };
+
+  const handleBackClick = () => {
+    navigate(-1); // Navigate back to the previous page
+  };
+
   useEffect(() => {
     const storedCartItems = localStorage.getItem("cartData");
     if (storedCartItems) {
@@ -96,13 +106,14 @@ export function PayPage() {
     <section className="flex flex-col items-center px-20 mt-2.5 w-full max-md:px-5 max-md:max-w-full">
       <div className="flex flex-col grow items-start mr-auto text-xl text-amber-700 max-md:mt-10">
         <ImageWithDescription
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/8838b2f95e562b2150c8da87da44ae776588952e5ba8dd5b6fdecee29340b809?apiKey=101cc284a7074779856ab37fb68fa7a5&"
-          alt=""
+          src={img.backbutton}
+          alt="back"
+          onClick={handleBackClick}
         />
       </div>
       <Stepper isActive={isActive} />
       <hr className="shrink-0 mt-16 max-w-full h-px bg-black border border-black border-solid w-[1156px] max-md:mt-10" />
-      <header className="flex gap-5 self-start mt-16 ml-24 text-3xl font-bold text-black max-md:mt-10 max-md:ml-2.5">
+      {/* <header className="flex gap-5 self-start mt-16 ml-24 text-3xl font-bold text-black max-md:mt-10 max-md:ml-2.5">
         <img
           loading="lazy"
           src="https://cdn.builder.io/api/v1/image/assets/TEMP/b7dee9faadb548c272d75df0de8823751ca8bf83782b7237fe7edc5353f7c302?apiKey=101cc284a7074779856ab37fb68fa7a5&"
@@ -110,9 +121,9 @@ export function PayPage() {
           className="shrink-0 aspect-[1.19] w-[58px]"
         />
         <div className="flex-auto my-auto">Thanh toán</div>
-      </header>
+      </header> */}
       <div className="flex gap-5 justify-between mt-5 w-full max-w-[1156px] max-md:flex-wrap max-md:max-w-full">
-        <form className="flex flex-col self-end mt-16 max-md:mt-10 max-md:max-w-full">
+        <form className="flex flex-col self-start mt-16 max-md:mt-10 max-md:max-w-full">
           <h2 className="self-center text-xl font-bold text-black">
             Thông tin giao hàng
           </h2>
@@ -156,7 +167,7 @@ export function PayPage() {
             </button>
           </div>
         </form>
-        <hr className="shrink-0 w-px bg-black border border-black border-solid h-[795px]" />
+        <hr className="shrink-0 w-px  bg-black border border-black border-solid h-[795px]" />
         <div className="flex flex-col my-auto max-md:max-w-full">
           <h2 className="self-center text-xl font-bold text-center text-black">
             Hình thức thanh toán
