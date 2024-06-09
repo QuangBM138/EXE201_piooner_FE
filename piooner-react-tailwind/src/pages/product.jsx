@@ -1,7 +1,7 @@
-import "/src/utils/product.css";
-import Popup from "reactjs-popup";
-import "/src/utils/popup.css";
-import { img } from "../utils/assets";
+import '/src/utils/product.css';
+// import Popup from 'reactjs-popup';
+import  '/src/utils/popup.css';
+
 
 const ProductPage = () => {
   return (
@@ -9,55 +9,84 @@ const ProductPage = () => {
       <main className="main-content">
         <div className="community-section">
           <div className="images-list">
-            <Popup
+            {/* <Popup
               trigger={
                 <div className="HinhAnh">
-                  <img src={img.product1} alt="Image 1" />
+                  <img src="src/assets/image/binh1.jpg" alt="Image 1" />
                 </div>
               }
               position="right center"
             >
               <div id="myModal" className="modal">
                 {/* Modal content */}
-                <div className="modal-content">
+                {/* <div className="modal-content">
                   <span className="close">×</span>
                   <p>xyz abc</p>
                 </div>
               </div>
-            </Popup>
-
+            </Popup>  */}
             <div className="HinhAnh">
-              <img src={img.product2} alt="Image 2" />
+                <img src="src/assets/image/binh1.jpg" alt="Image 2" />
+                <h1>bình gốm đen</h1>
+                <h2>30.000 VND</h2>
+              </div>
+              
+            
+              <div className="HinhAnh">
+                <img src="src/assets/image/binh2.jpg" alt="Image 2" />
+                <h1>bình gốm sữa</h1>
+                <h2>30.000 VND</h2>
+              </div>
+              
+            <div className="HinhAnh">
+              <img src="src/assets/image/binh3.jpg" alt="Image 3" />
+              <h1>bình gốm bầu lớn</h1>
+                <h2>30.000 VND</h2>
             </div>
             <div className="HinhAnh">
-              <img src={img.product3} alt="Image 3" />
+              <img src="src/assets/image/binh4.jpg" alt="Image 4" />
+              <h1>bình gốm giả nung</h1>
+                <h2>30.000 VND</h2>
             </div>
             <div className="HinhAnh">
-              <img src={img.product4} alt="Image 4" />
+              <img src="src/assets/image/binh5.jpg" alt="Image 5" />
+              <h1>bình gốm giả gạch</h1>
+                <h2>30.000 VND</h2>
             </div>
             <div className="HinhAnh">
-              <img src={img.product5} alt="Image 5" />
+              <img src="src/assets/image/binh6.jpg" alt="Image 6" />
+              <h1>bình gốm trang trí</h1>
+                <h2>30.000 VND</h2>
             </div>
             <div className="HinhAnh">
-              <img src={img.product6} alt="Image 6" />
+              <img src="src/assets/image/binh7.jpg" alt="Image 7" />
+              <h1>bình gốm cơ bản 1</h1>
+                <h2>30.000 VND</h2>
             </div>
             <div className="HinhAnh">
-              <img src={img.product7} alt="Image 7" />
+              <img src="src/assets/image/binh8.jpg" alt="Image 8" />
+              <h1>bình gốm cơ bản loại 2</h1>
+                <h2>30.000 VND</h2>
             </div>
             <div className="HinhAnh">
-              <img src={img.product8} alt="Image 8" />
+              <img src="src/assets/image/binh9.jpg" alt="Image 9" />
+              <h1>bình gốm bầu</h1>
+                <h2>30.000 VND</h2>
             </div>
             <div className="HinhAnh">
-              <img src={img.product9} alt="Image 9" />
+              <img src="src/assets/image/binh10.jpg" alt="Image 10" />
+              <h1>Bình gốm làm mát </h1>
+                <h2>30.000 VND</h2>
             </div>
             <div className="HinhAnh">
-              <img src={img.product10} alt="Image 10" />
+              <img src="src/assets/image/binh11.jpg" alt="Image 11" />
+              <h1>bình gốm cầu tròn đơn sắc</h1>
+                <h2>30.000 VND</h2>
             </div>
             <div className="HinhAnh">
-              <img src={img.product11} alt="Image 11" />
-            </div>
-            <div className="HinhAnh">
-              <img src={img.product12} alt="Image 12" />
+              <img src="src/assets/image/binh12.jpg" alt="Image 12" />
+              <h1>bình gốm tròn rỗng</h1>
+                <h2>30.000 VND</h2>
             </div>
           </div>
         </div>
