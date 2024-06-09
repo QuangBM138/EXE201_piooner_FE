@@ -15,6 +15,7 @@ import { PayPage } from "./pages/PayPage";
 import CartPage from "./pages/cart";
 import ProductPage from "./pages/product";
 import NearOrderPage from "./pages/nOrder";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path={RM.cartPage} element={<CartPage />} />
         <Route path={RM.productPage} element={<ProductPage />} />
         <Route path={RM.nearOrderPage} element={<NearOrderPage />} />
+        <Route path={RM.login} element={<Login />} />
       </Routes>
       <Footer></Footer>
     </div>

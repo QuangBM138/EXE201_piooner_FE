@@ -12,13 +12,14 @@ const SocialIcons = () => {
           alt="cart icon"
         />
       </Link>
-
-      <img
-        loading="lazy"
-        src={img.personIcon}
-        className="shrink-0 aspect-square w-[40px]"
-        alt="person icon"
-      />
+      <Link to={RM.login} className="my-auto">
+        <img
+          loading="lazy"
+          src={img.personIcon}
+          className="shrink-0 aspect-square w-[40px]"
+          alt="person icon"
+        />
+      </Link>
     </div>
   );
 };

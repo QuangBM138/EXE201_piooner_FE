@@ -11,6 +11,7 @@ export const RouteMap = {
   cartPage: "/CartPage",
   productPage: "/ProductPage",
   nearOrderPage: "/NOrderPage",
+  login: "/LoginPage",
 };
 
 export const Links = {

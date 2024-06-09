@@ -1,6 +1,7 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Stepper from "../components/steeper";
 import { img, RouteMap as RM } from "../utils/assets";
+import Login from "./Login";
 
 const PayNoLogin = () => {
   const isActive = [true, false, false];
@@ -33,44 +34,7 @@ const PayNoLogin = () => {
       <div className="shrink-0 mt-16 max-w-full h-px bg-black border border-black border-solid w-[1156px] max-md:mt-10"></div>
 
       <main className="mt-20 justify-between flex gap-5-between items-center w-full text-center max-w-[1007px] max-md:flex-wrap max-md:max-w-full">
-        <section className="flex flex-col self-stretch my-auto text-sm text-black">
-          <div className="self-center text-xl font-bold">Đăng nhập</div>
-          <div className="self-center mt-3">
-            Đăng nhập để nhận nhiều những chương trình ưu đãi hấp dẫn
-          </div>
-          <form className="flex flex-col mt-7" action="#">
-            <label htmlFor="emailInput" className="sr-only">
-              Email/ Số điện thoại
-            </label>
-            <input
-              className="mt-2.5 bg-orange-100 h-[49px]"
-              type="email"
-              id="emailInput"
-              placeholder="Email/ Số điện thoại"
-              aria-label="Email/ Số điện thoại"
-            />
-            <label htmlFor="passwordInput" className="sr-only">
-              Mật khẩu
-            </label>
-            <input
-              className="mt-4 bg-orange-100 h-[49px]"
-              type="password"
-              id="passwordInput"
-              placeholder="Mật khẩu"
-              aria-label="Mật khẩu"
-            />
-            <Link href="#" className="self-end mt-3 italic">
-              Quên mật khẩu?
-            </Link>
-
-            <button
-              type="submit"
-              className="justify-center items-center px-16 py-4 mt-2.5 text-base font-bold text-white bg-pioonerCraft max-md:px-5"
-            >
-              Đăng nhập
-            </button>
-          </form>
-        </section>
+        <Login textLogin="Đăng nhập để nhận nhiều những chương trình ưu đãi hấp dẫn" />
         <img
           loading="lazy"
           src={img.liney}
