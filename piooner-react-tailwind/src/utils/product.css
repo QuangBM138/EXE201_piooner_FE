@@ -56,9 +56,11 @@
     color: #333;
   }
   
-.HinhAnh .h1 {
-  font-size: 300px;
-}
+.details {
+  display: flexbox;
+  gap: 10px;
+  flex-direction: column;
+} 
   
 
 

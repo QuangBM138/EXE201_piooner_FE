@@ -27,8 +27,11 @@ const ProductPage = () => {
             </Popup>  */}
             <div className="HinhAnh">
                 <img src="src/assets/image/binh1.jpg" alt="Image 2" />
+                <div className='detail'>
                 <h1>bình gốm đen</h1>
                 <h2>30.000 VND</h2>
+                <button>Mua hàng</button>
+                </div>
               </div>
               
             
