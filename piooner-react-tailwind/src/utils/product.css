@@ -1,66 +1,50 @@
-.main-content {
-    padding: 20px;
-  }
-  
-  .community-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .images-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 80px; /* Khoảng cách giữa các phần tử */
-  }
-  
-  /* .images-list div {
-    text-align: center;
-  } */
-  .container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-  .main-content {
-    flex: 1;
-  }
-  
-  .footer {
-    background-color: #547B80;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-  }
-  
-  .images-list .image-item {
-    text-align: center;
-    border: 1px solid #ddd; /* Khung bao quanh từng ảnh */
-    padding: 10px; /* Khoảng đệm bên trong khung */
-    background-color: #fff; /* Màu nền của khung */
-  }
-  
-  .images-list img {
-    /* width: 400px; Định kích thước cho hình ảnh */
-    height: auto;
-    display: block;
-    margin: 0 auto; /* Căn giữa hình ảnh */
-    width: 400px;
-    height: 525px;
-  }
-  
-  .images-list h3 {
-    margin-top: 10px;
-    font-size: 16px;
-    color: #333;
-  }
-  
-.details {
-  display: flexbox;
-  gap: 10px;
-  flex-direction: column;
-} 
-  
+.images-list {
+  margin-right:30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 150px; /* Adjust the spacing between each product container */
+}
 
+.HinhAnh {
+  /* border: 1px solid #ddd; Optional: Add a border for better separation */
+  /* border-radius: 5px; Optional: Add some border radius */
+  padding: 10px; /* Optional: Add some padding */
+   /* Optional: Add a background color */
+  box-shadow: 0 0 0 rgba(248, 229, 229, 0.1);  
+  display: flex;
+  height: 500px;
+  width: 400px;
+}
 
+.HinhAnh img {
+  display: block;
+  margin-bottom: 10px; /* Space below the image */
+  gap: 50px;
+}
+
+.detail {
+  padding: 10px; /* Space around the text and button */
+  text-align: center; /* Center-align text */
+  margin-top: auto;
+}
+
+.detail h1 {
+  font-size: 30px; /* Adjust as needed */
+  margin-bottom: 5px; /* Space below the product name */
+}
+
+.detail h2 {
+  font-size: 20px; /* Adjust as needed */
+  margin-bottom: 10px; /* Space below the product price */
+  color: rgb(177, 118, 30);
+}
+
+.detail button {
+  padding: 10px 20px; /* Adjust button padding */
+  font-size: 0.9em; /* Adjust button font size */
+  cursor: pointer;
+  border: none;
+  background-color: #007bff; /* Adjust button background color */
+  color: white; /* Adjust button text color */
+  border-radius: 5px; /* Optional: Add border radius to button */
+}
