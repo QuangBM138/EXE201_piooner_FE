@@ -1,3 +1,5 @@
+import { img } from "../utils/assets";
+
 const QRCodeModal = ({ totalprice, onClose }) => {
   return (
     <div className="fixed top-0 left-0 right-0 bottom-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
@@ -21,7 +23,7 @@ const QRCodeModal = ({ totalprice, onClose }) => {
           className="mt-10 px-10 py-3 text-white bg-blue-500 rounded-lg"
           onClick={onClose}
         >
-          Đóng
+          Hoàn Tất
         </button>
       </div>
     </div>

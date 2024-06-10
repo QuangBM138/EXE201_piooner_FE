@@ -142,10 +142,10 @@ export const img = {
     "%2F101cc284a7074779856ab37fb68fa7a5%2Ffafd86b39c954836a63f842e6d202bfc",
 
   // payment
-  qrBank:
+  qrMomo:
     apiImg +
     "%2F101cc284a7074779856ab37fb68fa7a5%2Fa27e583ba0b44c228e9176b756edc7eb",
-  qrMomo:
+  qrBank:
     apiImg +
     "%2F101cc284a7074779856ab37fb68fa7a5%2F213d21484e23466fb6b72c6f90ec1053",
 };

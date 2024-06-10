@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function Login({ textLogin }) {
   return (
     <section className="flex flex-col self-center my-auto text-sm w-4/12">
-      <div className="self-center text-xl font-bold mt-40">Đăng nhập</div>
+      <div className="self-center text-xl font-bold ">Đăng nhập</div>
       <div className="self-center mt-3">{textLogin}</div>
       <form className="flex flex-col mt-7 w-auto" action="#">
         <label htmlFor="emailInput" className="sr-only">
