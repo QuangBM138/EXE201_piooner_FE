@@ -39,6 +39,26 @@ const products = [
 // ];
 
 const ProductPage = () => {
+  const addToCart = (product) => {
+    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    const existingItem = cartItems.find((item) => item.id === product.id);
+
+    if (existingItem) {
+      existingItem.quantity++;
+    } else {
+      cartItems.push({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        imgUrl: img[`${product.image + product.id}`],
+        quantity: 1,
+      });
+    }
+
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    console.log("localStrorage cartitems", localStorage.getItem("cartItems"));
+  };
+
   return (
     <div className="container">
       <main className="main-content">
@@ -57,7 +77,12 @@ const ProductPage = () => {
                 <div className="detail">
                   <h1>{product.name}</h1>
                   <h2>{product.price.toLocaleString()} VND</h2>
-                  <button className="uppercase">Thêm vào giỏ hàng</button>
+                  <button
+                    className="uppercase"
+                    onClick={() => addToCart(product)}
+                  >
+                    Thêm vào giỏ hàng
+                  </button>
                 </div>
               </div>
             ))}

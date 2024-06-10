@@ -80,18 +80,18 @@ function CartPage() {
   const navigate = useNavigate();
 
   const handlePayNoLogin = () => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
     navigate(RM.payNoLoginRoute); // Navigate to payNoLogin page
   };
+
   useEffect(() => {
     const storedCartItems = localStorage.getItem("cartItems");
     if (storedCartItems) {
       setCartItems(JSON.parse(storedCartItems));
     }
-    console.log("CartItems: ", localStorage.getItem("cartItems"));
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
     calculateTotalPrice();
     const cartData = {
       totalPrice: totalPrice,
@@ -101,54 +101,37 @@ function CartPage() {
   }, [cartItems, totalPrice]);
 
   const calculateTotalPrice = () => {
-    const priceSum = cartItems.reduce(
-      (sum, item) => sum + item.price * item.quantity,
-      0
-    );
-    setTotalPrice(priceSum);
+    let total = 0;
+    cartItems.forEach((item) => {
+      total += item.price * item.quantity;
+    });
+    setTotalPrice(total);
   };
 
-  const handleAddProduct = (products) => {
-    const updatedCartItems = products.flatMap((product) =>
-      cartItems.some((cartItem) => cartItem.id === product.id)
-        ? cartItems.map((cartItem) =>
-            cartItem.id === product.id
-              ? { ...cartItem, quantity: cartItem.quantity + product.quantity }
-              : cartItem
-          )
-        : [...cartItems, product]
-    );
+  // const handleAddProduct = (products) => {
+  //   const updatedCartItems = products.flatMap((product) =>
+  //     cartItems.some((cartItem) => cartItem.id === product.id)
+  //       ? cartItems.map((cartItem) =>
+  //           cartItem.id === product.id
+  //             ? { ...cartItem, quantity: cartItem.quantity + product.quantity }
+  //             : cartItem
+  //         )
+  //       : [...cartItems, product]
+  //   );
 
-    setCartItems(updatedCartItems);
-  };
+  //   setCartItems(updatedCartItems);
+  // };
 
   const handleRemoveProduct = (productId) => {
     const updatedCartItems = cartItems.filter((item) => item.id !== productId);
     setCartItems(updatedCartItems);
+    localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
   };
 
-  // Mock product
-  const mockProducts = [
-    {
-      id: 1,
-      name: "Bình gốm đen",
-      price: 100000,
-      imgUrl: img.product1,
-      quantity: 2,
-    },
-    {
-      id: 2,
-      name: "Bình gốm sữa",
-      price: 200000,
-      imgUrl: img.product2,
-      quantity: 1,
-    },
-  ];
-
   // Add mock product to cartItems
-  useEffect(() => {
-    handleAddProduct(mockProducts);
-  }, []);
+  // useEffect(() => {
+  //   handleAddProduct(mockProducts);
+  // }, []);
 
   return (
     <section className="flex flex-col pt-20 bg-white">
@@ -180,6 +163,7 @@ function CartPage() {
                   : cartItem
               );
               setCartItems(updatedCartItems);
+              // Call calculateTotalPrice directly after updating cartItems
               calculateTotalPrice();
             }}
             onRemove={() => handleRemoveProduct(item.id)}
