@@ -58,7 +58,7 @@ function CartItem({ price, imgUrl, quantity, onQuantityChange, onRemove }) {
           quantity={quantity}
           onQuantityChange={onQuantityChange}
         />
-        <div className="col-span-2 text-sm font-medium text-neutral-900 justify-center">
+        <div className="col-span-2 text-sm font-medium text-neutral-900 justify-center gap 50px">
           {price.toLocaleString()} VND
         </div>
         <img

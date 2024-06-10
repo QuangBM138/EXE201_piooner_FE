@@ -26,11 +26,11 @@ function Login({ textLogin }) {
           placeholder="Mật khẩu"
           aria-label="Mật khẩu"
         />
-        <div className="w-full">
-          <Link href="#" className="self-start mt-3 italic">
-            Quên mật khẩu?
+        <div className="w-fulflex justify-between mt-3 w-fulll">
+          <Link href="#" className=" italic mr-12">
+            Đăng ký
           </Link>
-          <Link href="#" className="self-end mt-3 italic">
+          <Link href="#" className=" italic ml-12">
             Quên mật khẩu?
           </Link>
         </div>
