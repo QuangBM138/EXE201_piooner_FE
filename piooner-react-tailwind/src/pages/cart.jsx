@@ -86,6 +86,7 @@ function CartPage() {
     if (storedCartItems) {
       setCartItems(JSON.parse(storedCartItems));
     }
+    console.log("CartItems: ", localStorage.getItem("cartItems"));
   }, []);
 
   useEffect(() => {
@@ -129,12 +130,14 @@ function CartPage() {
   const mockProducts = [
     {
       id: 1,
+      name: "Bình gốm đen",
       price: 100000,
       imgUrl: img.product1,
       quantity: 2,
     },
     {
       id: 2,
+      name: "Bình gốm sữa",
       price: 200000,
       imgUrl: img.product2,
       quantity: 1,
