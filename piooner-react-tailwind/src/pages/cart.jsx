@@ -58,9 +58,10 @@ function CartItem({ price, imgUrl, quantity, onQuantityChange, onRemove }) {
           quantity={quantity}
           onQuantityChange={onQuantityChange}
         />
-        <div className="col-span-2 text-sm font-medium text-neutral-900 justify-center gap 50px">
+        <div className="col-span-2 text-sm font-medium text-neutral-900 mr-[100px] ml-[50px]">
           {price.toLocaleString()} VND
         </div>
+
         <img
           loading="lazy"
           src={img.deleteIcon}
@@ -80,18 +81,18 @@ function CartPage() {
   const navigate = useNavigate();
 
   const handlePayNoLogin = () => {
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
     navigate(RM.payNoLoginRoute); // Navigate to payNoLogin page
   };
-
   useEffect(() => {
     const storedCartItems = localStorage.getItem("cartItems");
     if (storedCartItems) {
       setCartItems(JSON.parse(storedCartItems));
     }
+    console.log("CartItems: ", localStorage.getItem("cartItems"));
   }, []);
 
   useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
     calculateTotalPrice();
     const cartData = {
       totalPrice: totalPrice,
@@ -101,37 +102,54 @@ function CartPage() {
   }, [cartItems, totalPrice]);
 
   const calculateTotalPrice = () => {
-    let total = 0;
-    cartItems.forEach((item) => {
-      total += item.price * item.quantity;
-    });
-    setTotalPrice(total);
+    const priceSum = cartItems.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0
+    );
+    setTotalPrice(priceSum);
   };
 
-  // const handleAddProduct = (products) => {
-  //   const updatedCartItems = products.flatMap((product) =>
-  //     cartItems.some((cartItem) => cartItem.id === product.id)
-  //       ? cartItems.map((cartItem) =>
-  //           cartItem.id === product.id
-  //             ? { ...cartItem, quantity: cartItem.quantity + product.quantity }
-  //             : cartItem
-  //         )
-  //       : [...cartItems, product]
-  //   );
+  const handleAddProduct = (products) => {
+    const updatedCartItems = products.flatMap((product) =>
+      cartItems.some((cartItem) => cartItem.id === product.id)
+        ? cartItems.map((cartItem) =>
+            cartItem.id === product.id
+              ? { ...cartItem, quantity: cartItem.quantity + product.quantity }
+              : cartItem
+          )
+        : [...cartItems, product]
+    );
 
-  //   setCartItems(updatedCartItems);
-  // };
+    setCartItems(updatedCartItems);
+  };
 
   const handleRemoveProduct = (productId) => {
     const updatedCartItems = cartItems.filter((item) => item.id !== productId);
     setCartItems(updatedCartItems);
-    localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
   };
 
+  // Mock product
+  const mockProducts = [
+    {
+      id: 1,
+      name: "Bình gốm đen",
+      price: 100000,
+      imgUrl: img.product1,
+      quantity: 2,
+    },
+    {
+      id: 2,
+      name: "Bình gốm sữa",
+      price: 200000,
+      imgUrl: img.product2,
+      quantity: 1,
+    },
+  ];
+
   // Add mock product to cartItems
-  // useEffect(() => {
-  //   handleAddProduct(mockProducts);
-  // }, []);
+  useEffect(() => {
+    handleAddProduct(mockProducts);
+  }, []);
 
   return (
     <section className="flex flex-col pt-20 bg-white">
@@ -163,7 +181,6 @@ function CartPage() {
                   : cartItem
               );
               setCartItems(updatedCartItems);
-              // Call calculateTotalPrice directly after updating cartItems
               calculateTotalPrice();
             }}
             onRemove={() => handleRemoveProduct(item.id)}
