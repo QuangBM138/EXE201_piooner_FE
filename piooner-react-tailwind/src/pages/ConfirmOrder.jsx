@@ -21,15 +21,15 @@ function ProductItem({ imgUrl, price, quantity, name }) {
         <div className="flex flex-col ml-5 w-[66%] max-md:ml-0 max-md:w-full">
           <div className="flex flex-col self-stretch my-auto text-sm text-neutral-900 max-md:mt-10">
             <div className="flex gap-3 mt-4 whitespace-nowrap">
-              <p className="text-center">Name:</p>
+              <p className="text-center">Tên sản phẩm:</p>
               <p className="flex-auto font-medium">{name}</p>
             </div>
             <div className="flex gap-3 mt-4 whitespace-nowrap">
-              <p className="text-center">Price:</p>
+              <p className="text-center">GIá:</p>
               <p className="flex-auto font-medium">{price.toLocaleString()}</p>
             </div>
             <div className="flex gap-3 mt-4 whitespace-nowrap">
-              <p className="text-center">Quantity:</p>
+              <p className="text-center">Số lượng:</p>
               <p className="flex-auto font-medium">{quantity}</p>
             </div>
           </div>

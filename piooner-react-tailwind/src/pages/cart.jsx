@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { img, RouteMap as RM } from "../utils/assets";
 import { useNavigate } from "react-router-dom";
 
+
 // eslint-disable-next-line react/prop-types
 function QuantityControl({ quantity, onQuantityChange }) {
   const handleDecrement = () => {
@@ -170,6 +171,7 @@ function CartPage() {
             price={item.price}
             imgUrl={item.imgUrl}
             quantity={item.quantity}
+            
             // Pass the onQuantityChange function as a prop
             onQuantityChange={(newQuantity) => {
               const updatedCartItems = cartItems.map((cartItem) =>
