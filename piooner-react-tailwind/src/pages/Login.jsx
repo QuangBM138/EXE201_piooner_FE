@@ -6,6 +6,7 @@ function Login({ textLogin }) {
       <div className="self-center text-xl font-bold ">Đăng nhập</div>
       <div className="self-center mt-3">{textLogin}</div>
       <form className="flex flex-col mt-7 w-auto" action="#">
+        <h3 className="text-xl font-bold text-center text-gray-800">Đăng nhập</h3>
         <label htmlFor="emailInput" className="sr-only">
           Email/ Số điện thoại
         </label>
