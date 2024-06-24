@@ -143,10 +143,11 @@ export function PayPage() {
       email,
       address: `${address}, ${ward}, ${district}, ${city}`,
       orderRequirement: note,
+      shippingMethod: sltedOpMove,
       paymentMethod: sltedOpPay,
       totalPrice: parseFloat(calculateTotal()),
       orderDetail: cartItems.map((item) => ({
-        productName: item.name, // Assuming "name" exists in your cart item object
+        productName: item.id.toLocaleString(),
         orderQuantity: item.quantity,
         orderPrice: item.price,
       })),
@@ -186,6 +187,9 @@ export function PayPage() {
         // Handle successful response
         console.log("Order submitted successfully:", response.data);
         navigate(RM.nearOrderPage); // Redirect to "Order" page
+        // Clear cartItems and cartData from localStorage
+        localStorage.removeItem("cartItems");
+        localStorage.removeItem("cartData");
       } else {
         // Handle failed response
         console.error("Error submitting order:", response.data);

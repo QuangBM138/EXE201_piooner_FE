@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { img, RouteMap as RM } from "../utils/assets";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import ErrorModal from "../components/ModelError";
 
 // eslint-disable-next-line react/prop-types
 function QuantityControl({ quantity, onQuantityChange }) {
@@ -75,6 +76,7 @@ function CartItem({ price, imgUrl, quantity, onQuantityChange, onRemove }) {
 function CartPage() {
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
+  const location = useLocation();
 
   const navigate = useNavigate();
 
@@ -127,6 +129,10 @@ function CartPage() {
     localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
   };
 
+  const handleBackClick = () => {
+    navigate(-1); // Navigate back to the previous page
+  };
+
   // Add mock product to cartItems
   // useEffect(() => {
   //   handleAddProduct(mockProducts);
@@ -139,53 +145,62 @@ function CartPage() {
         <header className="self-center mt-32 ml-20 text-3xl font-bold text-stone-800 max-md:mt-10 max-md:ml-2.5">
           Giỏ hàng của bạn
         </header>
-        <div className="flex grid md:grid-cols-9 self-center py-4 pr-16 pl-7 mt-9 ml-20 max-w-full text-sm font-medium bg-orange-100 text-stone-800 w-7/12 max-md:flex-wrap max-md:px-5">
-          <div className="col-span-6">SẢN PHẨM</div>
-          <div className="col-span-3 grid md:grid-cols-4 flex gap-x-20 w-3/12">
-            <div className="col-span-2">SỐ LƯỢNG</div>
-            <div className="col-span-2">GIÁ</div>
-          </div>
-        </div>
-
-        {cartItems.map((item) => (
-          <CartItem
-            key={item.id}
-            price={item.price}
-            imgUrl={item.imgUrl}
-            quantity={item.quantity}
-            // Pass the onQuantityChange function as a prop
-            onQuantityChange={(newQuantity) => {
-              const updatedCartItems = cartItems.map((cartItem) =>
-                cartItem.id === item.id
-                  ? { ...cartItem, quantity: newQuantity }
-                  : cartItem
-              );
-              setCartItems(updatedCartItems);
-              // Call calculateTotalPrice directly after updating cartItems
-              calculateTotalPrice();
-            }}
-            onRemove={() => handleRemoveProduct(item.id)}
+        {cartItems.length === 0 ? ( // Check for empty cart
+          <ErrorModal
+            message="Giỏ hàng của bạn hiện đang trống."
+            onClose={handleBackClick} // Go back or to home page
           />
-        ))}
-
-        <div className="flex gap-5 items-start mt-20 w-full text-sm font-medium max-w-[1090px] text-stone-800 max-md:flex-wrap max-md:mt-10 max-md:max-w-full">
-          <div className="flex-auto self-end mt-9">Ghi chú đơn hàng</div>
-          <div className="flex flex-col flex-1 self-end">
-            <div className="self-end text-sm font-bold">TỔNG HÓA ĐƠN</div>
-            <div className="mt-4  self-end col-span-12   text-orange-500">
-              {totalPrice.toLocaleString()} VND
+        ) : (
+          <>
+            <div className="flex grid md:grid-cols-9 self-center py-4 pr-16 pl-7 mt-9 ml-20 max-w-full text-sm font-medium bg-orange-100 text-stone-800 w-7/12 max-md:flex-wrap max-md:px-5">
+              <div className="col-span-6">SẢN PHẨM</div>
+              <div className="col-span-3 grid md:grid-cols-4 flex gap-x-20 w-3/12">
+                <div className="col-span-2">SỐ LƯỢNG</div>
+                <div className="col-span-2">GIÁ</div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className="flex gap-5 justify-between mt-8 w-full text-base font-medium text-center max-w-[1154px] text-stone-50 max-md:flex-wrap max-md:max-w-full">
-          <div className="shrink-0 max-w-full bg-neutral-900 bg-opacity-30 h-[58px] w-[791px]"></div>
-          <button
-            className="justify-center items-center self-start px-16 py-4 bg-pioonerCraft max-md:px-5"
-            onClick={handlePayNoLogin}
-          >
-            Thanh toán
-          </button>
-        </div>
+
+            {cartItems.map((item) => (
+              <CartItem
+                key={item.id}
+                price={item.price}
+                imgUrl={item.imgUrl}
+                quantity={item.quantity}
+                // Pass the onQuantityChange function as a prop
+                onQuantityChange={(newQuantity) => {
+                  const updatedCartItems = cartItems.map((cartItem) =>
+                    cartItem.id === item.id
+                      ? { ...cartItem, quantity: newQuantity }
+                      : cartItem
+                  );
+                  setCartItems(updatedCartItems);
+                  // Call calculateTotalPrice directly after updating cartItems
+                  calculateTotalPrice();
+                }}
+                onRemove={() => handleRemoveProduct(item.id)}
+              />
+            ))}
+
+            <div className="flex gap-5 items-start mt-20 w-full text-sm font-medium max-w-[1090px] text-stone-800 max-md:flex-wrap max-md:mt-10 max-md:max-w-full">
+              <div className="flex-auto self-end mt-9">Ghi chú đơn hàng</div>
+              <div className="flex flex-col flex-1 self-end">
+                <div className="self-end text-sm font-bold">TỔNG HÓA ĐƠN</div>
+                <div className="mt-4  self-end col-span-12   text-orange-500">
+                  {totalPrice.toLocaleString()} VND
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-5 justify-between mt-8 w-full text-base font-medium text-center max-w-[1154px] text-stone-50 max-md:flex-wrap max-md:max-w-full">
+              <div className="shrink-0 max-w-full bg-neutral-900 bg-opacity-30 h-[58px] w-[791px]"></div>
+              <button
+                className="justify-center items-center self-start px-16 py-4 bg-pioonerCraft max-md:px-5"
+                onClick={handlePayNoLogin}
+              >
+                Thanh toán
+              </button>
+            </div>
+          </>
+        )}
       </div>
     </section>
   );
