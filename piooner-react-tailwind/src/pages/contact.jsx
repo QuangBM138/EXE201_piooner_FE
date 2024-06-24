@@ -36,7 +36,7 @@ function ContactUs() {
                 <ContactInfo
                   className="bg-blue-200 p-4 rounded-lg mb-4"
                   iconSrc={img.emailIcon}
-                  contactText="piorneercrafts@gmail.com"
+                  contactText="pioneercraftvn@gmail.com"
                   altText="Email"
                 />
                 <ContactInfo

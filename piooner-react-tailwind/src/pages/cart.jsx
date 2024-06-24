@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { img, RouteMap as RM } from "../utils/assets";
 import { useNavigate } from "react-router-dom";
 
-
 // eslint-disable-next-line react/prop-types
 function QuantityControl({ quantity, onQuantityChange }) {
   const handleDecrement = () => {
@@ -43,7 +42,7 @@ function QuantityControl({ quantity, onQuantityChange }) {
 // eslint-disable-next-line react/prop-types
 function CartItem({ price, imgUrl, quantity, onQuantityChange, onRemove }) {
   return (
-    <div className="flex grid md:grid-cols-12  items-start mt-16 max-md:mt-10 w-6/12">
+    <div className="flex grid md:grid-cols-12  items-start mt-16 max-md:mt-10 w-6/12 items-center text-orange-500">
       <div className="col-span-8">
         <img
           loading="lazy"
@@ -58,10 +57,9 @@ function CartItem({ price, imgUrl, quantity, onQuantityChange, onRemove }) {
           quantity={quantity}
           onQuantityChange={onQuantityChange}
         />
-        <div className="col-span-2 text-sm font-medium text-neutral-900 mr-[100px] ml-[50px]">
-          {price.toLocaleString()} VND
+        <div className="col-span-2 text-sm font-medium text-neutral-900 mr-[100px] ml-[50px] w-full flex items-center text-orange-500">
+          <span>{price.toLocaleString()}</span>&nbsp;VND
         </div>
-
         <img
           loading="lazy"
           src={img.deleteIcon}
@@ -81,18 +79,18 @@ function CartPage() {
   const navigate = useNavigate();
 
   const handlePayNoLogin = () => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
     navigate(RM.payNoLoginRoute); // Navigate to payNoLogin page
   };
+
   useEffect(() => {
     const storedCartItems = localStorage.getItem("cartItems");
     if (storedCartItems) {
       setCartItems(JSON.parse(storedCartItems));
     }
-    console.log("CartItems: ", localStorage.getItem("cartItems"));
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
     calculateTotalPrice();
     const cartData = {
       totalPrice: totalPrice,
@@ -102,54 +100,37 @@ function CartPage() {
   }, [cartItems, totalPrice]);
 
   const calculateTotalPrice = () => {
-    const priceSum = cartItems.reduce(
-      (sum, item) => sum + item.price * item.quantity,
-      0
-    );
-    setTotalPrice(priceSum);
+    let total = 0;
+    cartItems.forEach((item) => {
+      total += item.price * item.quantity;
+    });
+    setTotalPrice(total);
   };
 
-  const handleAddProduct = (products) => {
-    const updatedCartItems = products.flatMap((product) =>
-      cartItems.some((cartItem) => cartItem.id === product.id)
-        ? cartItems.map((cartItem) =>
-            cartItem.id === product.id
-              ? { ...cartItem, quantity: cartItem.quantity + product.quantity }
-              : cartItem
-          )
-        : [...cartItems, product]
-    );
+  // const handleAddProduct = (products) => {
+  //   const updatedCartItems = products.flatMap((product) =>
+  //     cartItems.some((cartItem) => cartItem.id === product.id)
+  //       ? cartItems.map((cartItem) =>
+  //           cartItem.id === product.id
+  //             ? { ...cartItem, quantity: cartItem.quantity + product.quantity }
+  //             : cartItem
+  //         )
+  //       : [...cartItems, product]
+  //   );
 
-    setCartItems(updatedCartItems);
-  };
+  //   setCartItems(updatedCartItems);
+  // };
 
   const handleRemoveProduct = (productId) => {
     const updatedCartItems = cartItems.filter((item) => item.id !== productId);
     setCartItems(updatedCartItems);
+    localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
   };
 
-  // Mock product
-  const mockProducts = [
-    {
-      id: 1,
-      name: "Bình gốm đen",
-      price: 100000,
-      imgUrl: img.product1,
-      quantity: 2,
-    },
-    {
-      id: 2,
-      name: "Bình gốm sữa",
-      price: 200000,
-      imgUrl: img.product2,
-      quantity: 1,
-    },
-  ];
-
   // Add mock product to cartItems
-  useEffect(() => {
-    handleAddProduct(mockProducts);
-  }, []);
+  // useEffect(() => {
+  //   handleAddProduct(mockProducts);
+  // }, []);
 
   return (
     <section className="flex flex-col pt-20 bg-white">
@@ -172,7 +153,6 @@ function CartPage() {
             price={item.price}
             imgUrl={item.imgUrl}
             quantity={item.quantity}
-            
             // Pass the onQuantityChange function as a prop
             onQuantityChange={(newQuantity) => {
               const updatedCartItems = cartItems.map((cartItem) =>
@@ -181,6 +161,7 @@ function CartPage() {
                   : cartItem
               );
               setCartItems(updatedCartItems);
+              // Call calculateTotalPrice directly after updating cartItems
               calculateTotalPrice();
             }}
             onRemove={() => handleRemoveProduct(item.id)}
@@ -189,9 +170,11 @@ function CartPage() {
 
         <div className="flex gap-5 items-start mt-20 w-full text-sm font-medium max-w-[1090px] text-stone-800 max-md:flex-wrap max-md:mt-10 max-md:max-w-full">
           <div className="flex-auto self-end mt-9">Ghi chú đơn hàng</div>
-          <div className="flex flex-col flex-1 self-start">
-            <div>TỔNG HÓA ĐƠN</div>
-            <div className="mt-4">{totalPrice.toLocaleString()} VND</div>
+          <div className="flex flex-col flex-1 self-end">
+            <div className="self-end text-sm font-bold">TỔNG HÓA ĐƠN</div>
+            <div className="mt-4  self-end col-span-12   text-orange-500">
+              {totalPrice.toLocaleString()} VND
+            </div>
           </div>
         </div>
         <div className="flex gap-5 justify-between mt-8 w-full text-base font-medium text-center max-w-[1154px] text-stone-50 max-md:flex-wrap max-md:max-w-full">

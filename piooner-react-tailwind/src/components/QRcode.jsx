@@ -13,7 +13,7 @@ const QRCodeModal = ({ totalprice, onClose }) => {
           <br />
           Theo cú pháp: "mã đơn hàng" - "số điện thoại"
           <br />
-          VD: "" - "09XXXXXXXX"
+          VD: "PD61CJH" - "09XXXXXXXX"
           <br />
           Số tiền:
           <span className="font-bold">{totalprice.toLocaleString()}</span>

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { RouteMap as RM, img } from "../utils/assets";
 import ErrorModal from "../components/ModelError";
 import QRCodeModal from "../components/QRcode";
+import { submitOrder } from "../utils/apiService";
 
 // eslint-disable-next-line react/prop-types
 function ImageWithDescription({ src, alt, onClick }) {
@@ -136,54 +137,92 @@ export function PayPage() {
       return;
     }
 
+    const formDataJson = {
+      name: `${lastName} ${firstName}`,
+      phoneNumber,
+      email,
+      address: `${address}, ${ward}, ${district}, ${city}`,
+      orderRequirement: note,
+      paymentMethod: sltedOpPay,
+      totalPrice: parseFloat(calculateTotal()),
+      orderDetail: cartItems.map((item) => ({
+        productName: item.name, // Assuming "name" exists in your cart item object
+        orderQuantity: item.quantity,
+        orderPrice: item.price,
+      })),
+    };
+
+    // const formDatafull = {
+    //   lastName,
+    //   firstName,
+    //   phoneNumber,
+    //   email,
+    //   city,
+    //   district,
+    //   ward,
+    //   address,
+    //   note,
+    //   shippingMethod: sltedOpMove,
+    //   paymentMethod: sltedOpPay,
+    //   totalPrice: calculateTotal(),
+    //   cartItems: cartItems,
+    //   orderItems:
+    //     cartData && cartItems
+    //       ? cartItems.map((item) => ({
+    //           price: item.price,
+    //           quantity: item.quantity,
+    //         }))
+    //       : [],
+    // };
+
+    // console.log("formDatafull", formDatafull);
+    console.log("formDataJson", formDataJson);
+
+    try {
+      // Send form data to the API endpoint using Axios
+      const response = await submitOrder(formDataJson);
+
+      if (response.status === 200) {
+        // Handle successful response
+        console.log("Order submitted successfully:", response.data);
+        navigate(RM.nearOrderPage); // Redirect to "Order" page
+      } else {
+        // Handle failed response
+        console.error("Error submitting order:", response.data);
+        setErrorMessage(
+          response.data.title || "An error occurred. Please try again later."
+        );
+        setErrorModalOpen(true);
+      }
+    } catch (error) {
+      if (error.isAxiosError && error.response) {
+        // Server responded with a 400 Bad Request
+        console.error("Error submitting order:", error.response.data);
+        setErrorMessage(
+          error.response.data.title ||
+            "An error occurred. Please try again later."
+        );
+        setErrorModalOpen(true);
+      } else {
+        // Handle network error
+        console.error("Network error:", error);
+        setErrorMessage(
+          "Network error. Please check your internet connection and try again later."
+        );
+        setErrorModalOpen(true);
+      }
+    }
+
     if (sltedOpPay === payMethod.momo) {
       setIsQRCodeModalOpen(true);
       return;
     }
-    // Prepare form data
-    const formData = {
-      lastName,
-      firstName,
-      phoneNumber,
-      email,
-      city,
-      district,
-      ward,
-      address,
-      note,
-      shippingMethod: sltedOpMove,
-      paymentMethod: sltedOpPay,
-      totalPrice: calculateTotal(),
-      cartItems: cartItems,
-      orderItems: cartItems.map((item) => ({
-        price: item.price,
-        quantity: item.quantity,
-      })),
-    };
-
-    console.log("formData", formData);
-    navigate(RM.nearOrderPage);
-    // Send form data to your API using fetch or Axios library
-    // const response = await fetch(/* Your API endpoint */, {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(formData),
-    // });
-
-    // if (response.ok) {
-    //   // Handle successful response
-    //   console.log("Order submitted successfully:", response);
-    //   navigate(RM.nearOrderPage); // Redirect to "nOrder" page
-    // } else {
-    //   // Handle failed response (e.g., display error message)
-    //   console.error("Error submitting order:", response);
-    //   //... display error message logic
-    // }
   };
 
   const handleCloseErrorModal = () => {
     setErrorModalOpen(false);
   };
+
   const handleCloseQRCodeModal = () => {
     setIsQRCodeModalOpen(false);
     navigate(RM.nearOrderPage);
