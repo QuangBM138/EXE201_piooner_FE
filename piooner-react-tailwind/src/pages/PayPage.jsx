@@ -147,7 +147,7 @@ export function PayPage() {
       paymentMethod: sltedOpPay,
       totalPrice: parseFloat(calculateTotal()),
       orderDetail: cartItems.map((item) => ({
-        productName: item.id.toLocaleString(),
+        productName: item.name,
         orderQuantity: item.quantity,
         orderPrice: item.price,
       })),
