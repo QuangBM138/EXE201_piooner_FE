@@ -182,7 +182,10 @@ export function PayPage() {
     try {
       // Send form data to the API endpoint using Axios
       const response = await submitOrder(formDataJson);
-
+      if (sltedOpPay === payMethod.momo) {
+        setIsQRCodeModalOpen(true);
+        return;
+      }
       if (response.status === 200) {
         // Handle successful response
         console.log("Order submitted successfully:", response.data);
@@ -215,11 +218,6 @@ export function PayPage() {
         );
         setErrorModalOpen(true);
       }
-    }
-
-    if (sltedOpPay === payMethod.momo) {
-      setIsQRCodeModalOpen(true);
-      return;
     }
   };
 
