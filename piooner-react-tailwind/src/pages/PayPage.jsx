@@ -182,13 +182,14 @@ export function PayPage() {
     try {
       // Send form data to the API endpoint using Axios
       const response = await submitOrder(formDataJson);
-      if (sltedOpPay === payMethod.momo) {
-        setIsQRCodeModalOpen(true);
-        return;
-      }
+
       if (response.status === 200) {
         // Handle successful response
         console.log("Order submitted successfully:", response.data);
+        if (sltedOpPay === payMethod.momo) {
+          setIsQRCodeModalOpen(true);
+          return;
+        }
         navigate(RM.nearOrderPage); // Redirect to "Order" page
         // Clear cartItems and cartData from localStorage
         localStorage.removeItem("cartItems");
