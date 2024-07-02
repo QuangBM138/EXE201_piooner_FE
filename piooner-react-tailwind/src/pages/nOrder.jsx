@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { fetchOrders } from "../utils/apiService";
+import ErrorModal from "../components/ModelError"; // Import ErrorModal
+import { useNavigate } from "react-router-dom";
 
 const OrderHeader = () => {
   return (
@@ -41,7 +43,7 @@ const OrderRow = ({
         <span className="flex-1">{totalPrice.toLocaleString()} VND</span>
         <span className="flex-1 text-center">
           <span
-            className={` text-stone-50 px-2 py-1 ${
+            className={`text-stone-50 px-2 py-1 ${
               status === "processing"
                 ? "bg-pioonerCraft"
                 : status === "completed"
@@ -62,7 +64,7 @@ const OrderRow = ({
         </span>
         <span className="flex-1 text-center">
           <button
-            className=" text-orange-400 px-2 py-1 rounded"
+            className="text-orange-400 px-2 py-1 rounded"
             onClick={onViewDetails}
           >
             Xem chi tiết
@@ -159,7 +161,9 @@ function MyComponent() {
   const [orders, setOrders] = useState([]);
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null); // State for error message
   const email = localStorage.getItem("email"); // Replace with the actual email
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getOrders = async () => {
@@ -170,6 +174,11 @@ function MyComponent() {
             (a, b) => new Date(b.createDate) - new Date(a.createDate)
           );
           setOrders(sortedOrders);
+          if (sortedOrders.length === 0) {
+            setErrorMessage(
+              "Hiện tại bạn chưa đặt hàng nào. Vui lòng đặt hàng trước."
+            );
+          }
         } else {
           console.error("Failed to fetch orders:", data.message);
         }
@@ -188,6 +197,10 @@ function MyComponent() {
   const handleCloseModal = () => {
     setIsModalVisible(false);
     setSelectedOrder(null);
+  };
+
+  const handleBackClick = () => {
+    navigate(-1); // Navigate back to the previous page
   };
 
   return (
@@ -211,6 +224,9 @@ function MyComponent() {
         onClose={handleCloseModal}
         order={selectedOrder}
       />
+      {errorMessage && (
+        <ErrorModal message={errorMessage} onClose={handleBackClick} />
+      )}
     </main>
   );
 }

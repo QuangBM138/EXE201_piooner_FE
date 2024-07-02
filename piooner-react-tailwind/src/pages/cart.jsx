@@ -109,20 +109,6 @@ function CartPage() {
     setTotalPrice(total);
   };
 
-  // const handleAddProduct = (products) => {
-  //   const updatedCartItems = products.flatMap((product) =>
-  //     cartItems.some((cartItem) => cartItem.id === product.id)
-  //       ? cartItems.map((cartItem) =>
-  //           cartItem.id === product.id
-  //             ? { ...cartItem, quantity: cartItem.quantity + product.quantity }
-  //             : cartItem
-  //         )
-  //       : [...cartItems, product]
-  //   );
-
-  //   setCartItems(updatedCartItems);
-  // };
-
   const handleRemoveProduct = (productId) => {
     const updatedCartItems = cartItems.filter((item) => item.id !== productId);
     setCartItems(updatedCartItems);
@@ -132,11 +118,6 @@ function CartPage() {
   const handleBackClick = () => {
     navigate(-1); // Navigate back to the previous page
   };
-
-  // Add mock product to cartItems
-  // useEffect(() => {
-  //   handleAddProduct(mockProducts);
-  // }, []);
 
   return (
     <section className="flex flex-col pt-20 bg-white">
