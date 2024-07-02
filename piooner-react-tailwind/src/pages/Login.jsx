@@ -1,7 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
-import { loginUser, fetchUserData } from "../utils/apiService";
+import { loginUser } from "../utils/apiService";
 import { useState } from "react";
 import ErrorModal from "../components/ModelError";
+import { RouteMap } from "../utils/assets";
 
 // eslint-disable-next-line react/prop-types
 function Login({ textLogin }) {
@@ -27,7 +28,7 @@ function Login({ textLogin }) {
         const token = response.data.data.token; // Extract token from response (handle potential absence)
         if (token) {
           localStorage.setItem("token", token); // Store token in local storage
-          navigate("/profile"); // Redirect to profile page
+          navigate(RouteMap.profileRoute); // Redirect to profile page
         } else {
           setErrorMessage("Login successful, but token missing in response.");
         }

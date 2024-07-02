@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchUserData } from "../utils/apiService";
+import TrackingOptions from "../components/trackingOptions";
+// import AccountInfo from "./AccountInfo";
 
 function AccountInfo({ userData }) {
   return (
@@ -16,25 +18,12 @@ function AccountInfo({ userData }) {
   );
 }
 
-function TrackingOptions() {
-  return (
-    <div className="w-[30%] flex  flex-col grow text-xl font-medium text-neutral-900 max-md:mt-10">
-      <div>NHẬN ĐƠN HÀNG BẰNG EMAIL</div>
-      <div className="mt-6">ĐƠN HÀNG GẦN NHẤT</div>
-      <div className="mt-6">ĐĂNG XUẤT</div>
-    </div>
-  );
-}
-
 function ProfilePage() {
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Fetch user data from local storage or API based on your application flow
-
-        // Fetch from API if not stored locally
         const email = localStorage.getItem("email"); // Replace with dynamic email fetching
         const fetchedUserData = await fetchUserData(email);
         setUserData(fetchedUserData[0]);
@@ -48,7 +37,7 @@ function ProfilePage() {
   }, []);
 
   if (!userData) {
-    return <div>Loading...</div>; // Add a loading state if needed
+    return <div>Loading...</div>;
   }
 
   return (
@@ -83,7 +72,7 @@ function ProfilePage() {
             </div>
           </div>
         </section>
-        <TrackingOptions />
+        <TrackingOptions email={userData.email} />
       </div>
     </main>
   );
