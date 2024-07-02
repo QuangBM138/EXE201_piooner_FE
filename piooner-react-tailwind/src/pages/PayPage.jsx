@@ -137,6 +137,8 @@ export function PayPage() {
       return;
     }
 
+    localStorage.setItem("email", email);
+
     const formDataJson = {
       name: `${lastName} ${firstName}`,
       phoneNumber,

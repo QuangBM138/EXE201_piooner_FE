@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { fetchOrders } from "../utils/apiService";
+
 const OrderHeader = () => {
   return (
     <header className="flex flex-col items-center px-20 mt-2.5 w-full max-md:px-5 max-md:max-w-full">
@@ -10,12 +13,12 @@ const OrderHeader = () => {
 
 const OrderTableHeader = () => {
   return (
-    <div className="flex flex-col justify-center items-start px-16 py-7 text-sm font-medium bg-orange-100 text-stone-800 max-md:px-5 max-md:max-w-full">
-      <div className="flex gap-5 justify-between ml-16 max-w-full w-[807px] max-md:flex-wrap">
-        <span>Mã đơn hàng</span>
-        <span>Ngày mua</span>
-        <span>Tổng tiền</span>
-        <span>Trạng thái</span>
+    <div className="flex justify-center items-start px-16 py-7 text-sm font-medium bg-orange-100 text-stone-800 max-md:px-5 max-md:max-w-full">
+      <div className="flex w-full max-w-4xl">
+        <span className="flex-1">Mã đơn hàng</span>
+        <span className="flex-1">Ngày mua</span>
+        <span className="flex-1">Tổng tiền</span>
+        <span className="flex-1 text-center">Trạng thái</span>
       </div>
     </div>
   );
@@ -23,12 +26,12 @@ const OrderTableHeader = () => {
 
 const OrderRow = ({ orderId, orderDate, totalPrice, status }) => {
   return (
-    <div className="flex gap-5 justify-between self-end mt-4 mr-12 max-w-full font-light w-[971px] max-md:flex-wrap max-md:mr-2.5">
-      <div className="flex gap-8 justify-between my-auto text-sm text-stone-800 w-[840px] max-md:flex-wrap max-md:max-w-full">
-        <span>{orderId}</span>
-        <span>{orderDate}</span>
-        <span>{totalPrice}</span>
-        <span className="justify-center px-7 py-2 text-center bg-slate-500 text-stone-50 max-md:px-5">
+    <div className="flex justify-center w-full mt-4">
+      <div className="flex w-full max-w-4xl">
+        <span className="flex-1">{orderId}</span>
+        <span className="flex-1">{orderDate}</span>
+        <span className="flex-1">{totalPrice.toLocaleString()} VND</span>
+        <span className="flex-1 text-center bg-slate-500 text-stone-50 px-2 py-1">
           {status}
         </span>
       </div>
@@ -36,32 +39,39 @@ const OrderRow = ({ orderId, orderDate, totalPrice, status }) => {
   );
 };
 
-const orders = [
-  {
-    orderId: "2304155659",
-    orderDate: "01/07/2023",
-    totalPrice: "600.000 VND",
-    status: "Hoàn tất",
-  },
-  {
-    orderId: "2304155660",
-    orderDate: "02/07/2023",
-    totalPrice: "700.000 VND",
-    status: "Đang xử lý",
-  },
-];
-
 function MyComponent() {
+  const [orders, setOrders] = useState([]);
+  const email = localStorage.getItem("email"); // Replace with the actual email
+
+  useEffect(() => {
+    const getOrders = async () => {
+      try {
+        const data = await fetchOrders(email);
+        if (data.statusCode === 200) {
+          const sortedOrders = data.data.sort(
+            (a, b) => new Date(b.createDate) - new Date(a.createDate)
+          );
+          setOrders(sortedOrders);
+        } else {
+          console.error("Failed to fetch orders:", data.message);
+        }
+      } catch (error) {
+        console.error("Error fetching orders:", error);
+      }
+    };
+    getOrders();
+  }, [email]);
+
   return (
     <main className="flex flex-col items-center w-full">
       <OrderHeader />
       <section className="flex flex-col pb-5 mx-auto mt-12 w-full max-w-6xl bg-amber-50 max-md:max-w-full">
         <OrderTableHeader />
-        {orders.map((order, index) => (
+        {orders.map((order) => (
           <OrderRow
-            key={index}
-            orderId={order.orderId}
-            orderDate={order.orderDate}
+            key={order.id}
+            orderId={order.orderCode}
+            orderDate={new Date(order.createDate).toLocaleDateString()}
             totalPrice={order.totalPrice}
             status={order.status}
           />

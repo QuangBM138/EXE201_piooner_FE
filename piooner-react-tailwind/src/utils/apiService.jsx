@@ -1,4 +1,4 @@
-// utils/apiService.js
+// utils/apiService.jsx
 import axios from "axios";
 
 const apiService = "https://exe101pioneer.azurewebsites.net/";
@@ -28,4 +28,10 @@ export const loginUser = async (loginData) => {
     }
   );
   return response;
+};
+
+// // Function to fetch orders
+export const fetchOrders = async (email) => {
+  const response = await axios.get(`${apiService}api/Order/orders/${email}`);
+  return response.data;
 };
