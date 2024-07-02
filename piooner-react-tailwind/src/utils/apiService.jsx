@@ -30,6 +30,20 @@ export const loginUser = async (loginData) => {
   return response;
 };
 
+// Function to sign up a user
+export const signUpUser = async (formData) => {
+  const response = await axios.post(
+    `${apiService}api/User`, // Replace with actual signup endpoint
+    formData,
+    {
+      headers: {
+        "Content-Type": "application/json", // Explicitly set for clarity
+      },
+    }
+  );
+  return response;
+};
+
 // Function to fetch user data
 export const fetchUserData = async (email) => {
   const response = await axios.get(

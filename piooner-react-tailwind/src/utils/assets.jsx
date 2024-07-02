@@ -12,6 +12,8 @@ export const RouteMap = {
   productPage: "/ProductPage",
   nearOrderPage: "/NOrderPage",
   login: "/LoginPage",
+  signUp: "/SignUpPage",
+  forgetPwd: "/ForgetPwdPage",
 };
 
 export const Links = {

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchUserData } from "../utils/apiService";
 import TrackingOptions from "../components/trackingOptions";
-// import AccountInfo from "./AccountInfo";
 
 function AccountInfo({ userData }) {
   return (
@@ -20,31 +19,37 @@ function AccountInfo({ userData }) {
 
 function ProfilePage() {
   const [userData, setUserData] = useState(null);
-  const [isLoading, setLoading] = useState(true); // State to track loading status
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const email = localStorage.getItem("email");
-        const fetchedUserData = await fetchUserData(email);
-        setUserData(fetchedUserData[0]);
-        localStorage.setItem("userData", JSON.stringify(fetchedUserData[0]));
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      } finally {
-        setLoading(false); // Set loading to false whether fetch succeeds or fails
-      }
-    };
+    const existingUserData = JSON.parse(localStorage.getItem("userData"));
+    if (existingUserData) {
+      setUserData(existingUserData);
+      setLoading(false);
+    } else {
+      const fetchData = async () => {
+        try {
+          const email = localStorage.getItem("email");
+          const fetchedUserData = await fetchUserData(email);
+          setUserData(fetchedUserData[0]);
+          localStorage.setItem("userData", JSON.stringify(fetchedUserData[0]));
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+        } finally {
+          setLoading(false);
+        }
+      };
 
-    fetchData();
+      fetchData();
+    }
   }, []);
 
   if (isLoading) {
-    return <div>Loading...</div>; // Show loading indicator while fetching data
+    return <div>Loading...</div>;
   }
 
   if (!userData) {
-    return <div>Error fetching user data.</div>; // Handle error case if userData is null
+    return <div>Error fetching user data.</div>;
   }
 
   return (
@@ -55,7 +60,7 @@ function ProfilePage() {
       </div>
       <div className="shrink-0 mt-5 max-w-full h-px border border-solid bg-neutral-900 border-neutral-900 w-[1225px]" />
       <div className="w-[60%] max-w-full flex mt-20 max-md:max-w-full">
-        <section className=" w-full max-w-full max-md:mt-10 max-md:max-w-full">
+        <section className="w-full max-w-full max-md:mt-10 max-md:max-w-full">
           <div className="flex gap-5 max-md:flex-col max-md:gap-0">
             <aside className="flex flex-col w-[27%] max-md:ml-0 max-md:w-full">
               <div className="flex grow justify-center items-center px-16 py-16 w-full bg-white rounded-3xl border border-black border-solid max-md:px-5 max-md:mt-10">
