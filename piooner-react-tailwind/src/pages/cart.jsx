@@ -3,16 +3,15 @@ import { img, RouteMap as RM } from "../utils/assets";
 import { useLocation, useNavigate } from "react-router-dom";
 import ErrorModal from "../components/ModelError";
 
-// eslint-disable-next-line react/prop-types
 function QuantityControl({ quantity, onQuantityChange }) {
   const handleDecrement = () => {
     if (quantity > 1) {
-      onQuantityChange(quantity - 1); // Call the passed onQuantityChange function
+      onQuantityChange(quantity - 1);
     }
   };
 
   const handleIncrement = () => {
-    onQuantityChange(quantity + 1); // Call the passed onQuantityChange function
+    onQuantityChange(quantity + 1);
   };
 
   return (
@@ -40,10 +39,9 @@ function QuantityControl({ quantity, onQuantityChange }) {
   );
 }
 
-// eslint-disable-next-line react/prop-types
 function CartItem({ price, imgUrl, quantity, onQuantityChange, onRemove }) {
   return (
-    <div className="flex grid md:grid-cols-12  items-start mt-16 max-md:mt-10 w-6/12 items-center text-orange-500">
+    <div className="flex grid md:grid-cols-12 items-start mt-16 max-md:mt-10 w-6/12 items-center text-orange-500">
       <div className="col-span-8">
         <img
           loading="lazy"
@@ -65,7 +63,7 @@ function CartItem({ price, imgUrl, quantity, onQuantityChange, onRemove }) {
           loading="lazy"
           src={img.deleteIcon}
           alt="delete icon"
-          className="shrink-0 aspect-[0.94] w-[17px] col-span-2  cursor-pointer"
+          className="shrink-0 aspect-[0.94] w-[17px] col-span-2 cursor-pointer"
           onClick={onRemove}
         />
       </div>
@@ -77,13 +75,7 @@ function CartPage() {
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const location = useLocation();
-
   const navigate = useNavigate();
-
-  const handlePayNoLogin = () => {
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-    navigate(RM.payNoLoginRoute); // Navigate to payNoLogin page
-  };
 
   useEffect(() => {
     const storedCartItems = localStorage.getItem("cartItems");
@@ -94,12 +86,7 @@ function CartPage() {
 
   useEffect(() => {
     calculateTotalPrice();
-    const cartData = {
-      totalPrice: totalPrice,
-      totalQuantity: cartItems.reduce((sum, item) => sum + item.quantity, 0),
-    };
-    localStorage.setItem("cartData", JSON.stringify(cartData));
-  }, [cartItems, totalPrice]);
+  }, [cartItems]);
 
   const calculateTotalPrice = () => {
     let total = 0;
@@ -116,20 +103,28 @@ function CartPage() {
   };
 
   const handleBackClick = () => {
-    navigate(-1); // Navigate back to the previous page
+    navigate(-1);
+  };
+
+  const handlePay = () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate(RM.confirmOrderRoute);
+    } else {
+      navigate(RM.payNoLoginRoute);
+    }
   };
 
   return (
     <section className="flex flex-col pt-20 bg-white">
       <div className="flex flex-col items-center px-20 mt-2.5 w-full max-md:px-5 max-md:max-w-full">
-        <div className="flex gap-5 justify-between w-full max-w-[1249px] max-md:flex-wrap max-md:max-w-full"></div>
         <header className="self-center mt-32 ml-20 text-3xl font-bold text-stone-800 max-md:mt-10 max-md:ml-2.5">
           Giỏ hàng của bạn
         </header>
-        {cartItems.length === 0 ? ( // Check for empty cart
+        {cartItems.length === 0 ? (
           <ErrorModal
             message="Giỏ hàng của bạn hiện đang trống."
-            onClose={handleBackClick} // Go back or to home page
+            onClose={handleBackClick}
           />
         ) : (
           <>
@@ -147,7 +142,6 @@ function CartPage() {
                 price={item.price}
                 imgUrl={item.imgUrl}
                 quantity={item.quantity}
-                // Pass the onQuantityChange function as a prop
                 onQuantityChange={(newQuantity) => {
                   const updatedCartItems = cartItems.map((cartItem) =>
                     cartItem.id === item.id
@@ -155,7 +149,6 @@ function CartPage() {
                       : cartItem
                   );
                   setCartItems(updatedCartItems);
-                  // Call calculateTotalPrice directly after updating cartItems
                   calculateTotalPrice();
                 }}
                 onRemove={() => handleRemoveProduct(item.id)}
@@ -166,7 +159,7 @@ function CartPage() {
               <div className="flex-auto self-end mt-9">Ghi chú đơn hàng</div>
               <div className="flex flex-col flex-1 self-end">
                 <div className="self-end text-sm font-bold">TỔNG HÓA ĐƠN</div>
-                <div className="mt-4  self-end col-span-12   text-orange-500">
+                <div className="mt-4 self-end col-span-12 text-orange-500">
                   {totalPrice.toLocaleString()} VND
                 </div>
               </div>
@@ -175,7 +168,7 @@ function CartPage() {
               <div className="shrink-0 max-w-full bg-neutral-900 bg-opacity-30 h-[58px] w-[791px]"></div>
               <button
                 className="justify-center items-center self-start px-16 py-4 bg-pioonerCraft max-md:px-5"
-                onClick={handlePayNoLogin}
+                onClick={handlePay}
               >
                 Thanh toán
               </button>

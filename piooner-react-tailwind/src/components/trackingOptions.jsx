@@ -9,8 +9,8 @@ const Modal = ({ showModal, handleClose, message }) => {
   if (!showModal) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 h-[80%] max-h-full">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-[60%] h-[80%] max-h-full items-center text-center">
+    <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50  max-h-full">
+      <div className="bg-white p-6 rounded-lg shadow-lg w-[60%] h-[30%] max-h-full items-center text-center">
         {/* Title and message */}
         <h2 className="text-4xl  font-bold mb-4 text-center">Thông báo</h2>
         <p className="text-gray-500"> {message}</p>

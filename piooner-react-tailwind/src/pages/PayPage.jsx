@@ -104,6 +104,25 @@ export function PayPage() {
       setcartData(JSON.parse(storedCartData));
       setCartItems(JSON.parse(storedCartItems));
     }
+    // Fetch userData from localStorage
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    if (userData) {
+      // Populate form fields with userData
+      document.getElementById("lastName").value =
+        userData.name.split(" ")[0] || "";
+      document.getElementById("firstName").value =
+        userData.name.split(" ")[1] || "";
+      document.getElementById("phoneNumber").value = userData.phoneNumber || "";
+      document.getElementById("email").value = userData.email || "";
+      document.getElementById("city").value =
+        userData.address.split(",")[3] || "";
+      document.getElementById("district").value =
+        userData.address.split(",")[2] || "";
+      document.getElementById("ward").value =
+        userData.address.split(",")[1] || "";
+      document.getElementById("address").value =
+        userData.address.split(",")[0] || "";
+    }
     console.log("localStorage", localStorage);
   }, []);
 
@@ -155,30 +174,6 @@ export function PayPage() {
       })),
     };
 
-    // const formDatafull = {
-    //   lastName,
-    //   firstName,
-    //   phoneNumber,
-    //   email,
-    //   city,
-    //   district,
-    //   ward,
-    //   address,
-    //   note,
-    //   shippingMethod: sltedOpMove,
-    //   paymentMethod: sltedOpPay,
-    //   totalPrice: calculateTotal(),
-    //   cartItems: cartItems,
-    //   orderItems:
-    //     cartData && cartItems
-    //       ? cartItems.map((item) => ({
-    //           price: item.price,
-    //           quantity: item.quantity,
-    //         }))
-    //       : [],
-    // };
-
-    // console.log("formDatafull", formDatafull);
     console.log("formDataJson", formDataJson);
 
     try {
@@ -187,15 +182,14 @@ export function PayPage() {
 
       if (response.status === 200) {
         // Handle successful response
+        localStorage.removeItem("cartItems");
+        localStorage.removeItem("cartData");
         console.log("Order submitted successfully:", response.data);
         if (sltedOpPay === payMethod.momo) {
           setIsQRCodeModalOpen(true);
           return;
         }
         navigate(RM.nearOrderPage); // Redirect to "Order" page
-        // Clear cartItems and cartData from localStorage
-        localStorage.removeItem("cartItems");
-        localStorage.removeItem("cartData");
       } else {
         // Handle failed response
         console.error("Error submitting order:", response.data);

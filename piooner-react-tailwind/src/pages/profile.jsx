@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchUserData } from "../utils/apiService";
 import TrackingOptions from "../components/trackingOptions";
 // import AccountInfo from "./AccountInfo";
@@ -20,24 +20,31 @@ function AccountInfo({ userData }) {
 
 function ProfilePage() {
   const [userData, setUserData] = useState(null);
+  const [isLoading, setLoading] = useState(true); // State to track loading status
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const email = localStorage.getItem("email"); // Replace with dynamic email fetching
+        const email = localStorage.getItem("email");
         const fetchedUserData = await fetchUserData(email);
         setUserData(fetchedUserData[0]);
         localStorage.setItem("userData", JSON.stringify(fetchedUserData[0]));
       } catch (error) {
         console.error("Error fetching user data:", error);
+      } finally {
+        setLoading(false); // Set loading to false whether fetch succeeds or fails
       }
     };
 
     fetchData();
   }, []);
 
+  if (isLoading) {
+    return <div>Loading...</div>; // Show loading indicator while fetching data
+  }
+
   if (!userData) {
-    return <div>Loading...</div>;
+    return <div>Error fetching user data.</div>; // Handle error case if userData is null
   }
 
   return (
