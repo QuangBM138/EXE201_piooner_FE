@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { loginUser } from "../utils/apiService";
+import { loginUser, fetchUserData } from "../utils/apiService";
 import { useState } from "react";
 import ErrorModal from "../components/ModelError";
 
@@ -19,12 +19,18 @@ function Login({ textLogin }) {
 
     try {
       const response = await loginUser({ email, password });
+      localStorage.setItem("email", email);
 
       if (response.status === 200) {
         // Login successful
-        console.log("Login successful:", response.data);
-        localStorage.setItem("userData", JSON.stringify(response.data)); // Store entire user data in local storage
-        navigate("/profile"); // Redirect to profile page
+        console.log("Login successful:", response.data.data.token);
+        const token = response.data.data.token; // Extract token from response (handle potential absence)
+        if (token) {
+          localStorage.setItem("token", token); // Store token in local storage
+          navigate("/profile"); // Redirect to profile page
+        } else {
+          setErrorMessage("Login successful, but token missing in response.");
+        }
       } else {
         const errorData = await response.json(); // Parse error response for specific message
         setErrorMessage(errorData.message || "Invalid login credentials."); // Display specific or generic error

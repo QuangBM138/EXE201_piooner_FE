@@ -30,8 +30,24 @@ export const loginUser = async (loginData) => {
   return response;
 };
 
-// // Function to fetch orders
+// Function to fetch user data
+export const fetchUserData = async (email) => {
+  const response = await axios.get(
+    `${apiService}api/User?searchQuery=${email}`
+  );
+  return response.data.data;
+};
+
+// Function to fetch orders
 export const fetchOrders = async (email) => {
   const response = await axios.get(`${apiService}api/Order/orders/${email}`);
   return response.data;
+};
+
+// Function to submit order
+export const sendMailOrder = async (email) => {
+  const response = await axios.get(
+    `${apiService}api/Order/orders/send/${email}`
+  );
+  return response.data; // Assuming the API returns useful data on success
 };
