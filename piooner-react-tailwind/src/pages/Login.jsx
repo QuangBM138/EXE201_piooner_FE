@@ -78,13 +78,13 @@ function Login({ textLogin }) {
         />
         <div className="flex justify-between mt-3 w-full">
           <div>
-            <Link to="/register" className="italic mr-12 self-start">
+            <Link to={RouteMap.signUp} className="italic mr-12 self-start">
               Đăng ký
             </Link>
           </div>
           <div>
             <Link
-              to="/forgot-password"
+              to={RouteMap.forgetPwd}
               className="italic ml-12 w-full self-end"
             >
               Quên mật khẩu?
