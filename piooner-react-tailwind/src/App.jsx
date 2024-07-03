@@ -17,6 +17,7 @@ import ProductPage from "./pages/product";
 import NearOrderPage from "./pages/nOrder";
 import Login from "./pages/Login";
 import SignUp from "./pages/signUp";
+import ForgotPassword from "./pages/forgetPassword";
 
 function App() {
   return (
@@ -39,7 +40,7 @@ function App() {
         <Route path={RM.nearOrderPage} element={<NearOrderPage />} />
         <Route path={RM.login} element={<Login />} />
         <Route path={RM.signUp} element={<SignUp />} />
-        {/* <Route path={RM.login} element={<Login />} /> */}
+        <Route path={RM.forgetPwd} element={<ForgotPassword />} />
       </Routes>
       <Footer></Footer>
     </div>

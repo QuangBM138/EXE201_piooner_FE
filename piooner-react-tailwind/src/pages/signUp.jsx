@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { signUpUser } from "../utils/apiService";
 import { useState } from "react";
 import ErrorModal from "../components/ModelError";
+import SuccessModal from "../components/SuccessModel"; // Import SuccessModal
 import { RouteMap } from "../utils/assets";
 
 function SignUp() {
@@ -14,6 +15,7 @@ function SignUp() {
     phoneNumber: "",
   });
   const [errorMessage, setErrorMessage] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null); // Add success message state
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -30,7 +32,9 @@ function SignUp() {
       const response = await signUpUser(formData);
       if (response.status === 200) {
         console.log("Sign up successful");
-        navigate(RouteMap.loginRoute);
+        setSuccessMessage(
+          "Registration successful. Please log in to your account."
+        ); // Set success message
       } else {
         const errorData = await response.json();
         setErrorMessage(
@@ -43,6 +47,11 @@ function SignUp() {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleSuccessClose = () => {
+    setSuccessMessage(null);
+    navigate(RouteMap.login);
   };
 
   return (
@@ -121,6 +130,9 @@ function SignUp() {
           message={errorMessage}
           onClose={() => setErrorMessage(null)}
         />
+      )}
+      {successMessage && (
+        <SuccessModal message={successMessage} onClose={handleSuccessClose} />
       )}
     </section>
   );

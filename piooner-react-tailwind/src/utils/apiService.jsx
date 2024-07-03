@@ -44,6 +44,20 @@ export const signUpUser = async (formData) => {
   return response;
 };
 
+// Function to sign up a user
+export const sendResetPasswordEmail = async (formData) => {
+  const response = await axios.post(
+    `${apiService}forgot-password`, // Replace with actual signup endpoint
+    formData,
+    {
+      headers: {
+        "Content-Type": "application/json", // Explicitly set for clarity
+      },
+    }
+  );
+  return response;
+};
+
 // Function to fetch user data
 export const fetchUserData = async (email) => {
   const response = await axios.get(
@@ -52,7 +66,7 @@ export const fetchUserData = async (email) => {
   return response.data.data;
 };
 
-// Function to fetch orders
+// Function to fetch orders get
 export const fetchOrders = async (email) => {
   const response = await axios.get(`${apiService}api/Order/orders/${email}`);
   return response.data;

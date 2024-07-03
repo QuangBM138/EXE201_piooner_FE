@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { img, RouteMap as RM } from "../utils/assets";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -41,7 +42,7 @@ function QuantityControl({ quantity, onQuantityChange }) {
 
 function CartItem({ price, imgUrl, quantity, onQuantityChange, onRemove }) {
   return (
-    <div className="flex grid md:grid-cols-12 items-start mt-16 max-md:mt-10 w-6/12 items-center text-orange-500">
+    <div className="flex grid md:grid-cols-12  items-start mt-16 max-md:mt-10 w-6/12 items-center text-orange-500">
       <div className="col-span-8">
         <img
           loading="lazy"
@@ -63,7 +64,7 @@ function CartItem({ price, imgUrl, quantity, onQuantityChange, onRemove }) {
           loading="lazy"
           src={img.deleteIcon}
           alt="delete icon"
-          className="shrink-0 aspect-[0.94] w-[17px] col-span-2 cursor-pointer"
+          className="shrink-0 aspect-[0.94] w-[17px] col-span-2  cursor-pointer"
           onClick={onRemove}
         />
       </div>
@@ -86,7 +87,12 @@ function CartPage() {
 
   useEffect(() => {
     calculateTotalPrice();
-  }, [cartItems]);
+    const cartData = {
+      totalPrice: totalPrice,
+      totalQuantity: cartItems.reduce((sum, item) => sum + item.quantity, 0),
+    };
+    localStorage.setItem("cartData", JSON.stringify(cartData));
+  }, [cartItems, totalPrice]);
 
   const calculateTotalPrice = () => {
     let total = 0;
@@ -108,6 +114,7 @@ function CartPage() {
 
   const handlePay = () => {
     const token = localStorage.getItem("token");
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
     if (token) {
       navigate(RM.confirmOrderRoute);
     } else {

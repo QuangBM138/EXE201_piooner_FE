@@ -67,6 +67,7 @@ export function PayPage() {
   const [errorModalOpen, setErrorModalOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [isQRCodeModalOpen, setIsQRCodeModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const shippingMethod = { GHTK: "GHTK", GHN: "GHN" };
 
@@ -128,6 +129,7 @@ export function PayPage() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault(); // Prevent default form submission behavior
+    setIsLoading(true);
 
     // Get form input values
     const lastName = document.getElementById("lastName").value;
@@ -215,6 +217,8 @@ export function PayPage() {
         );
         setErrorModalOpen(true);
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -281,8 +285,9 @@ export function PayPage() {
             <button
               type="submit"
               className="justify-center items-center self-center px-16 py-4 mt-12 max-w-full text-xl font-bold text-center text-white bg-pioonerCraft w-[387px] max-md:px-5 max-md:mt-10"
+              disabled={isLoading}
             >
-              Xác nhận
+              {isLoading ? "Đang xử lý..." : "Xác nhận"}
             </button>
           </div>
         </form>

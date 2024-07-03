@@ -1,10 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
-import { loginUser } from "../utils/apiService";
+import { loginUser, fetchUserData } from "../utils/apiService";
 import { useState } from "react";
 import ErrorModal from "../components/ModelError";
 import { RouteMap } from "../utils/assets";
 
-// eslint-disable-next-line react/prop-types
 function Login({ textLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,13 +13,11 @@ function Login({ textLogin }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     setIsLoading(true); // Set loading state to true
     setErrorMessage(null); // Clear previous error message
 
     try {
       const response = await loginUser({ email, password });
-      localStorage.setItem("email", email);
 
       if (response.status === 200) {
         // Login successful
@@ -28,9 +25,14 @@ function Login({ textLogin }) {
         const token = response.data.data.token; // Extract token from response (handle potential absence)
         if (token) {
           localStorage.setItem("token", token); // Store token in local storage
-          navigate(RouteMap.profileRoute); // Redirect to profile page
-        } else {
-          setErrorMessage("Login successful, but token missing in response.");
+          localStorage.setItem("email", email);
+
+          // Fetch user data after successful login
+          const fetchedUserData = await fetchUserData(email);
+          localStorage.setItem("userData", JSON.stringify(fetchedUserData[0]));
+
+          // Redirect to profile page
+          navigate(RouteMap.profileRoute);
         }
       } else {
         const errorData = await response.json(); // Parse error response for specific message
@@ -53,7 +55,7 @@ function Login({ textLogin }) {
           Đăng nhập
         </h3>
         <label htmlFor="emailInput" className="sr-only">
-          Email/ Số điện thoại
+          Email
         </label>
         <input
           className="mt-2.5 bg-orange-100 h-[49px]"
@@ -91,12 +93,12 @@ function Login({ textLogin }) {
             </Link>
           </div>
         </div>
-
         <button
           type="submit"
           className="justify-center items-center px-16 py-4 mt-2.5 text-base font-bold text-white bg-pioonerCraft max-md:px-5"
+          disabled={isLoading}
         >
-          Đăng nhập
+          {isLoading ? "Đang xử lý..." : "Đăng nhập"}
         </button>
       </form>
       {errorMessage && (

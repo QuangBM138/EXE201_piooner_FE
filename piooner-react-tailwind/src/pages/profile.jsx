@@ -1,21 +1,6 @@
 import { useEffect, useState } from "react";
-import { fetchUserData } from "../utils/apiService";
 import TrackingOptions from "../components/trackingOptions";
-
-function AccountInfo({ userData }) {
-  return (
-    <div className="flex flex-col font-medium max-md:mt-10">
-      <div className="text-xl text-neutral-900">THÔNG TIN TÀI KHOẢN</div>
-      <div className="shrink-0 mt-6 h-px bg-black border border-black border-solid" />
-      <div className="mt-6 text-4xl text-black">{userData.name}</div>
-      <div className="mt-2 text-base text-neutral-900">{userData.email}</div>
-      <div className="mt-2 text-base text-neutral-900">{userData.address}</div>
-      <div className="mt-2 text-base text-neutral-900">
-        Điện thoại: {userData.phoneNumber}
-      </div>
-    </div>
-  );
-}
+import AccountInfo from "../components/AccountInfo.jsx";
 
 function ProfilePage() {
   const [userData, setUserData] = useState(null);
@@ -25,23 +10,8 @@ function ProfilePage() {
     const existingUserData = JSON.parse(localStorage.getItem("userData"));
     if (existingUserData) {
       setUserData(existingUserData);
-      setLoading(false);
-    } else {
-      const fetchData = async () => {
-        try {
-          const email = localStorage.getItem("email");
-          const fetchedUserData = await fetchUserData(email);
-          setUserData(fetchedUserData[0]);
-          localStorage.setItem("userData", JSON.stringify(fetchedUserData[0]));
-        } catch (error) {
-          console.error("Error fetching user data:", error);
-        } finally {
-          setLoading(false);
-        }
-      };
-
-      fetchData();
     }
+    setLoading(false);
   }, []);
 
   if (isLoading) {
@@ -49,7 +19,7 @@ function ProfilePage() {
   }
 
   if (!userData) {
-    return <div>Error fetching user data.</div>;
+    return <div>No user data available</div>;
   }
 
   return (
