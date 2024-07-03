@@ -7,7 +7,7 @@ const ProductCard = ({ product, addToCart }) => (
     <div className="flex flex-col pt-3 w-full rounded bg-neutral-100 justify-center items-center self-center">
       <div className="flex w-full">
         <div className="flex flex-col w-full">
-          <div className=" w-[100%] flex z-10 flex-col justify-center items-center self-center mt-0 max-w-full w-[179px] max-md:pr-5">
+          <div className=" w-full flex z-10 flex-col justify-center items-center self-center mt-0 max-w-full w-[179px] max-md:pr-5">
             <img
               loading="lazy"
               src={img[`${product.image + product.id}`]}

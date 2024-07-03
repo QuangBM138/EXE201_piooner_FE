@@ -46,7 +46,7 @@ function SignUp() {
   };
 
   return (
-    <section className="flex flex-col self-center my-auto text-sm w-4/12">
+    <section className="flex flex-col self-center my-auto text-sm w-4/12 mt-20">
       <div className="self-center text-xl font-bold">Đăng ký</div>
       <form className="flex flex-col mt-7 w-auto" onSubmit={handleSubmit}>
         <input
