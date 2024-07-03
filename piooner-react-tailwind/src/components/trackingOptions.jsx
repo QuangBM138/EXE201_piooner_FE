@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { sendMailOrder } from "../utils/apiService";
 import { RouteMap } from "../utils/assets";
 import { useNavigate } from "react-router-dom";
+import SuccessModal from "./SuccessModel";
+import ErrorModal from "./ModelError";
 // import Modal from "./Modal";
 
 const Modal = ({ showModal, handleClose, message }) => {
@@ -30,27 +32,21 @@ const Modal = ({ showModal, handleClose, message }) => {
 };
 
 function TrackingOptions({ email }) {
-  const [showModal, setShowModal] = useState(false);
-  const [modalMessage, setModalMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
   const navigate = useNavigate();
   console.log("email", email);
 
   const handleSendMailOrder = async () => {
     try {
       await sendMailOrder(email);
-      setModalMessage(
+      setSuccessMessage(
         "Đơn hàng đã được gửi qua email thành công. Vui lòng kiểm tra mail."
       );
     } catch (error) {
-      setModalMessage("Failed to send email. Please try again later.");
+      setErrorMessage("Failed to send email. Please try again later.");
       console.error("Error sending mail order:", error);
-    } finally {
-      setShowModal(true);
     }
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(false);
   };
 
   const handleNearOrder = () => {
@@ -62,6 +58,9 @@ function TrackingOptions({ email }) {
     navigate(RouteMap.homeRoute);
   };
 
+  const handleSuccessClose = () => {
+    setSuccessMessage(null);
+  };
   return (
     <div className="w-[30%] flex flex-col grow text-xl font-medium text-neutral-900 max-md:mt-10">
       <div onClick={handleSendMailOrder} className="cursor-pointer">
@@ -73,11 +72,15 @@ function TrackingOptions({ email }) {
       <div onClick={handleLogout} className="cursor-pointer mt-6">
         ĐĂNG XUẤT
       </div>
-      <Modal
-        showModal={showModal}
-        handleClose={handleCloseModal}
-        message={modalMessage}
-      />
+      {errorMessage && (
+        <ErrorModal
+          message={errorMessage}
+          onClose={() => setErrorMessage(null)}
+        />
+      )}
+      {successMessage && (
+        <SuccessModal message={successMessage} onClose={handleSuccessClose} />
+      )}
     </div>
   );
 }

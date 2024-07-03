@@ -45,17 +45,60 @@ export const signUpUser = async (formData) => {
 };
 
 // Function to sign up a user
+// export const sendResetPasswordEmail = async (formData) => {
+//   const response = await axios.post(
+//     `${apiService}forgot-password`, // Replace with actual signup endpoint
+//     formData,
+//     {
+//       headers: {
+//         "Content-Type": "application/json", // Explicitly set for clarity
+//       },
+//     }
+//   );
+//   return response;
+// };
+// Function to sendReset
 export const sendResetPasswordEmail = async (formData) => {
-  const response = await axios.post(
-    `${apiService}forgot-password`, // Replace with actual signup endpoint
-    formData,
-    {
-      headers: {
-        "Content-Type": "application/json", // Explicitly set for clarity
-      },
+  try {
+    const response = await axios.post(
+      `${apiService}forgot-password`,
+      formData,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return response.data; // Return the response data directly
+  } catch (error) {
+    if (error.response) {
+      // If the request was made and the server responded with a status code
+      return error.response.data; // Return error response data
+    } else {
+      // If something else happened while making the request
+      throw new Error("An error occurred. Please try again later.");
     }
-  );
-  return response;
+  }
+};
+
+// Function to reset password
+export const resetPassword = async (formData) => {
+  try {
+    const response = await axios.post(`${apiService}reset-password`, formData, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return response.data; // Return the response data directly
+  } catch (error) {
+    if (error.response) {
+      // If the request was made and the server responded with a status code
+      return error.response.data; // Return error response data
+    } else {
+      // If something else happened while making the request
+      throw new Error("An error occurred. Please try again later.");
+    }
+  }
 };
 
 // Function to fetch user data

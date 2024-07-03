@@ -32,9 +32,7 @@ function SignUp() {
       const response = await signUpUser(formData);
       if (response.status === 200) {
         console.log("Sign up successful");
-        setSuccessMessage(
-          "Registration successful. Please log in to your account."
-        ); // Set success message
+        setSuccessMessage("Đăng ký thành công vui lòng đăng nhập lại!!!"); // Set success message
       } else {
         const errorData = await response.json();
         setErrorMessage(

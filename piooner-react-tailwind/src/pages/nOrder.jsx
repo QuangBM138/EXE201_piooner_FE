@@ -4,6 +4,7 @@ import { fetchOrders } from "../utils/apiService";
 import ErrorModal from "../components/ModelError"; // Import ErrorModal
 import { useNavigate } from "react-router-dom";
 import ModalOrderDetail from "../components/modalOrderDetail";
+import LoadingModal from "../components/loadingModal";
 
 const OrderHeader = () => {
   return (
@@ -47,18 +48,18 @@ const OrderRow = ({
             className={`text-stone-50 px-2 py-1 ${
               status === "processing" || status === "đang xử lí"
                 ? "bg-pioonerCraft"
-                : status === "completed"
+                : status === "completed" || status === "đã hoàn thành"
                 ? "bg-green-200"
-                : status === "cancel"
+                : status === "cancel" || status === "đã hủy"
                 ? "bg-red-500"
                 : "bg-white"
             }`}
           >
             {status === "processing" || status === "đang xử lí"
               ? "Đang xử lý"
-              : status === "completed"
+              : status === "completed" || status === "đã hoàn thành"
               ? "Hoàn thành"
-              : status === "cancel"
+              : status === "cancel" || status === "đã hủy"
               ? "đã hủy"
               : "Không xác định"}
           </span>
@@ -81,11 +82,13 @@ function MyComponent() {
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null); // State for error message
+  const [isLoading, setIsLoading] = useState(false);
   const email = localStorage.getItem("email"); // Replace with the actual email
   const navigate = useNavigate();
 
   useEffect(() => {
     const getOrders = async () => {
+      setIsLoading(true);
       try {
         const data = await fetchOrders(email);
         if (data.statusCode === 200) {
@@ -103,6 +106,8 @@ function MyComponent() {
         }
       } catch (error) {
         console.error("Error fetching orders:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
     getOrders();
@@ -146,6 +151,7 @@ function MyComponent() {
       {errorMessage && (
         <ErrorModal message={errorMessage} onClose={handleBackClick} />
       )}
+      <LoadingModal isVisible={isLoading} />
     </main>
   );
 }

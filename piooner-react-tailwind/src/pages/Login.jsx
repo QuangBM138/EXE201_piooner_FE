@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser, fetchUserData } from "../utils/apiService";
 import { useState } from "react";
@@ -31,8 +32,12 @@ function Login({ textLogin }) {
           const fetchedUserData = await fetchUserData(email);
           localStorage.setItem("userData", JSON.stringify(fetchedUserData[0]));
 
-          // Redirect to profile page
-          navigate(RouteMap.profileRoute);
+          // Redirect to the specified page after login success
+          if (textLogin) {
+            navigate(RouteMap.confirmOrderRoute);
+          } else {
+            navigate(RouteMap.profileRoute);
+          }
         }
       } else {
         const errorData = await response.json(); // Parse error response for specific message

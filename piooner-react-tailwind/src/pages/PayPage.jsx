@@ -155,6 +155,7 @@ export function PayPage() {
     ) {
       setErrorMessage("Please fill in all required fields.");
       setErrorModalOpen(true);
+      setIsLoading(false);
       return;
     }
 
@@ -189,6 +190,7 @@ export function PayPage() {
         console.log("Order submitted successfully:", response.data);
         if (sltedOpPay === payMethod.momo) {
           setIsQRCodeModalOpen(true);
+          setIsLoading(false);
           return;
         }
         navigate(RM.nearOrderPage); // Redirect to "Order" page

@@ -14,6 +14,7 @@ export const RouteMap = {
   login: "/LoginPage",
   signUp: "/SignUpPage",
   forgetPwd: "/ForgetPwdPage",
+  resetPassword: "/ResetPwd",
 };
 
 export const Links = {

@@ -1,13 +1,15 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { sendResetPasswordEmail } from "../utils/apiService";
 import ErrorModal from "../components/ModelError";
+import { RouteMap } from "../utils/assets";
 
 function ForgotPassword({ textForgotPassword }) {
   const [email, setEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState(null);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -18,14 +20,16 @@ function ForgotPassword({ textForgotPassword }) {
 
     try {
       const response = await sendResetPasswordEmail({ email });
-
-      if (response.status === 200) {
-        // Email sent successfully
-        setSuccessMessage("Reset password email sent successfully.");
+      //save email to local
+      localStorage.setItem("email", email);
+      if (response.statusCode === 200) {
+        setSuccessMessage(
+          response.message || "Reset password email sent successfully."
+        );
+        navigate(RouteMap.resetPassword); // Redirect to the reset password page
       } else {
-        const errorData = await response.json();
         setErrorMessage(
-          errorData.message || "Failed to send reset password email."
+          response.message || "Failed to send reset password email."
         );
       }
     } catch (error) {
@@ -38,7 +42,7 @@ function ForgotPassword({ textForgotPassword }) {
 
   return (
     <section className="flex flex-col self-center my-auto text-sm w-4/12">
-      <div className="self-center text-xl font-bold ">Quên mật khẩu</div>
+      <div className="self-center text-xl font-bold">Quên mật khẩu</div>
       <div className="self-center mt-3">{textForgotPassword}</div>
       <form className="flex flex-col mt-7 w-auto" onSubmit={handleSubmit}>
         <h3 className="text-xl font-bold text-center text-gray-800">
@@ -59,8 +63,9 @@ function ForgotPassword({ textForgotPassword }) {
         <button
           type="submit"
           className="justify-center items-center px-16 py-4 mt-2.5 text-base font-bold text-white bg-pioonerCraft max-md:px-5"
+          disabled={isLoading}
         >
-          Gửi email
+          {isLoading ? "Sending..." : "Gửi email"}
         </button>
       </form>
       {successMessage && (

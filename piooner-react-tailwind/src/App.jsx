@@ -18,6 +18,7 @@ import NearOrderPage from "./pages/nOrder";
 import Login from "./pages/Login";
 import SignUp from "./pages/signUp";
 import ForgotPassword from "./pages/forgetPassword";
+import ResetPassword from "./pages/resetPassword";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
         <Route path={RM.login} element={<Login />} />
         <Route path={RM.signUp} element={<SignUp />} />
         <Route path={RM.forgetPwd} element={<ForgotPassword />} />
+        <Route path={RM.resetPassword} element={<ResetPassword />} />
       </Routes>
       <Footer></Footer>
     </div>
