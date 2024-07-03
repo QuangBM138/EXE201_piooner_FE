@@ -2,7 +2,7 @@ import React from "react";
 
 function SuccessModal({ message, onClose }) {
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
       <div className="bg-white p-5 rounded shadow-lg text-center">
         <h2 className="text-xl font-bold mb-4">Success</h2>
         <p>{message}</p>

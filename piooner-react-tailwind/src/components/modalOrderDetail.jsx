@@ -1,11 +1,21 @@
+/* eslint-disable react/prop-types */
 const ModalOrderDetail = ({ isVisible, onClose, order }) => {
   if (!isVisible) return null;
 
+  const totalQuantity = order.orderDetails.reduce(
+    (total, detail) => total + detail.orderQuantity,
+    0
+  );
+  const totalPrice = order.orderDetails.reduce(
+    (total, detail) => total + detail.orderPrice * detail.orderQuantity,
+    0
+  );
+
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-      <div className="bg-white p-8 rounded-lg shadow-2xl w-full max-w-3xl max-md:w-11/12">
+      <div className="bg-white p-8 rounded-lg shadow-2xl w-full max-w-6xl max-md:w-11/12 w-full">
         <div className="flex justify-between items-center border-b pb-4 mb-4">
-          <h2 className="text-2xl font-semibold text-stone-800">
+          <h2 className="text-2xl font-semibold text-stone-800 mx-auto">
             Chi tiết đơn hàng
           </h2>
           <button
@@ -28,45 +38,45 @@ const ModalOrderDetail = ({ isVisible, onClose, order }) => {
             </svg>
           </button>
         </div>
-        <div className="space-y-4">
-          <p>
-            <strong className="text-stone-800">Mã đơn hàng:</strong>{" "}
-            {order.orderCode}
-          </p>
-          <p>
-            <strong className="text-stone-800">Ngày mua:</strong>{" "}
-            {new Date(order.createDate).toLocaleDateString()}
-          </p>
-          <p>
-            <strong className="text-stone-800">Tổng tiền:</strong>{" "}
-            {order.totalPrice.toLocaleString()} VND
-          </p>
-        </div>
-        <h3 className="text-xl font-semibold text-stone-800 mt-6 mb-2">
-          Chi tiết sản phẩm
-        </h3>
-        <ul className="list-disc pl-5 space-y-2">
+        <div className="bg-amber-50">
+          <div className="flex justify-center items-start px-16 py-7 text-sm font-medium bg-orange-100 text-stone-800 max-md:px-5 max-md:max-w-full">
+            <div className="flex w-full max-w-4xl text-center">
+              <span className="flex-1">Mã đơn hàng</span>
+              <span className="flex-1">Tên sản phẩm</span>
+              <span className="flex-1 text-center">Số lượng</span>
+              <span className="flex-1 text-center">Giá</span>
+            </div>
+          </div>
+
           {order.orderDetails.length > 0 ? (
             order.orderDetails.map((detail) => (
-              <li key={detail.id} className="mb-2">
-                <p>
-                  <strong className="text-stone-800">Tên sản phẩm:</strong>{" "}
-                  {detail.productName}
-                </p>
-                <p>
-                  <strong className="text-stone-800">Số lượng:</strong>{" "}
-                  {detail.orderQuantity}
-                </p>
-                <p>
-                  <strong className="text-stone-800">Giá:</strong>{" "}
-                  {detail.orderPrice.toLocaleString()} VND
-                </p>
-              </li>
+              <div className="flex justify-center w-full mt-4" key={detail.id}>
+                <div className="flex w-full max-w-4xl text-center">
+                  <span className="flex-1">{order.orderCode}</span>
+                  <span className="flex-1">{detail.productName}</span>
+                  <span className="flex-1">{detail.orderQuantity}</span>
+                  <span className="flex-1 text-orange-700">
+                    {detail.orderPrice.toLocaleString()} VND
+                  </span>
+                </div>
+              </div>
             ))
           ) : (
-            <p className="text-stone-800">Không có chi tiết sản phẩm.</p>
+            <div>
+              <p className="text-stone-800">Không có chi tiết sản phẩm.</p>
+            </div>
           )}
-        </ul>
+          <div className="flex p-2 justify-center w-full mt-4  bg-orange-100">
+            <div className="flex w-full max-w-4xl text-center">
+              <span className="flex-1">{order.orderCode}</span>
+              <span className="flex-1"></span>
+              <span className="flex-1 text-center">{totalQuantity}</span>
+              <span className="flex-1 text-center text-orange-700">
+                {totalPrice.toLocaleString()} VND
+              </span>
+            </div>
+          </div>
+        </div>
         <div className="flex justify-end mt-6">
           <button
             className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded"

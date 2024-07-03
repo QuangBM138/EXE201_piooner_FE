@@ -42,7 +42,9 @@ const OrderRow = ({
       <div className="flex w-full max-w-4xl text-center">
         <span className="flex-1">{orderId}</span>
         <span className="flex-1">{orderDate}</span>
-        <span className="flex-1">{totalPrice.toLocaleString()} VND</span>
+        <span className="flex-1 text-orange-700">
+          {totalPrice.toLocaleString()} VND
+        </span>
         <span className="flex-1 text-center">
           <span
             className={`text-stone-50 px-2 py-1 ${
