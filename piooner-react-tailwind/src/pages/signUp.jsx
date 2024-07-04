@@ -1,11 +1,12 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { signUpUser } from "../utils/apiService";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ErrorModal from "../components/ModelError";
 import SuccessModal from "../components/SuccessModel"; // Import SuccessModal
 import { RouteMap } from "../utils/assets";
 
 function SignUp() {
+  const location = useLocation();
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -18,6 +19,15 @@ function SignUp() {
   const [successMessage, setSuccessMessage] = useState(null); // Add success message state
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (location.state?.email) {
+      setFormData((prevData) => ({
+        ...prevData,
+        email: location.state.email,
+      }));
+    }
+  }, [location.state]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

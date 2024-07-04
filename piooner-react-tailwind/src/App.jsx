@@ -4,7 +4,7 @@ import ContactPage from "./pages/contact";
 import CommunityPage from "./pages/Community";
 import PayNoLogin from "./pages/payNoLogin";
 import ProfilePage from "./pages/profile";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { RouteMap as RM } from "./utils/assets";
 import Header from "./components/header";
 import Footer from "./components/footer";
@@ -19,8 +19,14 @@ import Login from "./pages/Login";
 import SignUp from "./pages/signUp";
 import ForgotPassword from "./pages/forgetPassword";
 import ResetPassword from "./pages/resetPassword";
+import { useEffect } from "react";
 
 function App() {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location]);
   return (
     <div className="app flex flex-col pt-20 bg-white">
       <Header></Header>
