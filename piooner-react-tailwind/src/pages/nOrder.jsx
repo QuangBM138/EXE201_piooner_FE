@@ -51,7 +51,7 @@ const OrderRow = ({
               status === "processing" || status === "đang xử lí"
                 ? "bg-pioonerCraft"
                 : status === "completed" || status === "đã hoàn thành"
-                ? "bg-green-200"
+                ? "bg-green-600"
                 : status === "cancel" || status === "đã hủy"
                 ? "bg-red-500"
                 : "bg-white"
@@ -62,7 +62,7 @@ const OrderRow = ({
               : status === "completed" || status === "đã hoàn thành"
               ? "Hoàn thành"
               : status === "cancel" || status === "đã hủy"
-              ? "đã hủy"
+              ? "Đã hủy"
               : "Không xác định"}
           </span>
         </span>

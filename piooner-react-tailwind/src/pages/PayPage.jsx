@@ -77,8 +77,8 @@ export function PayPage() {
   };
 
   const shippingFees = {
-    [shippingMethod.GHTK]: 15000, // Fee for GHTK
-    [shippingMethod.GHN]: 30000, // Fee for GHN
+    [shippingMethod.GHTK]: 0, // Fee for GHTK
+    [shippingMethod.GHN]: 0, // Fee for GHN
   };
 
   const handleOptionChangeShipping = (event) => {
