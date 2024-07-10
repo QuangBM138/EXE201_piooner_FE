@@ -13,6 +13,9 @@ const QRCodeModal = ({ totalprice, onClose }) => {
           <br />
           Theo cú pháp: "mã đơn hàng" - "số điện thoại"
           <br />
+          Mã đơn hàng đã được gửi qua email. Vui lòng vào mail để lấy mã đơn
+          hàng và hoàn tất thanh toán!!!
+          <br />
           VD: "PD61CJH" - "09XXXXXXXX"
           <br />
           Số tiền:

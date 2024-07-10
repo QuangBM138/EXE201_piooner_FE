@@ -62,7 +62,7 @@ export function PayPage() {
   const [cartData, setcartData] = useState({});
   const [cartItems, setCartItems] = useState([]);
   const [sltedOpMove, setSltedOpMove] = useState("GHTK");
-  const [sltedOpPay, setSltedOpPay] = useState("delivery");
+  const [sltedOpPay, setSltedOpPay] = useState("momo");
   const navigate = useNavigate();
   const [errorModalOpen, setErrorModalOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -319,17 +319,18 @@ export function PayPage() {
             Phương thức thanh toán
           </h3>
           <RadioButton
-            label="Thanh toán khi nhận hàng"
-            value={payMethod.delivery}
-            checked={sltedOpPay === payMethod.delivery}
-            onChange={handleOptionChangePayment}
-          />
-          <RadioButton
             label="Thanh toán bằng QRCode MoMo"
             value={payMethod.momo}
             checked={sltedOpPay === payMethod.momo}
             onChange={handleOptionChangePayment}
           />
+          <RadioButton
+            label="Thanh toán khi nhận hàng"
+            value={payMethod.delivery}
+            checked={sltedOpPay === payMethod.delivery}
+            onChange={handleOptionChangePayment}
+          />
+
           <h3 className="mt-6 text-sm font-bold text-black max-md:max-w-full">
             Ghi chú đơn hàng
           </h3>
