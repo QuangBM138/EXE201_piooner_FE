@@ -89,7 +89,7 @@ const Footer = () => {
           </form>
           <div className="flex gap-5 mt-5 text-sm text-amber-50">
             <span className="grow">HOTLINE: 1900 1716</span>
-            <span className="flex-auto">EMAIL: support@piorneercraft.com</span>
+            <span className="flex-auto">EMAIL: pioneercraftvn@gmail.com</span>
           </div>
           <div className="flex gap-3.5 self-start mt-3">
             {/* icon facebook */}
