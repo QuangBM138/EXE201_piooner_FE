@@ -70,13 +70,13 @@ const ProductPage = () => {
   const products = [
     { id: 1, name: "Bình gốm đen", price: 200000, image: "product" },
     { id: 2, name: "Bình gốm sữa", price: 250000, image: "product" },
-    { id: 3, name: "Bình gốm bầu lớn", price: 400000, image: "product" },
-    { id: 4, name: "Bình gốm giả nung", price: 150000, image: "product" },
+    { id: 3, name: "Bình gốm bầu lớn", price: 140000, image: "product" },
+    { id: 4, name: "Bình gốm giả nung", price: 300000, image: "product" },
     { id: 5, name: "Bình gốm giả gạch", price: 120000, image: "product" },
     { id: 6, name: "Bình gốm trang trí", price: 180000, image: "product" },
     { id: 7, name: "Bình gốm cơ bản 1", price: 100000, image: "product" },
-    { id: 8, name: "Bình gốm cơ bản loại 2", price: 120000, image: "product" },
-    { id: 9, name: "Bình gốm bầu", price: 300000, image: "product" },
+    { id: 8, name: "Bình gốm cơ bản loại 2", price: 100000, image: "product" },
+    { id: 9, name: "Bình gốm bầu", price: 59000, image: "product" },
     { id: 10, name: "Bình gốm làm mát", price: 200000, image: "product" },
     {
       id: 11,
@@ -84,7 +84,7 @@ const ProductPage = () => {
       price: 150000,
       image: "product",
     },
-    { id: 12, name: "Bình gốm tròn rỗng", price: 100000, image: "product" },
+    { id: 12, name: "Bình gốm tròn rỗng", price: 99000, image: "product" },
   ];
 
   const addToCart = (product) => {
