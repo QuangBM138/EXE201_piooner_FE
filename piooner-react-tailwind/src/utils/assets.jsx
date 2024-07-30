@@ -141,8 +141,44 @@ export const img = {
     apiImg +
     "%2F101cc284a7074779856ab37fb68fa7a5%2F565921ebcde64f0192f1e57d9d157695",
   product12:
-    apiImg +
-    "%2F101cc284a7074779856ab37fb68fa7a5%2Ffafd86b39c954836a63f842e6d202bfc",
+    
+    "https://firebasestorage.googleapis.com/v0/b/pioneerexe201.appspot.com/o/images%2Fdatban2.jpg?alt=media&token=702acdfc-8790-487f-8f6b-bf1ba173e95f",
+    product13:
+    "https://firebasestorage.googleapis.com/v0/b/pioneerexe201.appspot.com/o/images%2F0e1b0117-2f67-4a81-b6d8-d87770a891b7.jpg?alt=media&token=b9997da3-e4bd-4dd5-94b2-fc69686c6c89" ,
+    product14:
+    
+    "https://firebasestorage.googleapis.com/v0/b/pioneerexe201.appspot.com/o/images%2F4495656b-acfa-4ea7-ba96-e6457544feb5.jpg?alt=media&token=52ccef4d-d252-4ed0-96f5-1bbac15248f9",
+    product15:
+  
+    "https://firebasestorage.googleapis.com/v0/b/pioneerexe201.appspot.com/o/images%2F4904cf22-0a35-4733-a99a-95d8c75fbd62.jpg?alt=media&token=000bd7e4-e8dd-4c75-b518-49e4e1cdca08",
+    product16:
+   
+    "https://firebasestorage.googleapis.com/v0/b/pioneerexe201.appspot.com/o/images%2F52ee37eb-85a7-4c98-9c3b-3535bce0e911.jpg?alt=media&token=17e1cf16-2df4-4aa7-9b6f-7554e3e95ce2",
+    product17:
+    
+    "https://firebasestorage.googleapis.com/v0/b/pioneerexe201.appspot.com/o/images%2F54d69db3-9f84-4acf-849d-3708c2292c03.jpg?alt=media&token=bf0764f0-1755-4cf4-a3eb-dd17716f8127",
+    product18:
+ 
+    "https://firebasestorage.googleapis.com/v0/b/pioneerexe201.appspot.com/o/images%2F7ebbc9e5-a825-44b7-8ef6-880de4902a6f.jpg?alt=media&token=5a74d40e-ca38-4d42-94e6-491435e6377c",
+    product19:
+   
+    "https://firebasestorage.googleapis.com/v0/b/pioneerexe201.appspot.com/o/images%2F837fa785-84f4-48eb-9725-5484204e0620.jpg?alt=media&token=609e22b5-b11f-447f-b810-2b04af240b58",
+    product20:
+    
+    "https://firebasestorage.googleapis.com/v0/b/pioneerexe201.appspot.com/o/images%2F859f4e06-3b6c-4bb0-8245-b3f43e1ea9ad.jpg?alt=media&token=bac88bf1-267f-4e95-a64b-52faa4e95cc1",
+    product21:
+    
+    "https://firebasestorage.googleapis.com/v0/b/pioneerexe201.appspot.com/o/images%2F8bac47e6-432e-42fa-916d-13aa09801694.jpg?alt=media&token=2bbabda6-e325-40e5-ad2a-cb908a5d964d",
+    product22:
+    
+    "https://firebasestorage.googleapis.com/v0/b/pioneerexe201.appspot.com/o/images%2Fa2fda040-d427-4ee8-9c3b-80ebcdad7c9a.jpg?alt=media&token=89c8a21a-facc-4f70-a6e7-c653d79ba12d",
+    product23:
+   
+    "https://firebasestorage.googleapis.com/v0/b/pioneerexe201.appspot.com/o/images%2Fbc4a5eb7-5b63-4f5e-bee5-7125c1904be7.jpg?alt=media&token=2f32d418-4014-4f4e-8712-22d3816d8ac4",
+    product24:
+   
+    "https://firebasestorage.googleapis.com/v0/b/pioneerexe201.appspot.com/o/images%2Fc1d578b2ae648bb3000f1463dab0a90e.jpg?alt=media&token=97c6ec18-2a78-4d9d-90d0-e4559307ef72",
+  
 
   // payment
   qrMomo:

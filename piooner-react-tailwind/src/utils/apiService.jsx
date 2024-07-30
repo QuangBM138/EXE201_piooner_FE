@@ -1,7 +1,8 @@
 // utils/apiService.jsx
 import axios from "axios";
 
-const apiService = "https://exe101pioneer.azurewebsites.net/";
+const apiService = "https://piooneerapi20240730120200.azurewebsites.net/";
+// const apiService = "https://exe101pioneer.azurewebsites.net/";
 // Function to submit order
 export const submitOrder = async (formData) => {
   const response = await axios.post(
