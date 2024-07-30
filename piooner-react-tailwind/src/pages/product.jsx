@@ -95,7 +95,7 @@ const ProductPage = () => {
     { id: 20, name: "Bình gốm cơ bản", price: 20000, image: "product" },
     { id: 21, name: "Bình gốm cách điệu", price: 99000, image: "product" },
     { id: 22, name: "Bình gốm ấm nước", price: 45000, image: "product" },
-    { id: 23, name: "Bình gốm đen tuyền", price: 15000, image: "product" },
+    { id: 23, name: "Bình gốm đen tuyền", price: 30000, image: "product" },
     { id: 24, name: "Bình gốm ", price: 36000, image: "product" },
     
 
