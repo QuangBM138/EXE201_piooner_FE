@@ -10,7 +10,7 @@ const ProductCard = ({ product, addToCart }) => (
           <div className=" w-full flex z-10 flex-col justify-center items-center self-center mt-0 max-w-full w-[179px] max-md:pr-5">
             <img
               loading="lazy"
-              src={img[`${product.image + product.id}`]}
+              src={img[`${product.image}`]}
               alt={product.name}
               className="aspect-[0.95] w-[375px] justify-center self-start items-center"
             />
@@ -67,44 +67,62 @@ const ProductRow = ({ products, addToCart }) => {
 };
 
 const ProductPage = () => {
-  const products = [
-    { id: 1, name: "Bình gốm đen", price: 200000, image: "product" },
-    { id: 2, name: "Bình gốm sữa", price: 250000, image: "product" },
-    { id: 3, name: "Bình gốm bầu lớn", price: 140000, image: "product" },
-    { id: 4, name: "Bình gốm giả nung", price: 300000, image: "product" },
-    { id: 5, name: "Bình gốm giả gạch", price: 120000, image: "product" },
-    { id: 6, name: "Bình gốm trang trí", price: 180000, image: "product" },
-    { id: 7, name: "Bình gốm cơ bản 1", price: 100000, image: "product" },
-    { id: 8, name: "Bình gốm cơ bản loại 2", price: 100000, image: "product" },
-    { id: 9, name: "Bình gốm bầu", price: 59000, image: "product" },
-    { id: 10, name: "Bình gốm làm mát", price: 200000, image: "product" },
-    {
-      id: 11,
-      name: "Bình gốm cầu tròn đơn sắc",
-      price: 150000,
-      image: "product",
-    },
-    { id: 12, name: "Bình gốm Tonardo", price: 50000, image: "product" },
-    { id: 13, name: "Bình gốm Phình", price: 50000, image: "product" },
-    { id: 14, name: "Bình gốm hai lỗ", price: 75000, image: "product" },
-    { id: 15, name: "Bình gốm tam giác", price: 65000, image: "product" },
-    { id: 16, name: "Bình gốm chữ B", price: 60000, image: "product" },
-    { id: 17, name: "Bình gốm bầu", price: 79000, image: "product" },
-    { id: 18, name: "Bình gốm 1/2 C", price: 70000, image: "product" },
-    { id: 19, name: "Bình gốm bầu đục", price: 65000, image: "product" },
-    { id: 20, name: "Bình gốm cơ bản", price: 70000, image: "product" },
-    { id: 21, name: "Bình gốm cách điệu", price: 99000, image: "product" },
-    { id: 22, name: "Bình gốm ấm nước", price: 55000, image: "product" },
-    { id: 23, name: "Bình gốm đen tuyền", price: 80000, image: "product" },
-    { id: 24, name: "Bình gốm ", price: 85000, image: "product" },
+  // const products = [
+  //   { id: 1, name: "Bình gốm đen", price: 200000, image: "product" },
+  //   { id: 2, name: "Bình gốm sữa", price: 250000, image: "product" },
+  //   { id: 3, name: "Bình gốm bầu lớn", price: 140000, image: "product" },
+  //   { id: 4, name: "Bình gốm giả nung", price: 300000, image: "product" },
+  //   { id: 5, name: "Bình gốm giả gạch", price: 120000, image: "product" },
+  //   { id: 6, name: "Bình gốm trang trí", price: 180000, image: "product" },
+  //   { id: 7, name: "Bình gốm cơ bản 1", price: 100000, image: "product" },
+  //   { id: 8, name: "Bình gốm cơ bản loại 2", price: 100000, image: "product" },
+  //   { id: 9, name: "Bình gốm bầu", price: 59000, image: "product" },
+  //   { id: 10, name: "Bình gốm làm mát", price: 200000, image: "product" },
+  //   {
+  //     id: 11,
+  //     name: "Bình gốm cầu tròn đơn sắc",
+  //     price: 150000,
+  //     image: "product",
+  //   },
+  //   { id: 12, name: "Bình gốm Tonardo", price: 50000, image: "product" },
+  //   { id: 13, name: "Bình gốm Phình", price: 50000, image: "product" },
+  //   { id: 14, name: "Bình gốm hai lỗ", price: 75000, image: "product" },
+  //   { id: 15, name: "Bình gốm tam giác", price: 65000, image: "product" },
+  //   { id: 16, name: "Bình gốm chữ B", price: 60000, image: "product" },
+  //   { id: 17, name: "Bình gốm bầu", price: 79000, image: "product" },
+  //   { id: 18, name: "Bình gốm 1/2 C", price: 70000, image: "product" },
+  //   { id: 19, name: "Bình gốm bầu đục", price: 65000, image: "product" },
+  //   { id: 20, name: "Bình gốm cơ bản", price: 70000, image: "product" },
+  //   { id: 21, name: "Bình gốm cách điệu", price: 99000, image: "product" },
+  //   { id: 22, name: "Bình gốm ấm nước", price: 55000, image: "product" },
+  //   { id: 23, name: "Bình gốm đen tuyền", price: 80000, image: "product" },
+  //   { id: 24, name: "Bình gốm ", price: 85000, image: "product" },
     
 
+  // ];
+
+  const products = [
+    { id: 1, name: "Bình gốm cơ bản loại 1 (nhỏ)", price: 59000, image: "product8" },
+    { id: 2, name: "Bình gốm cơ bản loại 1 (lớn)", price: 89000, image: "product8" },
+    { id: 3, name: "Bình gốm sữa", price: 99000, image: "product2" },
+    { id: 4, name: "Bình gốm làm mát", price: 149000, image: "product10" },
+    { id: 5, name: "Bình gốm hình cầu tròn (loại 1)", price: 99000, image: "product11" },
+    { id: 6, name: "Bình gốm hình cầu tròn (loại 2)", price: 119000, image: "product3" },
+    { id: 7, name: "Bình gốm ½ C", price: 59000, image: "product12" },
+    { id: 8, name: "Bình gốm 2 lỗ", price: 89000, image: "product14" },
+    { id: 9, name: "Bình gốm cách điệu dạng cắt", price: 69000, image: "product21" },
+    { id: 10, name: "Bình gốm cách điệu dạng tròn", price: 79000, image: "product19" },
+    { id: 11, name: "Bình gốm chữ cái", price: 79000, image: "product15" },
+    { id: 12, name: "Bình gốm dạng can sữa", price: 99000, image: "product22" },
+    { id: 13, name: "Bình gốm cắm hoa để bàn", price: 69000, image: "product24" },
+    { id: 14, name: "Bình gốm giả nung", price: 149000, image: "product4" },
+    { id: 15, name: "Bình gốm giả gạch", price: 199000, image: "product5" },
   ];
+  
 
   const addToCart = (product) => {
     const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
     const existingItem = cartItems.find((item) => item.id === product.id);
-
     if (existingItem) {
       existingItem.quantity++;
     } else {
@@ -112,7 +130,7 @@ const ProductPage = () => {
         id: product.id,
         name: product.name,
         price: product.price,
-        imgUrl: img[`${product.image + product.id}`],
+        imgUrl: img[`${product.image}`],
         quantity: 1,
       });
     }
