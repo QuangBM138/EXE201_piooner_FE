@@ -41,11 +41,11 @@ function Login({ textLogin }) {
         }
       } else {
         const errorData = await response.json(); // Parse error response for specific message
-        setErrorMessage(errorData.message || "Invalid login credentials."); // Display specific or generic error
+        setErrorMessage( "Sai thông tin đăng nhập!!!"); // Display specific or generic error
       }
     } catch (error) {
       console.error("Login error:", error);
-      setErrorMessage("An error occurred. Please try again later."); // Generic error for unexpected situations
+      setErrorMessage("Sai thông tin đăng nhập. Vui lòng thử lại!!!"); // Generic error for unexpected situations
     } finally {
       setIsLoading(false); // Reset loading state regardless of success or failure
     }
