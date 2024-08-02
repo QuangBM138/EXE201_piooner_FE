@@ -37,5 +37,5 @@
     @tailwind components;
     @tailwind utilities;
 
-# web
-https://exe-201-piooner-fe.vercel.app/
+# deploy web
+https://piooner-craft-uij8.vercel.app/
