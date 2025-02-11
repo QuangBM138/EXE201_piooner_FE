@@ -38,4 +38,4 @@
     @tailwind utilities;
 
 # deploy web
-https://piooner-craft-uij8.vercel.app/
+[https://piooner-craft-uij8.vercel.app/](https://exe-201-piooner-fe.vercel.app/)
