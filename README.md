@@ -36,7 +36,7 @@
     @tailwind base;
     @tailwind components;
     @tailwind utilities;
-#image web
+# image web
 ![image](https://github.com/user-attachments/assets/9da2e83b-c543-4f2c-974e-86102f6b2a21)
 
 
